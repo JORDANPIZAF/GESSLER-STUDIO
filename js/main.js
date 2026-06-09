@@ -918,11 +918,17 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         const drawFrame = (index) => {
-            if (!isFrameReady(index)) {
-                return;
+            let drawIndex = index;
+            if (!isFrameReady(drawIndex)) {
+                let found = false;
+                for (let offset = 1; offset <= 20; offset++) {
+                    if (isFrameReady(index - offset)) { drawIndex = index - offset; found = true; break; }
+                    if (isFrameReady(index + offset)) { drawIndex = index + offset; found = true; break; }
+                }
+                if (!found) return;
             }
 
-            const frameImage = frameImages[index];
+            const frameImage = frameImages[drawIndex];
             const canvasRatio = canvasWidth / canvasHeight;
             const imageRatio = frameImage.naturalWidth / frameImage.naturalHeight;
             let sourceWidth = frameImage.naturalWidth;
@@ -960,7 +966,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 context.drawImage(frameImage, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, canvasWidth, canvasHeight);
             }
             frame.classList.add('mil-canvas-ready');
-            currentFrame = index;
+            currentFrame = drawIndex;
         };
 
         const showFrame = (index) => {
@@ -984,8 +990,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const preloadImage = new Image();
             preloadImage.decoding = 'async';
             preloadImage.onload = () => {
-                if (index === requestedFrame) {
-                    showFrame(index);
+                if (Math.abs(index - requestedFrame) <= 10) {
+                    showFrame(requestedFrame);
                 }
             };
             preloadImage.src = getFrameSrc(index);
@@ -1021,6 +1027,16 @@ document.addEventListener("DOMContentLoaded", function () {
             window.addEventListener('load', startSequencePreload, { once: true });
         }
 
+        const warmupObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                for (let i = 0; i < frameCount; i++) {
+                    preloadFrame(i);
+                }
+                warmupObserver.disconnect();
+            }
+        }, { rootMargin: '120% 0px' });
+        warmupObserver.observe(sequence);
+
         window.addEventListener('resize', () => {
             canvasWidth = 0;
             canvasHeight = 0;
@@ -1038,7 +1054,7 @@ document.addEventListener("DOMContentLoaded", function () {
             pin: stage,
             pinSpacing: false,
             anticipatePin: 1,
-            scrub: true,
+            scrub: 0.5,
             onEnter: () => {
                 if (immersive) {
                     document.body.classList.add('mil-sequence-active');
