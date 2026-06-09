@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, 350);
 
+        setTimeout(hideTransition, 2500);
+
         document.addEventListener('click', (event) => {
             const link = event.target.closest('a[href]');
 
@@ -476,10 +478,11 @@ document.addEventListener("DOMContentLoaded", function () {
     ScrollSmoother
 
     ------------------------------------------- */
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 1);
     ScrollSmoother.create({
-        smooth: 1,
-        effects: true,
-        smoothTouch: 0.1,
+        smooth: isTouchDevice ? 0 : 1,
+        effects: !isTouchDevice,
+        smoothTouch: 0,
     });
     /* -------------------------------------------
     
@@ -877,6 +880,18 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        const isMobileDevice = window.matchMedia('(max-width: 767px)').matches ||
+            (('ontouchstart' in window) && window.innerWidth < 1024);
+
+        if (isMobileDevice) {
+            const poster = sequence.querySelector('[data-sequence-poster]');
+            if (poster) {
+                poster.style.cssText = 'display:block;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;';
+            }
+            canvas.style.display = 'none';
+            return;
+        }
+
         const getFrameSrc = (index) => {
             return framePath.replace('{index}', String(index).padStart(3, '0'));
         };
@@ -989,14 +1004,21 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        for (let i = 0; i < Math.min(frameCount, 24); i++) {
-            preloadFrame(i);
-        }
-
-        for (let i = 24; i < frameCount; i++) {
-            setTimeout(() => {
+        const startSequencePreload = () => {
+            for (let i = 0; i < Math.min(frameCount, 6); i++) {
                 preloadFrame(i);
-            }, (i - 23) * 24);
+            }
+            for (let i = 6; i < frameCount; i++) {
+                setTimeout(() => {
+                    preloadFrame(i);
+                }, (i - 5) * 60);
+            }
+        };
+
+        if (document.readyState === 'complete') {
+            startSequencePreload();
+        } else {
+            window.addEventListener('load', startSequencePreload, { once: true });
         }
 
         window.addEventListener('resize', () => {
