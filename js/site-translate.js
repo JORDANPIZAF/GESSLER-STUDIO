@@ -4,7 +4,7 @@ const TRANSLATABLE_ATTRIBUTES = ["placeholder", "title", "aria-label"];
 
 const TRANSLATIONS = {
     es: {
-        "Okai - Creative Portfolio & Agency HTML Template": "Gessler Studio",
+        "Gessler Studio": "Gessler Studio",
         "Gessler Studio | About us": "Gessler Studio | Sobre nosotros",
         "Gessler Studio | Jordan Piza": "Gessler Studio | Jordan Piza",
         "Gessler Studio | Angie Pachon": "Gessler Studio | Angie Pachon",
@@ -74,10 +74,10 @@ const TRANSLATIONS = {
         "Brand new design for": "Nuevo diseño para",
         "more than 200 websites built with the highest quality standards and advanced features.": "más de 200 sitios web creados con altos estándares de calidad y funciones avanzadas.",
         "Take a look at our latest design projects done for our newest clients, we have worked countless hours for total satisfaction.": "Mira algunos de nuestros proyectos de diseño más recientes realizados para nuevos clientes.",
-        "At Okai. we care about each client and each person who works with us and makes great projects possible": "En Gessler Studio cuidamos a cada cliente y a cada persona que hace posibles grandes proyectos con nosotros.",
+        "At Gessler Studio, we care about each client and each person who works with us and makes great projects possible": "En Gessler Studio cuidamos a cada cliente y a cada persona que hace posibles grandes proyectos con nosotros.",
         "We are a creative duo focused on strategy, multimedia design and human-centered solutions for growing brands.": "Somos un dúo creativo enfocado en estrategia, diseño multimedia y soluciones centradas en las personas para marcas en crecimiento.",
         "Phone: +051 - 958 237 851": "Teléfono: +051 - 958 237 851",
-        "Email: support@okai.design": "Correo: support@okai.design",
+        "Email: hola@gesslerstudio.com": "Correo: hola@gesslerstudio.com",
         "Address: 300 St. Mary's L, Suite 8060, Houston,": "Dirección: 300 St. Mary's L, Suite 8060, Houston,",
         "Hi. I'm Tinny": "Hola. Soy Tinny",
         "I love visual": "Me encanta el diseño visual",
@@ -402,6 +402,10 @@ function applyLanguagePreference(language) {
     if (typeof window.initializeFooterContactButtons === "function") {
         window.initializeFooterContactButtons();
     }
+
+    document.querySelectorAll('[data-lang-bc]').forEach(function(el) {
+        el.style.display = el.getAttribute('data-lang-bc') === normalizedLanguage ? '' : 'none';
+    });
 }
 
 function toggleSiteLanguage() {

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Beyond Group - Soluciones innovadoras en carpintería y metalmecánica">
+  <!-- fav icon -->
+  <link rel="icon" href="images/logo/favicon.webp">
+
+  <!-- bootstarp css file -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- aos.css file -->
+  <link rel="stylesheet" href="css/aos.css">
+
+  <!-- fancybox css file -->
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+
+  <!-- owl carousel css file -->
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <!--  toasts file     -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+  <!-- bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- main css file -->
+  <link rel="stylesheet" href="css/style.css">
+  <title>BEYOND - COLOMBIA</title>
+</head>
+
+<body>
+
+  <!-- start preLoader-->
+  <div id="preloader">
+    <svg id="mainSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+      <defs>
+        <radialGradient id="mainGrad" cx="50" cy="300" fx="400" fy="300" r="300" gradientUnits="userSpaceOnUse">
+          <stop offset=".68" stop-color="#e02907" />
+          <stop offset=".72" stop-color="#e02508" />
+          <stop offset=".77" stop-color="#e0210a" />
+          <stop offset=".82" stop-color="#e0190c" />
+          <stop offset=".88" stop-color="#df160e" />
+          <stop offset=".93" stop-color="#df120f" />
+          <stop offset=".99" stop-color="#df0e10" />
+          <stop offset="1" stop-color="#df0a12" />
+        </radialGradient>
+      </defs>
+      <circle id="fillDot" cx="400" cy="300" fill="#00000" r="80" />
+      <circle id="gradDot" cx="400" cy="300" fill="url(#mainGrad)" r="100" />
+    </svg>
+  </div>
+  <!-- end preLoader -->
+
+  <!-- start scroll to top button -->
+  <div id="progress">
+    <span id="progress-value"><i class="bi bi-arrow-up-short"></i></span>
+  </div>
+  <!-- end scroll to top button -->
+
+
+    <!-- ======= start Header ======= -->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+          <a href="index.html">
+          <div class="logo-container">
+            <div class="logo logo-static"></div>
+            <div class="logo logo-hover"></div>
+          </div></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list" id="menu"></i>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav ms-auto" id="navbar">
+            
+              <li class="nav-item">
+                <a class="nav-link" href="index.html" >INICIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html" >NOSOTROS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html">SERVICIOS</a>
+              </li>
+            
+              <li class="nav-item">
+                <a class="nav-link" href="portfolio.html"id="nav_active" >PROYECTOS</a>
+              </li>
+            
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html" >CONTACTO</a>
+              </li>
+            </ul>
+              <div class="d-flex ms-auto">
+              <a class="btn" href="worl-with-us.html">Trabaja con nosotros</a>
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ======= end Header ======= -->
+
+  <!-- ======= start Breadcrumbs ======= -->
+  <section class="breadcrumbs py-4" data-aos="fade-up" data-aos-delay="200" id="banner_proyectos">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Inicio / </a></li>
+      
+      </ol>
+      <div class="text-center">
+        <h1 class="title mb-0" id="title_banner">NUESTROS PROYECTOS</h1>
+      </div>
+    </div>
+  </section><!-- End Breadcrumbs -->
+  <div id="particles-js"></div> 
+  
+
+  <!-- ============== Start portfolio section ========== -->
+
+  <section class="container portfolio py-5" id="portfolio">
+    <div class="heading">
+      <h4 class="pretitle aos-init aos-animate" data-aos="fade-up">
+        PORTAFOLIO
+      </h4>
+      <h1 class="title col-12 text-dark" data-aos="fade-up" data-aos-delay="100">
+       Nuestros proyectos
+      </h1>
+    </div>
+    <ul class="filters d-flex my-4" data-aos="fade-up" data-aos-delay="150">
+      <li class="nav-porfolio">
+        <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2 text-dark" 
+           style="--bs-focus-ring-color: rgba(var(--bs-danger-rgb), .25);" data-filter="*">
+           Todo
+        </a>
+      </li>
+      <li class="nav-porfolio">
+        <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2 text-dark" 
+           style="--bs-focus-ring-color: rgba(var(--bs-danger-rgb), .25);" data-filter=".arq-comercial">
+           Arquitectura comercial
+        </a>
+      </li>
+      <li class="nav-porfolio">
+        <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2 text-dark" 
+           style="--bs-focus-ring-color: rgba(var(--bs-danger-rgb), .25);" data-filter=".arq-efimera">
+           Arquitectura efímera
+        </a>
+      </li>
+      <li class="nav-porfolio">
+        <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2 text-dark" 
+           style="--bs-focus-ring-color: rgba(var(--bs-danger-rgb), .25);" data-filter=".gondolas">
+           Góndolas
+        </a>
+      </li>
+      <li class="nav-porfolio">
+        <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2 text-dark" 
+           style="--bs-focus-ring-color: rgba(var(--bs-danger-rgb), .25);" data-filter=".mobiliario">
+           Mobiliario
+        </a>
+      </li>
+      <li class="nav-porfolio">
+        <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2 text-dark" 
+           style="--bs-focus-ring-color: rgba(var(--bs-danger-rgb), .25);" data-filter=".publicidad">
+           Publicidad
+        </a>
+      </li>
+      <li class="nav-porfolio">
+        <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2 text-dark" 
+           style="--bs-focus-ring-color: rgba(var(--bs-danger-rgb), .25);" data-filter=".creativo">
+           Creativo
+        </a>
+      </li>
+    </ul>
+  
+    </ul>
+    <div class="row portfolio-row gy-4 gx-4" data-aos="fade-up" data-aos-delay="150">
+      <div class="col-md-6  col-lg-4 mx-auto arq-comercial">
+        <a href="images/portfolio/1x/fondos_vitrina-de-bucaramanga.png" class="gallery-item" data-fancybox="gallery" data-caption="VITRINA DE BUCARAMANGA">
+          <div class="portfolio-item">
+            <img src="images/portfolio/1x/fondos_vitrina-de-bucaramanga.png" class="gallery-item" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Proyecto LG – Intervención de Vitrina Comercial</h3>
+                
+                <h4><a class="unique-text" href="porfolio/arq-comercial/arq-comercial_vitri_buc.html"><i class="bi bi-eye-fill mx-2"></i>VER EL PROYECTO</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class=" col-md-6  col-lg-4 mx-auto arq-efimera">
+        <a href="porfolio/arq-efimera/img/01/GALAXY-S DES 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="GALAXY STUDIO">
+          <div class="portfolio-item">
+            <img src="porfolio/arq-efimera/img/01/GALAXY-S DES 1.png" class="gallery-item" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Proyecto Samsung – Stand Interactivo en Centro Comercial</h3>
+            
+
+                <h4><a class="unique-text" href="porfolio/arq-efimera/portfolio-galaxy-studio.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class=" col-md-6  col-lg-4 mx-auto gondolas">
+        <a href="porfolio/gondolas/imge/01/GONDOLAS_ DES 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="GONDOLAS OLIMPICA">
+          <div class="portfolio-item">
+            <img src="porfolio/gondolas/imge/01/GONDOLAS_ DES 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Proyecto Olímpica – Sección de Licores</h3>
+        
+                <h4><a class="unique-text" href="porfolio/gondolas/portfolio-gondolas-01.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                  
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6  col-lg-4 mx-auto data mobiliario">
+        <a href="porfolio/mobiliario/img/01/OFI-BOGOTÁ DES 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="OFICINAS BOGOTÁ">
+          <div class="portfolio-item">
+            <img src="porfolio/mobiliario/img/01/OFI-BOGOTÁ DES 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Proyecto de Oficinas – Bogotá</h3>
+              
+
+                <h4><a class="unique-text" href="porfolio/mobiliario/portfolio-mobiliario 01.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="  col-md-6  col-lg-4 mx-auto publicidad">
+        <a href="porfolio/publicidad/img/01/evento nestle_DEST 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="taknaruytApp | web application">
+          <div class="portfolio-item">
+            <img src="porfolio/publicidad/img/01/evento nestle_DEST 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+               
+                <h3> PROYECTO NESTLÉ – STAND CONGRESO DE PEDIATRÍA</h3>
+
+                <h4><a class="unique-text" href="porfolio/publicidad/publicidad evento nestle.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="  col-md-6  col-lg-4 mx-auto creativo">
+        <a href="porfolio/creativo/img/03/canasta_DEST 6.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="bodihApp | web application">
+          <div class="portfolio-item">
+            <img src="porfolio/creativo/img/03/canasta_DEST 6.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                
+                <h3>Conceptualización y Diseño para Canasta Panadería</h3>
+
+                <h4><a class="unique-text" href="porfolio/creativo/creativo_canasta.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="  col-md-6  col-lg-4 mx-auto arq-comercial">
+        <a href="porfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST 2.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="ARQUITECTURA COMERCIAL LG">
+          <div class="portfolio-item">
+            <img src="porfolio/arq-comercial/img/p1/ARQ_COMERCIAL_02DEST 2.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                
+                <h3>ARQUITECTURA COMERCIAL LG</h3>
+
+                <h4><a class="unique-text" href="porfolio/arq-comercial/arq-comercial_1.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto arq-efimera">
+        <a href="porfolio/arq-efimera/img/03/wall_tcl_DEST 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="TV WALL TCL">
+          <div class="portfolio-item">
+            <img src="porfolio/arq-efimera/img/03/wall_tcl_DEST 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Proyecto TCL – TV Wall móvi</h3>
+
+                <h4><a class="unique-text" href="porfolio/arq-efimera/portfolio-wall-tcl.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto gondolas">
+        <a href="porfolio/gondolas/imge/03/gondolas_2_DEST 2.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="bodihApp | web application">
+          <div class="portfolio-item">
+            <img src="porfolio/gondolas/imge/03/gondolas_2_DEST 2.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Proyecto Olímpica – Góndolas de exhibición</h3>
+             
+
+                <h4><a class="unique-text" href="porfolio/gondolas/portfolio-gondolas 3.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto mobiliario">
+        <a href="porfolio/mobiliario/img/03/mobiliario_3_DEST 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="MOBILIARIO">
+          <div class="portfolio-item">
+            <img src="porfolio/mobiliario/img/03/mobiliario_3_DEST 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+              
+                <h3>Diseño de Mobiliario para el Hogar – Estética Natural y Acogedora</h3>
+
+                <h4><a class="unique-text" href="porfolio/mobiliario/portfolio-mobiliario_casa_3.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto publicidad">
+        <a href="porfolio/publicidad/img/02/nestle_nan_DEST 5.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="NESTLE NAN PROTECT">
+          <div class="portfolio-item">
+            <img src="porfolio/publicidad/img/02/nestle_nan_DEST 5.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+   
+                <h3>Desarrollo de Stand para Congreso de Pediatría</h3>
+
+                <h4><a class="unique-text" href="porfolio/publicidad/publicidad evento nestle - nan.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto creativo">
+        <a href="porfolio/creativo/img/01/DEST 5MUNDO PLAYA.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="MUNDO PLAYA">
+          <div class="portfolio-item">
+            <img src="porfolio/creativo/img/01/DEST 5MUNDO PLAYA.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+           
+                <h3>Diseño de Exhibición para Mundo Playa – Olímpica</h3>
+
+                <h4><a class="unique-text" href="porfolio/creativo/creativo_mundo_playa.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto arq-comercial">
+        <a href="porfolio/arq-comercial/img/p2/DEST 2PANDORA.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="TIENDA ALDO">
+          <div class="portfolio-item">
+            <img src="porfolio/arq-comercial/img/p2/DEST 2PANDORA.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                
+                <h3>Proyecto ALDO – Mobiliario Comercial de Alta Gama</h3>
+
+                <h4><a class="unique-text" href="porfolio/arq-comercial/arq-comercial_tienda aldo.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto arq-efimera">
+        <a href="porfolio/arq-efimera/img/02/islas_boldDEST 4.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="ISLAS BOLD">
+          <div class="portfolio-item">
+            <img src="porfolio/arq-efimera/img/02/islas_boldDEST 4.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+             
+                <h3>Proyecto Bold – Islas Comerciales Personalizadas</h3>
+
+                <h4><a class="unique-text" href="porfolio/arq-efimera/portfolio-islas-bold.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto gondolas">
+        <a href="porfolio/gondolas/imge/02/zona-fit_DEST 2.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="ZONA FIT">
+          <div class="portfolio-item">
+            <img src="porfolio/gondolas/imge/02/zona-fit_DEST 2.png" alt="zona fit">
+            <div class="img-overlay">
+              <div class="content">
+               
+                <h3>Proyecto Olímpica – Zona Fi</h3>
+
+                <h4><a class="unique-text" href="porfolio/gondolas/portfolio-gondolas-zona _fit.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto mobiliario">
+        <a href="porfolio/mobiliario/img/02/DEST 4_OFI_ BARRANQUILLA.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="OFICINAS BARRANQUILLA">
+          <div class="portfolio-item">
+            <img src="porfolio/mobiliario/img/02/DEST 4_OFI_ BARRANQUILLA.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                
+                <h3>Diseño y Producción de Mobiliario para Oficinas – Barranquilla</h3>
+
+                <h4><a class="unique-text" href="porfolio/mobiliario/portfolio-mobiliario_ofci_bqlla.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto publicidad">
+        <a href="porfolio/publicidad/img/03/publi_xbox_DEST 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="XBOX">
+          <div class="portfolio-item">
+            <img src="porfolio/publicidad/img/03/publi_xbox_DEST 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                
+                <h3>Diseño y Producción de Stands Xbox para Centros Comerciales</h3>
+
+                <h4><a class="unique-text" href="porfolio/publicidad/publicidad_xbox.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>      <div class="  col-md-6  col-lg-4 mx-auto creativo">
+        <a href="porfolio/creativo/img/02/mascotas_DEST 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="AMIGOS DE PATITAS">
+          <div class="portfolio-item">
+            <img src="porfolio/creativo/img/02/mascotas_DEST 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                
+                <h3>Propuesta Creativa para Feria – Alimentarte Purina</h3>
+
+                <h4><a class="unique-text" href="porfolio/creativo/creativo_mascotas.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>  
+ <!-- ============== producto  islas apple ========== -->
+      <div class=" col-md-6  col-lg-4 mx-auto arq-efimera">
+        <a href="porfolio/arq-efimera/img/04/isla_appleDEST 3.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="Isla de exhibición productos insignia - Apple">
+          <div class="portfolio-item">
+            <img src="porfolio/arq-efimera/img/04/isla_appleDEST 3.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Isla de exhibición productos insignia - Apple</h3>
+        
+                <h4><a class="unique-text" href="porfolio/arq-efimera/portfolio-isla-apple.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                  
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>    
+       <!-- ============== End producto ========== -->  
+
+
+
+        <!-- ============== producto  amd ========== -->
+      <div class=" col-md-6  col-lg-4 mx-auto arq-efimera">
+        <a href="porfolio/arq-efimera/img/05/mesa amd_DEST 1.png" class="gallery-item" data-fancybox="gallery"
+          data-caption="Mesa de exhibición de alto impacto para AMD">
+          <div class="portfolio-item">
+            <img src="porfolio/arq-efimera/img/05/mesa amd_DEST 1.png" alt="portfolio-img">
+            <div class="img-overlay">
+              <div class="content">
+                <h3>Mesa de exhibición de alto impacto para AMD</h3>
+        
+                <h4><a class="unique-text" href="porfolio/arq-efimera/portfolio-isla-amd.html"><i class="bi bi-eye-fill mx-2"></i>ver
+                  
+                    el proyecto</a></h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>    
+       <!-- ============== End producto ========== -->  
+    </div>
+  </section>
+  <!-- ============== End portfolio section ========== -->
+
+ 
+  <!-- ============== Start Footer section ========== -->
+  <div class="footer">
+    <div class="container">
+      <div class="row justify-content-center align-items-center g-4">
+        <div class="col-12 col-lg-3 col-md-6 mx-auto my-4">
+          <div class="box" id="box-footer">
+            <a href="#" class="logo "><img class="my-2" src="images/logo/logo.png" alt=""></a>
+            <br>
+            <p>Queremos ser parte de tus proyectos.</p>
+            <h4 class="my-2">
+             Síguenos:
+            </h4>
+            <div class="social d-flex gap-2">
+              <a href="https://www.facebook.com/share/167xMFbaWW/?mibextid=wwXIfr" id="icono_footer">
+              <div class="icon"><i class="bi bi-facebook"></i></a></div>
+             
+            <a href="https://www.instagram.com/be_yondgroup/" id="icono_footer"> <div class="icon"><i class="bi bi-instagram"></i></a> </div>
+             <a href="https://wa.link/vdhrvz" id="icono_footer"> <div class="icon"><i class="bi bi-whatsapp"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6 mx-auto d-flex flex-column my-4 gap-3">
+          <h4>Navegador</h4>
+          <ul class="d-flex flex-column gap-3">
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a
+                href="about.html">Nosotros</a></li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a
+                href="services.html">Servicios</a></li>
+                <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a
+                  href="portfolio.html">Proyectos</a></li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a
+                href="contact.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6 mx-auto d-flex flex-column my-4 gap-3">
+          <h4>Síguenos</h4>
+          <ul class="d-flex flex-column gap-3">
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="https://www.facebook.com/share/167xMFbaWW/?mibextid=wwXIfr">facebook</a>
+            </li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="https://www.instagram.com/be_yondgroup/">instagram</a>
+            </li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="https://wa.link/vdhrvz">Whatsapp</a></li>
+           
+          </ul>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6 mx-auto d-flex flex-column my-4 gap-3">
+          <h4>Nuestros servicios</h4>
+          <ul class="d-flex flex-column gap-3">
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="service_carpinteria.html">Carpintería</a>
+            </li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="service_metalmecanica.html">Metalmecánica
+            </a>
+            </li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="service_impresion.html">Impresión
+            </a></li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="service_acrilico.html">Acrílicos
+            </a></li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="service_logistica.html">Instalación y logística
+            </a></li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-chevron-right"></i><a href="service_operaciones_logis.html">
+              Operación logística de equipos de tecnología
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="copyrights ">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 d-flex justify-content-start">
+            <p class="creadits">
+              &copy; 2025
+              Creada por: <a href="#"> Beyond Colombia S.A.S</a>
+            </p>
+          </div>
+          <div class="col-12 col-md-6 d-flex justify-content-end">
+            <div>
+              <a href="#">Terminos y condiciones </a>
+              | <a href="#">Politicas de privacidad</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============== end Footer section ========== -->
+<!-- jQuery siempre primero (sin defer porque es requisito para otros) -->
+<script src="js/jquery-3.6.1.min.js"></script>
+
+<!-- Librerías que dependen de jQuery (con defer) -->
+<script src="js/bootstrap.min.js" defer></script>
+<script src="js/owl.carousel.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js" defer></script>
+
+<!-- Waypoints desde CDN (más confiable) ANTES de CounterUp -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" defer></script>
+<script src="js/jquery.counterup.min.js" defer></script>
+
+<!-- Otras librerías jQuery -->
+<script src="js/jquery.fancybox.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" defer></script>
+
+<!-- Librerías independientes -->
+<script src="js/aos.js" defer></script>
+<script src="js/gsap.min.js" defer></script>
+<script src="js/particles.min.js" defer></script> 
+<script src="js/isotope.min.js" defer></script>
+
+<!-- Imagesloaded (mejor al final) -->
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
+
+<!-- Script principal último -->
+<script src="js/main.js" defer></script>
+	
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if('fonts' in document) {
+      document.fonts.load("1em Outfit").then(function() {
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(function(error) {
+        console.error('Error loading fonts:', error);
+        document.documentElement.classList.add('fonts-failed');
+      });
+    }
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 ﻿/* -------------------------------------------
 
-Name:       Okai
+Name:       Gessler Studio
 Version:    1.0
 Author:	    bslthemes
 Website:    https://bslthemes.com/
@@ -479,11 +479,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ------------------------------------------- */
     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 1);
-    ScrollSmoother.create({
-        smooth: isTouchDevice ? 0 : 1,
-        effects: !isTouchDevice,
-        smoothTouch: 0,
-    });
+    if (!isTouchDevice) {
+        ScrollSmoother.create({
+            smooth: 1,
+            effects: true,
+            smoothTouch: 0,
+        });
+    }
     /* -------------------------------------------
     
     tabs
@@ -604,63 +606,68 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ------------------------------------------- */
     var follower = document.querySelector(".mil-cursor-follower");
-    var posX = 0,
-        posY = 0;
-    var mouseX = 0,
-        mouseY = 0;
-    var cursorOrbitIdleTimer;
 
-    if (follower && !follower.querySelector('.mil-cursor-orbit')) {
-        follower.insertAdjacentHTML('beforeend', `
-            <span class="mil-cursor-orbit mil-cursor-orbit-one" aria-hidden="true"></span>
-            <span class="mil-cursor-orbit mil-cursor-orbit-two" aria-hidden="true"></span>
-        `);
-    }
+    if (isTouchDevice) {
+        if (follower) follower.style.display = 'none';
+    } else {
+        var posX = 0,
+            posY = 0;
+        var mouseX = 0,
+            mouseY = 0;
+        var cursorOrbitIdleTimer;
 
-    gsap.ticker.add(function () {
-        if (!follower) {
-            return;
+        if (follower && !follower.querySelector('.mil-cursor-orbit')) {
+            follower.insertAdjacentHTML('beforeend', `
+                <span class="mil-cursor-orbit mil-cursor-orbit-one" aria-hidden="true"></span>
+                <span class="mil-cursor-orbit mil-cursor-orbit-two" aria-hidden="true"></span>
+            `);
         }
-        posX += (mouseX - posX) / 29;
-        posY += (mouseY - posY) / 29;
-        gsap.set(follower, {
-            css: {
-                left: posX,
-                top: posY
+
+        gsap.ticker.add(function () {
+            if (!follower) {
+                return;
             }
+            posX += (mouseX - posX) / 29;
+            posY += (mouseY - posY) / 29;
+            gsap.set(follower, {
+                css: {
+                    left: posX,
+                    top: posY
+                }
+            });
         });
-    });
 
-    function addHoverEffect(selector, className) {
-        document.querySelectorAll(selector).forEach(function (link) {
-            link.addEventListener("mouseenter", function () {
-                follower.classList.add(className);
+        function addHoverEffect(selector, className) {
+            document.querySelectorAll(selector).forEach(function (link) {
+                link.addEventListener("mouseenter", function () {
+                    follower.classList.add(className);
+                });
+                link.addEventListener("mouseleave", function () {
+                    follower.classList.remove(className);
+                });
             });
-            link.addEventListener("mouseleave", function () {
-                follower.classList.remove(className);
-            });
+        }
+
+        addHoverEffect(".mil-c-dark", "mil-dark-active");
+        addHoverEffect(".mil-c-gone", "mil-gone-active");
+        addHoverEffect(".mil-c-view", "mil-view-active");
+        addHoverEffect(".mil-c-next", "mil-next-active");
+        addHoverEffect(".mil-c-read", "mil-read-active");
+        addHoverEffect(".mil-c-swipe", "mil-swipe-active");
+
+        document.addEventListener("mousemove", function (e) {
+            if (!follower) {
+                return;
+            }
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            follower.classList.remove("mil-orbit-idle");
+            window.clearTimeout(cursorOrbitIdleTimer);
+            cursorOrbitIdleTimer = window.setTimeout(function () {
+                follower.classList.add("mil-orbit-idle");
+            }, 140);
         });
     }
-
-    addHoverEffect(".mil-c-dark", "mil-dark-active");
-    addHoverEffect(".mil-c-gone", "mil-gone-active");
-    addHoverEffect(".mil-c-view", "mil-view-active");
-    addHoverEffect(".mil-c-next", "mil-next-active");
-    addHoverEffect(".mil-c-read", "mil-read-active");
-    addHoverEffect(".mil-c-swipe", "mil-swipe-active");
-
-    document.addEventListener("mousemove", function (e) {
-        if (!follower) {
-            return;
-        }
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        follower.classList.remove("mil-orbit-idle");
-        window.clearTimeout(cursorOrbitIdleTimer);
-        cursorOrbitIdleTimer = window.setTimeout(function () {
-            follower.classList.add("mil-orbit-idle");
-        }, 140);
-    });
 
     /* -------------------------------------------
 
@@ -884,6 +891,7 @@ document.addEventListener("DOMContentLoaded", function () {
             (('ontouchstart' in window) && window.innerWidth < 1024);
 
         if (isMobileDevice) {
+            sequence.style.minHeight = '0';
             const poster = sequence.querySelector('[data-sequence-poster]');
             if (poster) {
                 poster.style.cssText = 'display:block;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;';
@@ -1021,20 +1029,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        if (document.readyState === 'complete') {
-            startSequencePreload();
-        } else {
-            window.addEventListener('load', startSequencePreload, { once: true });
-        }
-
         const warmupObserver = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
-                for (let i = 0; i < frameCount; i++) {
-                    preloadFrame(i);
-                }
+                startSequencePreload();
                 warmupObserver.disconnect();
             }
-        }, { rootMargin: '120% 0px' });
+        }, { rootMargin: '50% 0px' });
         warmupObserver.observe(sequence);
 
         window.addEventListener('resize', () => {
@@ -1370,7 +1370,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const particleSurfaces = Array.from(document.querySelectorAll('.mil-title-particles'));
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (particleSurfaces.length && !reducedMotion) {
+    if (particleSurfaces.length && !reducedMotion && !isTouchDevice) {
         const mouse = {
             x: -9999,
             y: -9999
@@ -1733,3 +1733,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+/* ===== HIDE NAV ON SCROLL ===== */
+(function () {
+    var panel = document.querySelector('.mil-top-panel');
+    if (!panel) return;
+
+    var lastY = 0;
+    var idleTimer = null;
+    var hidden = false;
+
+    function showNav() {
+        if (hidden) {
+            panel.classList.remove('mil-nav-hidden');
+            hidden = false;
+        }
+    }
+
+    function hideNav() {
+        if (!hidden) {
+            panel.classList.add('mil-nav-hidden');
+            hidden = true;
+        }
+    }
+
+    function resetIdle() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(showNav, 700);
+    }
+
+    function onScroll(currentY) {
+        var delta = currentY - lastY;
+        if (currentY > 150) {
+            if (delta > 4) {
+                hideNav();
+            } else if (delta < -2) {
+                showNav();
+            }
+        } else {
+            showNav();
+        }
+        resetIdle();
+        lastY = currentY;
+    }
+
+    // ScrollTrigger hook (funciona con GSAP ScrollSmoother)
+    window.addEventListener('DOMContentLoaded', function () {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                onUpdate: function (self) {
+                    onScroll(self.scroll());
+                }
+            });
+        } else {
+            // fallback nativo
+            window.addEventListener('scroll', function () {
+                onScroll(window.scrollY);
+            }, { passive: true });
+        }
+    });
+}());

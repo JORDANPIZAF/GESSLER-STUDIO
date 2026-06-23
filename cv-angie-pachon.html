@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Angie Pachon</title>
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --orange: #F35A38;
+            --blue: #1497e0;
+            --bg: #0e0e0e;
+            --bg2: #161616;
+            --border: #252525;
+            --text: #ccc;
+            --soft: #666;
+            --white: #f0f0f0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .cv-wrap { max-width: 900px; margin: 0 auto; padding: 48px 32px; }
+
+        /* Header */
+        .cv-header {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 56px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cv-photo {
+            width: 130px; height: 130px;
+            border-radius: 6px; object-fit: cover;
+            flex-shrink: 0; border: 2px solid var(--border);
+            background: #1a1a1a;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .cv-photo-placeholder { color: #333; font-size: 48px; }
+        .cv-header-info { flex: 1; }
+        .cv-name { font-size: 38px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+        .cv-name span { color: var(--blue); }
+        .cv-title { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+        .cv-about { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 520px; }
+        .cv-contacts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .cv-contact-item { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--soft); text-decoration: none; }
+        .cv-contact-item i { color: var(--blue); font-size: 11px; }
+        .cv-contact-item:hover { color: var(--white); }
+
+        /* Section */
+        .cv-section { margin-bottom: 48px; }
+        .cv-section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .cv-section-title i { font-size: 14px; color: var(--blue); }
+        .cv-section-title h2 { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); font-weight: 700; }
+        .cv-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+        /* Timeline */
+        .cv-timeline { display: flex; flex-direction: column; gap: 24px; }
+        .cv-entry { display: grid; grid-template-columns: 100px 1fr; gap: 20px; }
+        .cv-entry-dates { text-align: right; padding-top: 2px; }
+        .cv-entry-year-from { font-size: 14px; font-weight: 700; color: var(--blue); line-height: 1; }
+        .cv-entry-year-to { font-size: 13px; color: var(--soft); margin-top: 2px; }
+        .cv-entry-body { border-left: 2px solid var(--border); padding-left: 20px; padding-bottom: 8px; }
+        .cv-entry-org { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+        .cv-entry-role { font-size: 13px; color: var(--orange); letter-spacing: 0.04em; margin-bottom: 10px; }
+        .cv-entry-meta { font-size: 12px; color: var(--soft); margin-bottom: 10px; }
+        .cv-entry-badge { display: inline-block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px; }
+        .cv-entry-badge.done { background: rgba(20,151,224,0.1); color: var(--blue); border: 1px solid rgba(20,151,224,0.2); }
+        .cv-achievements { list-style: none; }
+        .cv-achievements li { font-size: 15px; color: var(--text); padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; }
+        .cv-achievements li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); margin-top: 6px; flex-shrink: 0; }
+
+        /* Competencies grid */
+        .cv-competencies { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .cv-competency-item { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text); padding: 10px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; }
+        .cv-competency-item i { color: var(--blue); font-size: 12px; width: 14px; text-align: center; }
+
+        /* Skills */
+        .cv-skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cv-skill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border: 1px solid var(--border); border-radius: 4px; font-size: 13px; color: var(--text); background: var(--bg2); }
+        .cv-skill.blue { border-color: rgba(20,151,224,0.3); color: var(--blue); }
+        .cv-skill.orange { border-color: rgba(243,90,56,0.3); color: var(--orange); }
+
+        /* Languages */
+        .cv-lang-list { display: flex; gap: 16px; flex-wrap: wrap; }
+        .cv-lang-item { padding: 10px 20px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg2); }
+        .cv-lang-name { font-size: 15px; color: var(--white); font-weight: 600; }
+        .cv-lang-level { font-size: 13px; color: var(--soft); margin-top: 3px; }
+
+        /* Award */
+        .cv-award { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 4px; }
+        .cv-award i { color: var(--orange); font-size: 18px; margin-top: 2px; }
+        .cv-award-text { font-size: 15px; color: var(--text); }
+        .cv-award-org { font-size: 13px; color: var(--soft); margin-top: 4px; }
+
+        /* Lang switcher */
+        .cv-lang-bar { display: flex; justify-content: flex-end; margin-bottom: 32px; gap: 8px; }
+        .cv-lang-btn { background: none; border: 1px solid var(--border); color: var(--soft); padding: 5px 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border-radius: 3px; transition: all 0.2s; }
+        .cv-lang-btn.active { border-color: var(--blue); color: var(--blue); }
+        .cv-lang-btn:hover:not(.active) { color: var(--white); border-color: #444; }
+
+        /* Download */
+        .cv-download { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border: 1px solid var(--blue); color: var(--blue); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: all 0.2s; margin-top: 8px; }
+        .cv-download:hover { background: var(--blue); color: #fff; }
+
+        /* Translation */
+        [data-lang] { display: none; }
+        [data-lang].lang-active { display: initial; }
+        [data-lang-block] { display: none; }
+        [data-lang-block].lang-active { display: block; }
+
+        @media (max-width: 600px) {
+            .cv-wrap { padding: 28px 20px; }
+            .cv-header { flex-direction: column; gap: 24px; }
+            .cv-name { font-size: 28px; }
+            .cv-entry { grid-template-columns: 1fr; gap: 6px; }
+            .cv-entry-dates { text-align: left; display: flex; gap: 8px; }
+            .cv-competencies { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-wrap">
+
+    <!-- Lang switcher -->
+    <div class="cv-lang-bar">
+        <button class="cv-lang-btn active" onclick="setLang('es')">ES</button>
+        <button class="cv-lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+
+    <!-- Header -->
+    <div class="cv-header">
+        <div class="cv-photo">
+            <i class="fas fa-user cv-photo-placeholder"></i>
+        </div>
+        <div class="cv-header-info">
+            <div class="cv-name">Angie <span>Pachon</span></div>
+            <div class="cv-title">
+                <span data-lang="es" class="lang-active">Ingeniera Industrial · Analista de Operaciones</span>
+                <span data-lang="en">Industrial Engineer · Operations & Process Analyst</span>
+            </div>
+            <p class="cv-about">
+                <span data-lang="es" class="lang-active">Ingeniera Industrial con más de 3 años de experiencia en operaciones BPO financieras mediante auditoría operativa, validación de datos y control de procesos. Perfil analítico y orientado al detalle con enfoque en excelencia operacional en entornos regulados.</span>
+                <span data-lang="en">Industrial Engineer with over 3 years of experience supporting financial BPO operations through operational audit, data validation, and process control. Analytical and detail-oriented professional with a structured approach to operational excellence in regulated environments.</span>
+            </p>
+            <div class="cv-contacts">
+                <a href="tel:+573043472299" class="cv-contact-item"><i class="fas fa-phone"></i> +57 304 347 2299</a>
+                <a href="mailto:Carolina4pachon@gmail.com" class="cv-contact-item"><i class="fas fa-envelope"></i> Carolina4pachon@gmail.com</a>
+                <span class="cv-contact-item"><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia · Remote</span>
+            </div>
+            <a href="cv-angie-pachon.pdf" download class="cv-download">
+                <i class="fas fa-download"></i>
+                <span data-lang="es" class="lang-active">Descargar PDF</span>
+                <span data-lang="en">Download PDF</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Experiencia -->
+    <div class="cv-section">
+        <div class="cv-section-title">
+            <i class="fas fa-briefcase"></i>
+            <h2><span data-lang="es" class="lang-active">Experiencia</span><span data-lang="en">Experience</span></h2>
+        </div>
+        <div class="cv-timeline">
+
+            <div class="cv-entry">
+                <div class="cv-entry-dates">
+                    <div class="cv-entry-year-from">2026</div>
+                    <div class="cv-entry-year-to">2023</div>
+                </div>
+                <div class="cv-entry-body">
+                    <div class="cv-entry-org">Summar Financial</div>
+                    <div class="cv-entry-role">
+                        <span data-lang="es" class="lang-active">Analista de Operaciones y Cumplimiento</span>
+                        <span data-lang="en">Operations & Compliance Analyst</span>
+                    </div>
+                    <div class="cv-entry-meta">
+                        <span data-lang="es" class="lang-active">Marzo 2023 – Enero 2026 · Híbrido, Bogotá</span>
+                        <span data-lang="en">March 2023 – January 2026 · Hybrid, Bogotá</span>
+                    </div>
+                    <ul class="cv-achievements">
+                        <li data-lang-block="es" class="lang-active">Auditó 100+ facturas financieras diarias garantizando cumplimiento con estándares de validación internos.</li>
+                        <li data-lang-block="es" class="lang-active">Mantuvo rendimiento de calidad por encima del promedio del equipo con mínimas discrepancias mensuales.</li>
+                        <li data-lang-block="es" class="lang-active">Aplicó procedimientos de control interno para aprobaciones y ejecución de flujos operativos.</li>
+                        <li data-lang-block="es" class="lang-active">Realizó verificación cruzada de datos para identificar inconsistencias y mitigar riesgos operativos.</li>
+                        <li data-lang-block="es" class="lang-active">Colaboró con brokers y ejecutivos de cuenta para garantizar procesamiento oportuno y conforme.</li>
+                        <li data-lang-block="en">Audited 100+ financial invoices daily ensuring strict compliance with internal validation standards.</li>
+                        <li data-lang-block="en">Consistently maintained quality performance above team average with near-zero discrepancies.</li>
+                        <li data-lang-block="en">Applied internal control procedures to support accurate load approvals and operational workflow.</li>
+                        <li data-lang-block="en">Conducted structured data cross-verification to identify inconsistencies and mitigate operational risk.</li>
+                        <li data-lang-block="en">Collaborated with brokers and account executives to ensure timely and compliant processing.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-entry">
+                <div class="cv-entry-dates">
+                    <div class="cv-entry-year-from">2023</div>
+                    <div class="cv-entry-year-to">2022</div>
+                </div>
+                <div class="cv-entry-body">
+                    <div class="cv-entry-org">Universidad Antonio Nariño</div>
+                    <div class="cv-entry-role">
+                        <span data-lang="es" class="lang-active">Soporte en Operaciones Administrativas</span>
+                        <span data-lang="en">Administrative Operations Support</span>
+                    </div>
+                    <div class="cv-entry-meta">
+                        <span data-lang="es" class="lang-active">Enero 2022 – Enero 2023 · Presencial, Bogotá</span>
+                        <span data-lang="en">January 2022 – January 2023 · On-site, Bogotá</span>
+                    </div>
+                    <ul class="cv-achievements">
+                        <li data-lang-block="es" class="lang-active">Estandarizó procesos de documentación en línea con políticas institucionales y controles internos.</li>
+                        <li data-lang-block="es" class="lang-active">Apoyó flujos administrativos de personal y logística de programación.</li>
+                        <li data-lang-block="es" class="lang-active">Mejoró la organización documental y la eficiencia de los procesos.</li>
+                        <li data-lang-block="en">Standardized documentation processes in alignment with institutional policies and internal controls.</li>
+                        <li data-lang-block="en">Supported personnel administrative workflows and scheduling logistics.</li>
+                        <li data-lang-block="en">Improved documentation organization and process efficiency.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-entry">
+                <div class="cv-entry-dates">
+                    <div class="cv-entry-year-from">2021</div>
+                    <div class="cv-entry-year-to">Oct</div>
+                </div>
+                <div class="cv-entry-body">
+                    <div class="cv-entry-org">Amazon, Inc</div>
+                    <div class="cv-entry-role">
+                        <span data-lang="es" class="lang-active">Representante de Servicio al Cliente</span>
+                        <span data-lang="en">Customer Service Representative</span>
+                    </div>
+                    <div class="cv-entry-meta">
+                        <span data-lang="es" class="lang-active">Octubre – Diciembre 2021 · Remoto</span>
+                        <span data-lang="en">October – December 2021 · Remote</span>
+                    </div>
+                    <ul class="cv-achievements">
+                        <li data-lang-block="es" class="lang-active">Gestionó solicitudes de clientes mediante resolución estructurada de casos y validación de bases de datos.</li>
+                        <li data-lang-block="es" class="lang-active">Investigó discrepancias en pedidos y aseguró procesamiento preciso de solicitudes de servicio.</li>
+                        <li data-lang-block="es" class="lang-active">Reconocida como Empleada del Mes por desempeño sobresaliente.</li>
+                        <li data-lang-block="en">Managed customer inquiries through structured case resolution and database validation.</li>
+                        <li data-lang-block="en">Investigated order discrepancies and ensured accurate processing of service requests.</li>
+                        <li data-lang-block="en">Recognized as Employee of the Month for outstanding performance and service quality.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Competencias -->
+    <div class="cv-section">
+        <div class="cv-section-title">
+            <i class="fas fa-chart-bar"></i>
+            <h2><span data-lang="es" class="lang-active">Competencias Clave</span><span data-lang="en">Core Competencies</span></h2>
+        </div>
+        <div class="cv-competencies">
+            <div class="cv-competency-item"><i class="fas fa-search"></i> <span data-lang="es" class="lang-active">Auditoría y Verificación Operativa</span><span data-lang="en">Operational Audit & Verification</span></div>
+            <div class="cv-competency-item"><i class="fas fa-shield-alt"></i> <span data-lang="es" class="lang-active">Control de Procesos y Cumplimiento</span><span data-lang="en">Process Control & Compliance</span></div>
+            <div class="cv-competency-item"><i class="fas fa-database"></i> <span data-lang="es" class="lang-active">Validación de Datos de Alto Volumen</span><span data-lang="en">High-Volume Data Validation</span></div>
+            <div class="cv-competency-item"><i class="fas fa-star"></i> <span data-lang="es" class="lang-active">Gestión de Calidad</span><span data-lang="en">Quality Performance Management</span></div>
+            <div class="cv-competency-item"><i class="fas fa-exclamation-triangle"></i> <span data-lang="es" class="lang-active">Detección de Riesgos</span><span data-lang="en">Risk & Inconsistency Detection</span></div>
+            <div class="cv-competency-item"><i class="fas fa-cogs"></i> <span data-lang="es" class="lang-active">Optimización de Flujos</span><span data-lang="en">Workflow Optimization</span></div>
+            <div class="cv-competency-item"><i class="fas fa-lock"></i> <span data-lang="es" class="lang-active">Controles Internos</span><span data-lang="en">Internal Controls Support</span></div>
+            <div class="cv-competency-item"><i class="fas fa-users"></i> <span data-lang="es" class="lang-active">Colaboración Interfuncional</span><span data-lang="en">Cross-Functional Collaboration</span></div>
+        </div>
+    </div>
+
+    <!-- Educación -->
+    <div class="cv-section">
+        <div class="cv-section-title">
+            <i class="fas fa-graduation-cap"></i>
+            <h2><span data-lang="es" class="lang-active">Educación</span><span data-lang="en">Education</span></h2>
+        </div>
+        <div class="cv-timeline">
+            <div class="cv-entry">
+                <div class="cv-entry-dates">
+                    <div class="cv-entry-year-from">2023</div>
+                </div>
+                <div class="cv-entry-body">
+                    <div class="cv-entry-org">Universidad Cooperativa de Colombia</div>
+                    <div class="cv-entry-role">
+                        <span data-lang="es" class="lang-active">Ingeniería Industrial</span>
+                        <span data-lang="en">Bachelor's Degree in Industrial Engineering</span>
+                    </div>
+                    <span class="cv-entry-badge done">
+                        <span data-lang="es" class="lang-active">Culminado</span>
+                        <span data-lang="en">Completed</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Herramientas -->
+    <div class="cv-section">
+        <div class="cv-section-title">
+            <i class="fas fa-tools"></i>
+            <h2><span data-lang="es" class="lang-active">Herramientas Técnicas</span><span data-lang="en">Technical Tools</span></h2>
+        </div>
+        <div class="cv-skills-grid">
+            <div class="cv-skill blue"><i class="fas fa-file-excel"></i> MS Office</div>
+            <div class="cv-skill blue"><i class="fab fa-google"></i> Google Workspace</div>
+            <div class="cv-skill"><i class="fas fa-sitemap"></i> BPM</div>
+            <div class="cv-skill"><i class="fas fa-desktop"></i> Opera Software</div>
+            <div class="cv-skill"><i class="fas fa-truck"></i> Hubtran</div>
+            <div class="cv-skill orange"><i class="fas fa-layer-group"></i> Cadence / F8</div>
+            <div class="cv-skill"><i class="fas fa-chart-line"></i> Lighthouse</div>
+            <div class="cv-skill blue"><i class="fas fa-video"></i> Zoom</div>
+            <div class="cv-skill"><i class="fas fa-envelope"></i> Outlook</div>
+        </div>
+    </div>
+
+    <!-- Idiomas -->
+    <div class="cv-section">
+        <div class="cv-section-title">
+            <i class="fas fa-globe"></i>
+            <h2><span data-lang="es" class="lang-active">Idiomas</span><span data-lang="en">Languages</span></h2>
+        </div>
+        <div class="cv-lang-list">
+            <div class="cv-lang-item">
+                <div class="cv-lang-name">Español</div>
+                <div class="cv-lang-level"><span data-lang="es" class="lang-active">Nativo</span><span data-lang="en">Native</span></div>
+            </div>
+            <div class="cv-lang-item">
+                <div class="cv-lang-name">English</div>
+                <div class="cv-lang-level">B2 — <span data-lang="es" class="lang-active">Competencia Profesional</span><span data-lang="en">Professional Working Proficiency</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reconocimientos -->
+    <div class="cv-section">
+        <div class="cv-section-title">
+            <i class="fas fa-award"></i>
+            <h2><span data-lang="es" class="lang-active">Reconocimientos</span><span data-lang="en">Awards</span></h2>
+        </div>
+        <div class="cv-award">
+            <i class="fas fa-trophy"></i>
+            <div>
+                <div class="cv-award-text">
+                    <span data-lang="es" class="lang-active">Reconocimiento por Excelencia en Auditoría Operativa</span>
+                    <span data-lang="en">Operational Audit Excellence Recognition</span>
+                </div>
+                <div class="cv-award-org">Summar Financial</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function setLang(lang) {
+        document.querySelectorAll('.cv-lang-btn').forEach(function(btn, i) {
+            btn.classList.toggle('active', (i === 0 && lang === 'es') || (i === 1 && lang === 'en'));
+        });
+        document.querySelectorAll('[data-lang]').forEach(function(el) {
+            el.classList.toggle('lang-active', el.getAttribute('data-lang') === lang);
+        });
+        document.querySelectorAll('[data-lang-block]').forEach(function(el) {
+            el.classList.toggle('lang-active', el.getAttribute('data-lang-block') === lang);
+        });
+    }
+</script>
+
+</body>
+</html>

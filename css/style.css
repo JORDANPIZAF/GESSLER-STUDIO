@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-Name:       Okai
+Name:       Gessler Studio
 Version:    1.0
 Author:	    bslthemes
 Website:    https://bslthemes.com/
@@ -4757,4 +4757,87 @@ body.mil-day-mode footer .mil-footer-contact-btn-meta {
   footer .mil-footer-contact-btn {
     padding: 16px 18px;
   }
+}
+
+@media (max-width: 767px) {
+  .mil-scroll-sequence,
+  .mil-scroll-sequence-home,
+  .mil-scroll-sequence-logo-reveal {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  .mil-scroll-sequence-stage {
+    position: relative !important;
+    height: 56vw !important;
+    min-height: 220px !important;
+    max-height: 100svh;
+  }
+  .mil-scroll-sequence-logo-reveal .mil-scroll-sequence-stage {
+    min-height: 100svh !important;
+    height: 100svh !important;
+    max-height: none;
+  }
+}
+
+/* ===== BREADCRUMB BAR ===== */
+.gs-breadcrumb-bar {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    z-index: 998;
+    background-color: #F35A38;
+    padding: 10px 0;
+}
+.gs-breadcrumb {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+.gs-breadcrumb li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+}
+.gs-breadcrumb li:not(:last-child)::after {
+    content: '›';
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+}
+.gs-breadcrumb li a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.gs-breadcrumb li a:hover { color: #fff; }
+.gs-breadcrumb li span {
+    color: #fff;
+    font-weight: 700;
+}
+@media (max-width: 768px) {
+    .gs-breadcrumb-bar { top: 90px; }
+}
+.gs-breadcrumb-spacer {
+    height: 42px;
+    margin-top: 120px;
+}
+@media (max-width: 768px) {
+    .gs-breadcrumb-spacer { margin-top: 90px; }
+}
+
+/* ===== HIDE ON SCROLL ===== */
+.mil-top-panel {
+    transform: translateY(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mil-top-panel.mil-nav-hidden {
+    transform: translateY(-100%);
 }

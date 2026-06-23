@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="author" content="Gessler Studio" />
+
+    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>WAC SAS — Gessler Studio</title>
+    <link rel="shortcut icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
+
+    <style>
+        .gs-placeholder {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .gs-placeholder span {
+            color: #444;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .gs-placeholder.gs-ph-hero { height: 520px; }
+        .gs-placeholder.gs-ph-card { height: 340px; }
+        .gs-placeholder.gs-ph-wide { height: 420px; }
+
+        /* Browser mockup */
+        .gs-browser {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .gs-browser-bar {
+            background: #1c1c1c;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .gs-browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .gs-browser-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: block;
+        }
+        .gs-browser-dots span:nth-child(1) { background: #ff5f57; }
+        .gs-browser-dots span:nth-child(2) { background: #ffbd2e; }
+        .gs-browser-dots span:nth-child(3) { background: #28c840; }
+        .gs-browser-url {
+            flex: 1;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px 12px;
+            color: #666;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            font-family: monospace;
+        }
+        .gs-browser-expand {
+            color: #444;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s;
+            white-space: nowrap;
+            padding: 4px 8px;
+            border: 1px solid #333;
+            border-radius: 4px;
+        }
+        .gs-browser-expand:hover { color: #F35A38; border-color: #F35A38; }
+        .gs-browser-frame {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+        .gs-browser-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .gs-browser-placeholder {
+            width: 100%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0d0d0d;
+            gap: 16px;
+        }
+        .gs-browser-placeholder i {
+            font-size: 32px;
+            color: #2a2a2a;
+        }
+        .gs-browser-placeholder p {
+            color: #333;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .gs-browser-placeholder .gs-url-hint {
+            color: #F35A38;
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
+        /* Fullscreen overlay */
+        .gs-fullscreen-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #000;
+            flex-direction: column;
+        }
+        .gs-fullscreen-overlay.active { display: flex; }
+        .gs-fullscreen-bar {
+            background: #1c1c1c;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #2a2a2a;
+            flex-shrink: 0;
+        }
+        .gs-fullscreen-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px 8px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+        .gs-fullscreen-close:hover { opacity: 1; }
+        .gs-fullscreen-overlay iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="smooth-wrapper" class="mil-page-wrapper">
+
+        <div class="mil-cursor-follower"></div>
+
+        <div class="mil-progress-track">
+            <div class="mil-progress"></div>
+        </div>
+
+        <!-- top panel -->
+        <div class="mil-top-panel">
+            <div class="container">
+                <div class="row mil-aic">
+                    <div class="col-6">
+                        <a href="index.html" class="mil-logo mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
+                    </div>
+                    <div class="col-6 mil-jce mil-aic">
+                        <div class="mil-buttons-frame">
+                            <div class="mil-language-switcher mil-c-gone" data-language-switcher>
+                                <button type="button" class="mil-language-option" data-language-option="en">EN</button>
+                                <span class="mil-language-divider" aria-hidden="true">|</span>
+                                <button type="button" class="mil-language-option" data-language-option="es">ES</button>
+                            </div>
+                            <div class="mil-menu-btn mil-c-gone"><span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- menu -->
+        <div class="mil-menu-window">
+            <div class="container">
+                <ul class="mil-main-menu mil-c-gone">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio-2.html">Portfolio</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <ul class="mil-social mil-center">
+                    <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
+                    <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div id="smooth-content" class="mil-content">
+            <!-- breadcrumb -->
+            <div class="gs-breadcrumb-bar">
+                <div class="container">
+                    <ul class="gs-breadcrumb" data-lang-bc="es"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="portfolio-2.html" class="mil-c-gone">Portfolio</a></li><li><span>WAC SAS</span></li></ul>
+                    <ul class="gs-breadcrumb" data-lang-bc="en" style="display:none;"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="portfolio-2.html" class="mil-c-gone">Portfolio</a></li><li><span>WAC SAS</span></li></ul>
+                </div>
+            </div>
+            <div class="gs-breadcrumb-spacer"></div>
+
+
+            <!-- project -->
+            <div class="mil-p-240-120 mil-992-p-150-120">
+                <div class="container">
+
+                    <!-- hero -->
+                    <div class="mil-just-image mil-h mil-shortened mil-mb30 mil-up">
+                        <div class="gs-placeholder gs-ph-hero"><span>Cover image — WAC SAS</span></div>
+                    </div>
+                    <div class="mil-just-image mil-h mil-shortened mil-mb120 mil-up">
+                        <div class="gs-placeholder gs-ph-hero"><span>Hero image 2</span></div>
+                    </div>
+
+                    <!-- description + meta -->
+                    <div class="row mil-jcb">
+                        <div class="col-lg-7 mil-mb60">
+                            <h2 class="mil-fs42 mil-mb60 mil-up">WAC SAS</h2>
+                            <p class="mil-text mil-mb30 mil-up">Diseño y desarrollo del sitio web para WAC SAS, empresa colombiana fabricante de equipos eléctricos industriales, con un catálogo de productos y flujo de cotización vía WhatsApp.</p>
+                            <p class="mil-text mil-mb60 mil-up">Construimos una plataforma web moderna que organiza el catálogo de productos de la empresa y facilita el contacto comercial directo. La interfaz refleja la solidez técnica de WAC con un diseño limpio, funcional y orientado a la conversión.</p>
+                            <div class="mil-share mil-up">
+                                <p>Share:</p>
+                                <ul class="mil-social">
+                                    <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
+                                    <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mil-mb120">
+                            <div class="mil-mb30 mil-up">
+                                <h5 class="mil-fs16 mil-mb15">Client:</h5>
+                                <p>WAC SAS</p>
+                            </div>
+                            <div class="mil-mb30 mil-up">
+                                <h5 class="mil-fs16 mil-mb15">Category:</h5>
+                                <p>
+                                    <a href="#." class="mil-text-link mil-soft">Web Design</a>,
+                                    <a href="#." class="mil-text-link mil-soft">Web Development</a>
+                                </p>
+                            </div>
+                            <div class="mil-mb30 mil-up">
+                                <h5 class="mil-fs16 mil-mb15">Services:</h5>
+                                <p>Diseño UI/UX, desarrollo Next.js, catálogo de productos, flujo WhatsApp</p>
+                            </div>
+                            <div class="mil-mb30 mil-up">
+                                <h5 class="mil-fs16 mil-mb15">Year:</h5>
+                                <p>2026</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- design screens -->
+                    <div class="mil-mb30 mil-up">
+                        <span class="mil-suptitle mil-accent mil-mb30" style="display:block;">Diseño</span>
+                    </div>
+                    <div class="row mil-mb60">
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <div class="gs-placeholder gs-ph-wide"><span>Pantalla diseño 1</span></div>
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <div class="gs-placeholder gs-ph-wide"><span>Pantalla diseño 2</span></div>
+                        </div>
+                        <div class="col-lg-4 mil-mb30 mil-up">
+                            <div class="gs-placeholder gs-ph-card"><span>Diseño catálogo</span></div>
+                        </div>
+                        <div class="col-lg-4 mil-mb30 mil-up">
+                            <div class="gs-placeholder gs-ph-card"><span>Diseño producto</span></div>
+                        </div>
+                        <div class="col-lg-4 mil-mb30 mil-up">
+                            <div class="gs-placeholder gs-ph-card"><span>Flujo WhatsApp</span></div>
+                        </div>
+                    </div>
+
+                    <!-- live web preview -->
+                    <div class="mil-mb30 mil-up">
+                        <span class="mil-suptitle mil-accent mil-mb30" style="display:block;">Sitio Web en Desarrollo</span>
+                    </div>
+                    <div class="mil-mb120 mil-up">
+                        <div class="gs-browser">
+                            <div class="gs-browser-bar">
+                                <div class="gs-browser-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="gs-browser-url" id="wac-url">wacsas.com</div>
+                                <a href="#." class="gs-browser-expand" onclick="openFullscreen('wac'); return false;">
+                                    <i class="fas fa-expand-alt"></i> Ampliar
+                                </a>
+                            </div>
+                            <div class="gs-browser-frame" id="wac-frame-wrap">
+                                <!-- Reemplazar src con la URL real de WAC SAS cuando esté publicada -->
+                                <div class="gs-browser-placeholder" id="wac-placeholder">
+                                    <i class="fas fa-globe"></i>
+                                    <p>Sitio web en desarrollo</p>
+                                    <span class="gs-url-hint">Pendiente: agregar URL de WAC SAS</span>
+                                </div>
+                                <!-- <iframe id="wac-iframe" src="https://wacsas.com" title="WAC SAS website"></iframe> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- next project -->
+                    <div class="row mil-jce">
+                        <div class="col-lg-10">
+                            <a href="project-canasta-panaderia.html" class="row flex-sm-row-reverse mil-jcb mil-aic mil-c-next">
+                                <div class="col-lg-7 mil-project-cover-frame">
+                                    <div class="mil-cover-img mil-left mil-up">
+                                        <div class="gs-placeholder" style="height:300px;"><span>Canasta Panadería — cover</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 mil-relative">
+                                    <div class="mil-project-text">
+                                        <span class="mil-suptitle mil-accent mil-up">Next project</span>
+                                        <h2 class="mil-fs42 mil-mb30 mil-up">Canasta<br>Panadería</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- footer -->
+            <footer>
+                <div class="container mil-p-120-0">
+                    <div class="row mil-jcb">
+                        <div class="col-8 col-lg-4 mil-mb90">
+                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
+                            <p class="mil-text mil-fs16 mil-mb60 mil-up">We are a creative duo focused on strategy, multimedia design and human-centered solutions for growing brands.</p>
+                            <ul class="mil-social mil-up">
+                                <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
+                                <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 mil-mb90">
+                            <h5 class="mil-fs16 mil-mb60 mil-up">Menu</h5>
+                            <ul class="mil-footer-menu">
+                                <li class="mil-up"><a href="index.html" class="mil-c-gone">Home</a></li>
+                                <li class="mil-up"><a href="services.html" class="mil-c-gone">Services</a></li>
+                                <li class="mil-up"><a href="portfolio-2.html" class="mil-c-gone">Portfolio</a></li>
+                                <li class="mil-up"><a href="about.html" class="mil-c-gone">About us</a></li>
+                                <li class="mil-up"><a href="contact.html" class="mil-c-gone">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 mil-mb90">
+                            <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
+                            <ul class="mil-footer-list">
+                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
+                                <li class="mil-text mil-up">Email: hola@gesslerstudio.com</li>
+                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, Estados Unidos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mil-footer-bottom mil-up">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 mil-mb30">
+                                <p class="mil-fs14 mil-soft">&copy; 2026 Gessler Studio. All rights reserved.</p>
+                            </div>
+                            <div class="col-lg-6 mil-jce mil-992-jcs mil-mb30">
+                                <a href="#." class="mil-group-text mil-accent mil-c-gone" id="mil-btt"><i class="fas fa-chevron-up"></i> <span>Back to top</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- fullscreen overlay -->
+    <div class="gs-fullscreen-overlay" id="gs-fullscreen">
+        <div class="gs-fullscreen-bar">
+            <button class="gs-fullscreen-close" onclick="closeFullscreen()"><i class="fas fa-times"></i></button>
+            <div class="gs-browser-url" id="gs-fullscreen-url"></div>
+        </div>
+        <iframe id="gs-fullscreen-iframe" src="" title="Fullscreen preview"></iframe>
+    </div>
+
+    <script src="js/plugins/gsap.min.js"></script>
+    <script src="js/plugins/ScrollSmoother.min.js"></script>
+    <script src="js/plugins/ScrollTrigger.min.js"></script>
+    <script src="js/plugins/ScrollTo.min.js"></script>
+    <script src="js/plugins/swiper.min.js"></script>
+    <script src="js/site-translate.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        var siteUrls = {
+            wac: 'https://wacsas.com'
+        };
+
+        function openFullscreen(site) {
+            var overlay = document.getElementById('gs-fullscreen');
+            var iframe = document.getElementById('gs-fullscreen-iframe');
+            var urlEl = document.getElementById('gs-fullscreen-url');
+            iframe.src = siteUrls[site] || '';
+            urlEl.textContent = siteUrls[site] || '';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            var overlay = document.getElementById('gs-fullscreen');
+            var iframe = document.getElementById('gs-fullscreen-iframe');
+            overlay.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeFullscreen();
+        });
+    </script>
+
+</body>
+</html>

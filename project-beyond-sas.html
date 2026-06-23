@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="author" content="Gessler Studio" />
+
+    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Beyond SAS — Gessler Studio</title>
+    <link rel="shortcut icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
+
+    <style>
+        .gs-placeholder {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .gs-placeholder span {
+            color: #444;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .gs-placeholder.gs-ph-wide { height: 420px; }
+
+        /* Tech stack tags */
+        .gs-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 60px;
+        }
+        .gs-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .gs-tag.orange {
+            border: 1px solid #F35A38;
+            color: #F35A38;
+        }
+        .gs-tag.blue {
+            border: 1px solid #1497e0;
+            color: #1497e0;
+        }
+        .gs-tag i { font-size: 11px; }
+
+        /* Highlight stats */
+        .gs-stats {
+            display: flex;
+            gap: 0;
+            margin-bottom: 60px;
+            border: 1px solid #2a2a2a;
+        }
+        .gs-stat {
+            flex: 1;
+            padding: 28px 24px;
+            border-right: 1px solid #2a2a2a;
+        }
+        .gs-stat:last-child { border-right: none; }
+        .gs-stat-num {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .gs-stat-num.orange { color: #F35A38; }
+        .gs-stat-num.blue { color: #1497e0; }
+        .gs-stat-label {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Browser mockup */
+        .gs-browser {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .gs-browser-bar {
+            background: #1c1c1c;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .gs-browser-dots { display: flex; gap: 6px; }
+        .gs-browser-dots span {
+            width: 10px; height: 10px;
+            border-radius: 50%; display: block;
+        }
+        .gs-browser-dots span:nth-child(1) { background: #ff5f57; }
+        .gs-browser-dots span:nth-child(2) { background: #ffbd2e; }
+        .gs-browser-dots span:nth-child(3) { background: #28c840; }
+        .gs-browser-url {
+            flex: 1;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px 12px;
+            color: #666;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            font-family: monospace;
+        }
+        .gs-browser-expand {
+            color: #aaa;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s;
+            white-space: nowrap;
+            padding: 5px 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .gs-browser-expand:hover { color: #F35A38; border-color: #F35A38; }
+
+        /* Device switcher buttons */
+        .gs-device-btns {
+            display: flex;
+            gap: 4px;
+        }
+        .gs-device-btn {
+            background: none;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #555;
+            padding: 4px 9px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: color 0.2s, border-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .gs-device-btn span { font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+        .gs-device-btn:hover { color: #aaa; border-color: #555; }
+        .gs-device-btn.active.orange { color: #F35A38; border-color: #F35A38; }
+        .gs-device-btn.active.blue { color: #1497e0; border-color: #1497e0; }
+
+        /* Frame wrapper — handles centering in mobile/tablet mode */
+        .gs-browser-frame-wrap {
+            background: #0d0d0d;
+            padding: 0;
+            transition: padding 0.3s ease;
+            overflow: hidden;
+        }
+        .gs-browser-frame-wrap.device-mobile,
+        .gs-browser-frame-wrap.device-tablet {
+            padding: 20px;
+        }
+        .gs-browser-frame {
+            width: 100%;
+            height: 620px;
+            overflow: hidden;
+            border-radius: 0;
+            margin: 0 auto;
+            transition: width 0.35s cubic-bezier(.4,0,.2,1), height 0.35s cubic-bezier(.4,0,.2,1), border-radius 0.3s;
+        }
+        .gs-browser-frame.device-mobile {
+            width: 375px;
+            height: 667px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+        .gs-browser-frame.device-tablet {
+            width: 768px;
+            height: 1024px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            max-width: 100%;
+        }
+        .gs-browser-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Deferred load overlay */
+        .gs-load-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0d0d0d;
+            gap: 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+        .gs-load-overlay:hover { background: #111; }
+        .gs-load-overlay i { font-size: 36px; color: #2a2a2a; }
+        .gs-load-overlay .gs-load-title {
+            color: #aaa;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .gs-load-overlay .gs-load-sub {
+            color: #444;
+            font-size: 12px;
+        }
+        .gs-load-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border: 1px solid #F35A38;
+            border-radius: 4px;
+            color: #F35A38;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            margin-top: 8px;
+        }
+        .gs-load-btn:hover { background: #F35A38; color: #fff; }
+        .gs-browser-frame { position: relative; }
+
+        /* Fullscreen */
+        .gs-fullscreen-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #000;
+            flex-direction: column;
+        }
+        .gs-fullscreen-overlay.active { display: flex; }
+        .gs-fullscreen-bar {
+            background: #1c1c1c;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #2a2a2a;
+            flex-shrink: 0;
+        }
+        .gs-fullscreen-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 4px 10px;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        .gs-fullscreen-close:hover { opacity: 1; }
+        .gs-fullscreen-overlay iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+
+        /* Section divider accent */
+        .gs-accent-line {
+            width: 40px;
+            height: 3px;
+            background: #F35A38;
+            margin-bottom: 30px;
+        }
+        .gs-accent-line.blue { background: #1497e0; }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="smooth-wrapper" class="mil-page-wrapper">
+
+        <div class="mil-cursor-follower"></div>
+        <div class="mil-progress-track"><div class="mil-progress"></div></div>
+
+        <!-- top panel -->
+        <div class="mil-top-panel">
+            <div class="container">
+                <div class="row mil-aic">
+                    <div class="col-6">
+                        <a href="index.html" class="mil-logo mil-c-gone" aria-label="Gessler Studio home">
+                            <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                        </a>
+                    </div>
+                    <div class="col-6 mil-jce mil-aic">
+                        <div class="mil-buttons-frame">
+                            <div class="mil-language-switcher mil-c-gone" data-language-switcher>
+                                <button type="button" class="mil-language-option" data-language-option="en">EN</button>
+                                <span class="mil-language-divider" aria-hidden="true">|</span>
+                                <button type="button" class="mil-language-option" data-language-option="es">ES</button>
+                            </div>
+                            <div class="mil-menu-btn mil-c-gone"><span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- menu -->
+        <div class="mil-menu-window">
+            <div class="container">
+                <ul class="mil-main-menu mil-c-gone">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio-2.html">Portfolio</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <ul class="mil-social mil-center">
+                    <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
+                    <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div id="smooth-content" class="mil-content">
+            <!-- breadcrumb -->
+            <div class="gs-breadcrumb-bar">
+                <div class="container">
+                    <ul class="gs-breadcrumb" data-lang-bc="es"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="portfolio-2.html" class="mil-c-gone">Portfolio</a></li><li><span>Beyond SAS</span></li></ul>
+                    <ul class="gs-breadcrumb" data-lang-bc="en" style="display:none;"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="portfolio-2.html" class="mil-c-gone">Portfolio</a></li><li><span>Beyond SAS</span></li></ul>
+                </div>
+            </div>
+            <div class="gs-breadcrumb-spacer"></div>
+
+
+            <div class="mil-p-240-120 mil-992-p-150-120">
+                <div class="container">
+
+                    <!-- 1. INFO -->
+                    <div class="row mil-jcb mil-mb90">
+                        <div class="col-lg-7 mil-mb60">
+                            <div class="gs-accent-line mil-up"></div>
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" style="display:block;">Diseño & Desarrollo Web</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up">Beyond SAS</h2>
+                            <p class="mil-text mil-mb30 mil-up">Diseño y desarrollo completo del sitio web corporativo de Beyond SAS. Construido desde cero en <strong style="color:#F35A38;">HTML y CSS puro</strong>, sin frameworks, con enfoque en rendimiento, estructura clara y experiencia de navegación fluida.</p>
+                            <p class="mil-text mil-mb30 mil-up">Cada sección fue estructurada con código limpio y semántico, tipografía cuidada y una paleta visual coherente con la identidad de la empresa. El resultado: un sitio rápido, estable y 100% personalizado.</p>
+
+                            <!-- tech tags -->
+                            <div class="gs-tags mil-up">
+                                <span class="gs-tag orange"><i class="fab fa-html5"></i> HTML5</span>
+                                <span class="gs-tag orange"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                <span class="gs-tag blue"><i class="fas fa-mobile-alt"></i> Responsive</span>
+                                <span class="gs-tag blue"><i class="fas fa-bolt"></i> Performance</span>
+                                <span class="gs-tag orange"><i class="fas fa-paint-brush"></i> UI Design</span>
+                                <span class="gs-tag blue"><i class="fas fa-layer-group"></i> UX Structure</span>
+                            </div>
+
+                            <div class="mil-share mil-up">
+                                <p>Share:</p>
+                                <ul class="mil-social">
+                                    <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
+                                    <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mil-mb60">
+                            <div class="mil-mb30 mil-up">
+                                <h5 class="mil-fs16 mil-mb15">Cliente:</h5>
+                                <p>Beyond SAS</p>
+                            </div>
+                            <div class="mil-mb30 mil-up">
+                                <h5 class="mil-fs16 mil-mb15">Servicios:</h5>
+                                <p>Diseño UI/UX · Desarrollo front-end · HTML & CSS</p>
+                            </div>
+                            <div class="mil-mb30 mil-up">
+                                <h5 class="mil-fs16 mil-mb15">Año:</h5>
+                                <p>2025</p>
+                            </div>
+                            <div class="mil-up" style="margin-top: 40px;">
+                                <div class="gs-stats">
+                                    <div class="gs-stat">
+                                        <div class="gs-stat-num orange">100%</div>
+                                        <div class="gs-stat-label">HTML & CSS</div>
+                                    </div>
+                                    <div class="gs-stat">
+                                        <div class="gs-stat-num blue">0</div>
+                                        <div class="gs-stat-label">Frameworks</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. IFRAME LIVE SITE -->
+                    <div class="mil-mb30 mil-up">
+                        <div class="gs-accent-line blue"></div>
+                        <span class="mil-suptitle mil-mb15" style="display:block; color:#1497e0;">Sitio Web Interactivo</span>
+                        <p class="mil-text mil-soft" style="font-size:13px;">Navega el sitio real — scroll, botones y secciones funcionan.</p>
+                    </div>
+                    <div class="mil-mb90 mil-up">
+                        <div class="gs-browser">
+                            <div class="gs-browser-bar">
+                                <div class="gs-browser-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="gs-browser-url">beyondsas.com</div>
+                                <!-- device switcher -->
+                                <div class="gs-device-btns">
+                                    <button class="gs-device-btn active orange" onclick="setDevice('desktop', this)" title="Desktop">
+                                        <i class="fas fa-desktop"></i><span>PC</span>
+                                    </button>
+                                    <button class="gs-device-btn blue" onclick="setDevice('tablet', this)" title="Tablet">
+                                        <i class="fas fa-tablet-alt"></i><span>Tablet</span>
+                                    </button>
+                                    <button class="gs-device-btn orange" onclick="setDevice('mobile', this)" title="Mobile">
+                                        <i class="fas fa-mobile-alt"></i><span>Móvil</span>
+                                    </button>
+                                </div>
+                                <a href="#." class="gs-browser-expand" onclick="openFullscreen(); return false;">
+                                    <i class="fas fa-expand-alt"></i>
+                                </a>
+                            </div>
+                            <div class="gs-browser-frame-wrap" id="gs-frame-wrap">
+                                <div class="gs-browser-frame" id="gs-browser-frame">
+                                    <div class="gs-load-overlay" id="gs-load-overlay" onclick="loadBeyond()">
+                                        <i class="fas fa-globe"></i>
+                                        <span class="gs-load-title">Beyond SAS — Sitio Interactivo</span>
+                                        <span class="gs-load-sub">Haz clic para cargar y navegar el sitio</span>
+                                        <button class="gs-load-btn"><i class="fas fa-play"></i> Cargar sitio</button>
+                                    </div>
+                                    <iframe id="beyond-iframe" src="" title="Beyond SAS website" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. IMAGES -->
+                    <div class="row mil-mb120">
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <div class="gs-placeholder gs-ph-wide"><span>Screenshot — Beyond SAS</span></div>
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <div class="gs-placeholder gs-ph-wide"><span>Detalle de sección</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. NEXT PROJECT -->
+                    <div class="row mil-jce">
+                        <div class="col-lg-10">
+                            <a href="project-wac-sas.html" class="row flex-sm-row-reverse mil-jcb mil-aic mil-c-next">
+                                <div class="col-lg-7 mil-project-cover-frame">
+                                    <div class="mil-cover-img mil-left mil-up">
+                                        <div class="gs-placeholder" style="height:300px;"><span>WAC SAS — cover</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 mil-relative">
+                                    <div class="mil-project-text">
+                                        <span class="mil-suptitle mil-accent mil-up">Next project</span>
+                                        <h2 class="mil-fs42 mil-mb30 mil-up">WAC SAS<br>Web Design</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- footer -->
+            <footer>
+                <div class="container mil-p-120-0">
+                    <div class="row mil-jcb">
+                        <div class="col-8 col-lg-4 mil-mb90">
+                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone" aria-label="Gessler Studio home">
+                                <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                            </a>
+                            <p class="mil-text mil-fs16 mil-mb60 mil-up">We are a creative duo focused on strategy, multimedia design and human-centered solutions for growing brands.</p>
+                            <ul class="mil-social mil-up">
+                                <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
+                                <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 mil-mb90">
+                            <h5 class="mil-fs16 mil-mb60 mil-up">Menu</h5>
+                            <ul class="mil-footer-menu">
+                                <li class="mil-up"><a href="index.html" class="mil-c-gone">Home</a></li>
+                                <li class="mil-up"><a href="services.html" class="mil-c-gone">Services</a></li>
+                                <li class="mil-up"><a href="portfolio-2.html" class="mil-c-gone">Portfolio</a></li>
+                                <li class="mil-up"><a href="about.html" class="mil-c-gone">About us</a></li>
+                                <li class="mil-up"><a href="contact.html" class="mil-c-gone">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 mil-mb90">
+                            <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
+                            <ul class="mil-footer-list">
+                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
+                                <li class="mil-text mil-up">Email: hola@gesslerstudio.com</li>
+                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, Estados Unidos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mil-footer-bottom mil-up">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 mil-mb30">
+                                <p class="mil-fs14 mil-soft">&copy; 2026 Gessler Studio. All rights reserved.</p>
+                            </div>
+                            <div class="col-lg-6 mil-jce mil-992-jcs mil-mb30">
+                                <a href="#." class="mil-group-text mil-accent mil-c-gone" id="mil-btt"><i class="fas fa-chevron-up"></i> <span>Back to top</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- fullscreen overlay -->
+    <div class="gs-fullscreen-overlay" id="gs-fullscreen">
+        <div class="gs-fullscreen-bar">
+            <button class="gs-fullscreen-close" onclick="closeFullscreen()">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+            <div class="gs-browser-url">beyondsas.com</div>
+        </div>
+        <iframe id="gs-fullscreen-iframe" src="" title="Beyond SAS fullscreen"></iframe>
+    </div>
+
+    <script src="js/plugins/gsap.min.js"></script>
+    <script src="js/plugins/ScrollSmoother.min.js"></script>
+    <script src="js/plugins/ScrollTrigger.min.js"></script>
+    <script src="js/plugins/ScrollTo.min.js"></script>
+    <script src="js/plugins/swiper.min.js"></script>
+    <script src="js/site-translate.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        function loadBeyond() {
+            var overlay = document.getElementById('gs-load-overlay');
+            var iframe = document.getElementById('beyond-iframe');
+            overlay.style.display = 'none';
+            iframe.src = 'beyond/index.html';
+        }
+
+        function setDevice(device, btn) {
+            var frame = document.getElementById('gs-browser-frame');
+            var wrap = document.getElementById('gs-frame-wrap');
+            var btns = document.querySelectorAll('.gs-device-btn');
+
+            btns.forEach(function(b) { b.classList.remove('active', 'orange', 'blue'); });
+
+            frame.classList.remove('device-mobile', 'device-tablet');
+            wrap.classList.remove('device-mobile', 'device-tablet');
+
+            if (device === 'mobile') {
+                frame.classList.add('device-mobile');
+                wrap.classList.add('device-mobile');
+                btn.classList.add('active', 'orange');
+            } else if (device === 'tablet') {
+                frame.classList.add('device-tablet');
+                wrap.classList.add('device-tablet');
+                btn.classList.add('active', 'blue');
+            } else {
+                btn.classList.add('active', 'orange');
+            }
+        }
+
+        function openFullscreen() {
+            var overlay = document.getElementById('gs-fullscreen');
+            var iframe = document.getElementById('gs-fullscreen-iframe');
+            iframe.src = 'beyond/index.html';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeFullscreen() {
+            var overlay = document.getElementById('gs-fullscreen');
+            var iframe = document.getElementById('gs-fullscreen-iframe');
+            overlay.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeFullscreen();
+        });
+    </script>
+
+</body>
+</html>

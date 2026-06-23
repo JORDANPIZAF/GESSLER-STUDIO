@@ -7,83 +7,106 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="HandheldFriendly" content="true">
-    <meta name="author" content="bslthemes" />
+    <meta name="author" content="Gessler Studio" />
 
-    <!-- grid css -->
     <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
     <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
-    <!-- swiper css -->
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- okai css -->
     <link rel="stylesheet" href="css/style.css?v=particles-3">
-    <!-- page title -->
-    <title>Gessler Studio | Angie Pachon</title>
-
-    <!-- Favicon -->
+    <title>Angie Pachon — Gessler Studio</title>
     <link rel="shortcut icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
+
+    <style>
+        .gs-cv-overlay {
+            display: none; position: fixed; inset: 0; z-index: 99999;
+            background: rgba(0,0,0,0.92); flex-direction: column;
+        }
+        .gs-cv-overlay.active { display: flex; }
+        .gs-cv-bar {
+            background: #1c1c1c; padding: 10px 20px; display: flex;
+            align-items: center; gap: 14px; border-bottom: 1px solid #2a2a2a; flex-shrink: 0;
+        }
+        .gs-cv-bar-title { flex: 1; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #666; }
+        .gs-cv-close {
+            background: none; border: none; color: #fff; cursor: pointer;
+            padding: 4px 12px; opacity: 0.5; transition: opacity 0.2s;
+            display: flex; align-items: center; gap: 7px; font-size: 13px; letter-spacing: 0.06em;
+        }
+        .gs-cv-close:hover { opacity: 1; }
+        .gs-cv-overlay iframe { flex: 1; border: none; width: 100%; }
+
+        .gs-cv-btn {
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 12px 26px; background: none; border: 1px solid #1497e0;
+            color: #1497e0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+            cursor: pointer; border-radius: 4px; transition: background 0.2s, color 0.2s;
+            text-decoration: none; margin-top: 24px; font-family: inherit;
+        }
+        .gs-cv-btn:hover { background: #1497e0; color: #fff; }
+
+        .mil-profile-tags span {
+            display: inline-block; padding: 5px 14px; border: 1px solid #2a2a2a;
+            border-radius: 3px; font-size: 11px; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #888; margin: 4px 4px 4px 0;
+        }
+
+        .gs-exp-list { list-style: none; padding: 0; }
+        .gs-exp-item { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid #1e1e1e; }
+        .gs-exp-item:last-child { border-bottom: none; }
+        .gs-exp-years { width: 80px; flex-shrink: 0; text-align: right; }
+        .gs-exp-year-from { font-size: 14px; font-weight: 700; color: #1497e0; }
+        .gs-exp-year-to { font-size: 11px; color: #555; }
+        .gs-exp-org { font-size: 14px; color: #e0e0e0; font-weight: 600; margin-bottom: 2px; }
+        .gs-exp-role { font-size: 12px; color: #F35A38; }
+
+        .gs-skill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+        .gs-skill-tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border: 1px solid #222; border-radius: 3px; font-size: 11px; color: #888; }
+        .gs-skill-tag.o { color: #F35A38; border-color: rgba(243,90,56,0.25); }
+        .gs-skill-tag.b { color: #1497e0; border-color: rgba(20,151,224,0.2); }
+    </style>
 
 </head>
 
 <body class="mil-theme-angie">
 
-    <!-- wrapper -->
     <div id="smooth-wrapper" class="mil-page-wrapper">
 
-        <!-- cursor -->
         <div class="mil-cursor-follower"></div>
-        <!-- cursor end -->
-
-        <!-- scroll progress -->
-        <div class="mil-progress-track">
-            <div class="mil-progress"></div>
-        </div>
-        <!-- scroll progress end -->
+        <div class="mil-progress-track"><div class="mil-progress"></div></div>
 
         <!-- top panel -->
         <div class="mil-top-panel">
             <div class="container">
                 <div class="row mil-aic">
                     <div class="col-6">
-                        <a href="index.html" class="mil-logo mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
+                        <a href="index.html" class="mil-logo mil-c-gone" aria-label="Gessler Studio home">
+                            <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                        </a>
                     </div>
                     <div class="col-6 mil-jce mil-aic">
                         <div class="mil-buttons-frame">
                             <div class="mil-language-switcher mil-c-gone" data-language-switcher>
-    <button type="button" class="mil-language-option" data-language-option="en">EN</button>
-    <span class="mil-language-divider" aria-hidden="true">|</span>
-    <button type="button" class="mil-language-option" data-language-option="es">ES</button>
-</div>
-                            <div class="mil-menu-btn mil-c-gone">
-                                <span></span>
+                                <button type="button" class="mil-language-option" data-language-option="en">EN</button>
+                                <span class="mil-language-divider" aria-hidden="true">|</span>
+                                <button type="button" class="mil-language-option" data-language-option="es">ES</button>
                             </div>
+                            <div class="mil-menu-btn mil-c-gone"><span></span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- top panel end -->
 
         <!-- menu -->
         <div class="mil-menu-window">
             <div class="container">
                 <ul class="mil-main-menu mil-c-gone">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="portfolio-2.html">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About us</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio-2.html">Portfolio</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <ul class="mil-social mil-center">
                     <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
@@ -92,182 +115,186 @@
                 </ul>
             </div>
         </div>
-        <!-- menu end -->
 
         <!-- content -->
         <div id="smooth-content" class="mil-content">
 
-            <div class="mil-banner-inner">
+            <!-- breadcrumb -->
+            <div class="gs-breadcrumb-bar">
                 <div class="container">
-                    <div class="mil-banner-text">
-                        <div>
-                            <h1 class="mil-fs68 mil-mb30">Angie Pachon</h1>
-                            <ul class="mil-breadcrumbs">
-                                <li>
-                                    <a href="index.html" class="mil-c-gone">Home</a>
-                                </li>
-                                <li>
-                                    <a href="about.html" class="mil-c-gone">About us</a>
-                                </li>
-                                <li>
-                                    <a href="angie-pachon.html" class="mil-c-gone">Angie Pachon</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="mil-banner-img">
-                    <img src="img/banners/19.jpg" alt="Angie Pachon banner" class="mil-scale-img" data-value-1=".90" data-value-2="1.11">
+                    <ul class="gs-breadcrumb" data-lang-bc="es"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="about.html" class="mil-c-gone">Nosotros</a></li><li><span>Angie Pachon</span></li></ul>
+                    <ul class="gs-breadcrumb" data-lang-bc="en" style="display:none;"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="about.html" class="mil-c-gone">About us</a></li><li><span>Angie Pachon</span></li></ul>
                 </div>
             </div>
+            <div class="gs-breadcrumb-spacer"></div>
 
+            <!-- hero -->
             <div class="mil-p-120-120">
                 <div class="container">
                     <div class="row mil-aic mil-jcb">
+
+                        <!-- photo + skill cloud -->
                         <div class="col-lg-5 mil-mb90">
                             <div class="mil-profile-portrait mil-profile-skill-stage mil-up">
-                                <img src="img/about/team/2.jpg" alt="Angie Pachon" class="mil-scale-img" data-value-1="1" data-value-2="1.15">
-                                <div class="mil-skill-cloud" aria-label="Angie strategy and operations tools">
-                                    <span class="mil-skill-badge" style="--skill-x: 4%; --skill-y: 12%; --skill-color: #4285f4;" title="English"><i class="fas fa-language"></i><span>EN</span></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 78%; --skill-y: 7%; --skill-color: #673ab7;" title="Google Forms"><i class="fas fa-clipboard-list"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 86%; --skill-y: 36%; --skill-color: #0f9d58;" title="Google Sheets"><i class="fas fa-table"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: -5%; --skill-y: 42%; --skill-color: #f4b400;" title="Process mapping"><i class="fas fa-project-diagram"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 10%; --skill-y: 76%; --skill-color: #00a1f1;" title="Data analysis"><i class="fas fa-chart-line"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 72%; --skill-y: 78%; --skill-color: #7c3aed;" title="Project planning"><i class="fas fa-clipboard-check"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 48%; --skill-y: -7%; --skill-color: #34a853;" title="Optimization"><i class="fas fa-cogs"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 42%; --skill-y: 88%; --skill-color: #ea4335;" title="Decision support"><i class="fas fa-lightbulb"></i></span>
+                                <img src="img/about/team/angie-pachon.png" alt="Angie Pachon" class="mil-scale-img" data-value-1="1" data-value-2="1.15">
+                                <div class="mil-skill-cloud" aria-label="Angie tools and competencies">
+                                    <span class="mil-skill-badge" style="--skill-x: 2%; --skill-y: 12%; --skill-color: #1d6f42;" title="Excel"><i class="fas fa-file-excel"></i></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 78%; --skill-y: 5%; --skill-color: #4285f4;" title="Google Workspace"><i class="fab fa-google"></i></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 88%; --skill-y: 31%; --skill-color: #F35A38;" title="Process Control"><i class="fas fa-cogs"></i></span>
+                                    <span class="mil-skill-badge" style="--skill-x: -4%; --skill-y: 43%; --skill-color: #1497e0;" title="Data Validation"><i class="fas fa-database"></i></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 11%; --skill-y: 74%; --skill-color: #ffd700;" title="Audit"><i class="fas fa-search"></i></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 72%; --skill-y: 78%; --skill-color: #9b59b6;" title="Compliance"><i class="fas fa-shield-alt"></i></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 48%; --skill-y: -7%; --skill-color: #2ecc71;" title="BPM"><i class="fas fa-sitemap"></i></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 42%; --skill-y: 88%; --skill-color: #e74c3c;" title="Risk Detection"><i class="fas fa-exclamation-triangle"></i></span>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- info -->
                         <div class="col-lg-6 mil-mb90">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Industrial Engineer</span>
-                            <h2 class="mil-fs42 mil-mb30 mil-up">Structure, analysis and organized thinking for every service</h2>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">Angie Pachon contributes the strategic and operational side of Gessler Studio. Her industrial engineering background helps transform ideas into clearer workflows, stronger decision-making and more grounded project direction.</p>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">She supports the studio by bringing logic, planning and problem-solving into the creative process, helping each service feel more sustainable and better organized from start to finish.</p>
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" data-translate-key="angie-title">Ingeniera Industrial · Analista de Operaciones</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up" data-translate-key="angie-headline">Procesos, control operativo y excelencia en datos</h2>
+                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up" data-translate-key="angie-bio1">Ingeniera Industrial con más de 3 años de experiencia en operaciones BPO financieras. Especializada en auditoría operativa, validación de datos de alto volumen y control de procesos en entornos regulados.</p>
+                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up" data-translate-key="angie-bio2">Dentro de Gessler Studio, Angie aporta estructura, rigor analítico y visión de procesos que garantizan que cada proyecto se ejecute con claridad, eficiencia y control.</p>
+
                             <div class="mil-profile-tags mil-up">
-                                <span>Strategy</span>
-                                <span>Processes</span>
-                                <span>Analysis</span>
-                                <span>Optimization</span>
+                                <span data-translate-key="tag-audit">Auditoría Operativa</span>
+                                <span data-translate-key="tag-data">Validación de Datos</span>
+                                <span data-translate-key="tag-process">Control de Procesos</span>
+                                <span data-translate-key="tag-compliance">Cumplimiento</span>
+                                <span>BPO</span>
                             </div>
+
                             <ul class="mil-profile-social mil-up">
                                 <li>
-                                    <a href="#." class="mil-profile-action-btn mil-profile-action-btn-whatsapp mil-glow-follow mil-c-gone" aria-label="Angie on WhatsApp">
-                                        <span class="mil-profile-action-btn-icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
-                                        <span class="mil-profile-action-btn-copy">
-                                            <span class="mil-profile-action-btn-title">WhatsApp</span>
-                                        </span>
+                                    <a href="tel:+573043472299" class="mil-profile-action-btn mil-profile-action-btn-whatsapp mil-glow-follow mil-c-gone" aria-label="Angie WhatsApp">
+                                        <span class="mil-profile-action-btn-icon"><i class="fab fa-whatsapp"></i></span>
+                                        <span class="mil-profile-action-btn-copy"><span class="mil-profile-action-btn-title">WhatsApp</span></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#." class="mil-profile-action-btn mil-profile-action-btn-instagram mil-glow-follow mil-c-gone" aria-label="Angie on Instagram">
-                                        <span class="mil-profile-action-btn-icon" aria-hidden="true"><i class="fab fa-instagram"></i></span>
-                                        <span class="mil-profile-action-btn-copy">
-                                            <span class="mil-profile-action-btn-title">Instagram</span>
-                                        </span>
+                                    <a href="mailto:Carolina4pachon@gmail.com" class="mil-profile-action-btn mil-profile-action-btn-cv mil-glow-follow mil-c-gone" aria-label="Angie Email">
+                                        <span class="mil-profile-action-btn-icon"><i class="fas fa-envelope"></i></span>
+                                        <span class="mil-profile-action-btn-copy"><span class="mil-profile-action-btn-title">Email</span></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#." class="mil-profile-action-btn mil-profile-action-btn-cv mil-glow-follow mil-c-gone" aria-label="Angie CV PDF">
-                                        <span class="mil-profile-action-btn-icon" aria-hidden="true"><i class="far fa-file-pdf"></i></span>
-                                        <span class="mil-profile-action-btn-copy">
-                                            <span class="mil-profile-action-btn-title">My CV</span>
-                                        </span>
+                                    <a href="https://www.instagram.com/angiecarolina6709?igsh=djJmdzlzYTZlZzNp" target="_blank" class="mil-profile-action-btn mil-glow-follow mil-c-gone" aria-label="Angie Instagram" style="--btn-accent:#E1306C;">
+                                        <span class="mil-profile-action-btn-icon"><i class="fab fa-instagram"></i></span>
+                                        <span class="mil-profile-action-btn-copy"><span class="mil-profile-action-btn-title">Instagram</span></span>
                                     </a>
                                 </li>
                             </ul>
+
+                            <div class="mil-up">
+                                <button class="gs-cv-btn" onclick="openCV()">
+                                    <i class="far fa-id-card"></i>
+                                    <span data-translate-key="btn-cv">Ver Hoja de Vida</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- experience + skills -->
             <div class="mil-soft-section mil-p-120-90">
+                <div class="container">
+                    <div class="row mil-jcb">
+                        <div class="col-lg-5 mil-mb60">
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" data-translate-key="exp-label">Experiencia</span>
+                            <h2 class="mil-fs42 mil-mb60 mil-up" data-translate-key="exp-headline">3+ años en operaciones y control de procesos</h2>
+                            <ul class="gs-exp-list mil-up">
+                                <li class="gs-exp-item">
+                                    <div class="gs-exp-years"><div class="gs-exp-year-from">2026</div><div class="gs-exp-year-to">2023</div></div>
+                                    <div><div class="gs-exp-org">Summar Financial</div><div class="gs-exp-role" data-translate-key="role-summar">Analista de Operaciones y Cumplimiento</div></div>
+                                </li>
+                                <li class="gs-exp-item">
+                                    <div class="gs-exp-years"><div class="gs-exp-year-from">2023</div><div class="gs-exp-year-to">2022</div></div>
+                                    <div><div class="gs-exp-org">Univ. Antonio Nariño</div><div class="gs-exp-role" data-translate-key="role-uan">Soporte en Operaciones Administrativas</div></div>
+                                </li>
+                                <li class="gs-exp-item">
+                                    <div class="gs-exp-years"><div class="gs-exp-year-from">2021</div><div class="gs-exp-year-to">Oct</div></div>
+                                    <div><div class="gs-exp-org">Amazon, Inc</div><div class="gs-exp-role" data-translate-key="role-amazon">Representante de Servicio al Cliente</div></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 mil-mb60">
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" data-translate-key="skills-label">Herramientas</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up" data-translate-key="skills-headline">Software & competencias</h2>
+                            <div class="gs-skill-row mil-up">
+                                <span class="gs-skill-tag b"><i class="fas fa-file-excel"></i> MS Office</span>
+                                <span class="gs-skill-tag b"><i class="fab fa-google"></i> Google Workspace</span>
+                                <span class="gs-skill-tag"><i class="fas fa-sitemap"></i> BPM</span>
+                                <span class="gs-skill-tag"><i class="fas fa-desktop"></i> Opera Software</span>
+                                <span class="gs-skill-tag o"><i class="fas fa-truck"></i> Hubtran</span>
+                                <span class="gs-skill-tag"><i class="fas fa-layer-group"></i> Cadence / F8</span>
+                                <span class="gs-skill-tag b"><i class="fas fa-chart-line"></i> Lighthouse</span>
+                                <span class="gs-skill-tag"><i class="fas fa-video"></i> Zoom</span>
+                                <span class="gs-skill-tag b"><i class="fas fa-globe"></i> English B2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- cards -->
+            <div class="mil-p-120-120">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Focus</span>
-                                <h3 class="mil-fs26 mil-mb20">Systems, order and strategic support</h3>
-                                <p class="mil-text mil-fs16">Helping ideas move from concept to execution with more clarity, measurable steps and practical thinking.</p>
+                                <span class="mil-suptitle mil-accent mil-mb20" data-translate-key="card1-label">Enfoque</span>
+                                <h3 class="mil-fs26 mil-mb20" data-translate-key="card1-title">Excelencia operativa en entornos regulados</h3>
+                                <p class="mil-text mil-fs16" data-translate-key="card1-body">Gestión de procesos de alto volumen con precisión, cumplimiento y consistencia desde el primer día.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Approach</span>
-                                <h3 class="mil-fs26 mil-mb20">Make each project easier to manage</h3>
-                                <p class="mil-text mil-fs16">Angie organizes processes, identifies priorities and supports decisions so the studio can work with greater consistency.</p>
+                                <span class="mil-suptitle mil-accent mil-mb20" data-translate-key="card2-label">Metodología</span>
+                                <h3 class="mil-fs26 mil-mb20" data-translate-key="card2-title">Análisis estructurado y control de riesgo</h3>
+                                <p class="mil-text mil-fs16" data-translate-key="card2-body">Verificación cruzada de datos, detección de inconsistencias y soporte a controles internos para minimizar riesgo operativo.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Role in the studio</span>
-                                <h3 class="mil-fs26 mil-mb20">Operational and strategic perspective</h3>
-                                <p class="mil-text mil-fs16">She helps align ideas with feasibility, structure and sustainable project development for clients and internal workflows.</p>
+                                <span class="mil-suptitle mil-accent mil-mb20" data-translate-key="card3-label">Rol en el estudio</span>
+                                <h3 class="mil-fs26 mil-mb20" data-translate-key="card3-title">Estructura y proceso detrás de cada proyecto</h3>
+                                <p class="mil-text mil-fs16" data-translate-key="card3-body">Angie garantiza que la operación del estudio funcione con claridad: procesos documentados, plazos cumplidos y entregables consistentes.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="mil-p-120-120">
-                <div class="container">
-                    <div class="row mil-jcb mil-aic">
-                        <div class="col-lg-5 mil-mb60">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Presentation video</span>
-                            <h2 class="mil-fs42 mil-mb30 mil-up">A space to introduce Angie with clarity and context</h2>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">This section is ready for a presentation video where Angie can explain her strategic perspective, how she organizes processes and the value she brings to each project.</p>
-                            <p class="mil-text mil-fs16 mil-light mil-up">Later we can replace this placeholder with YouTube, Vimeo or a hosted video file without changing the page structure.</p>
-                        </div>
-                        <div class="col-lg-6 mil-mb60">
-                            <div class="mil-profile-video mil-up">
-                                <div class="mil-profile-video-frame">
-                                    <span class="mil-profile-video-icon"><i class="fas fa-play"></i></span>
-                                    <span class="mil-profile-video-label">Angie presentation video</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mil-p-120-120">
-                <div class="container">
-                    <div class="row mil-jcb">
-                        <div class="col-lg-7 mil-mb60">
-                            <h2 class="mil-fs42 mil-mb30 mil-up">How Angie adds value</h2>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">Angie strengthens the studio from a systems perspective. She helps identify what is necessary, what is efficient and how to move ideas through a process that supports better outcomes and more confident execution.</p>
-                            <p class="mil-text mil-fs16 mil-light mil-up">Her presence allows Gessler Studio to combine creative intuition with organization, making the agency more solid, thoughtful and reliable for every collaboration.</p>
-                        </div>
-                        <div class="col-lg-4 mil-mb60">
-                            <div class="mil-profile-note mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Profile note</span>
-                                <p class="mil-text mil-fs16 mil-light">Best fit for strategic planning, process organization, project support and service structures that need more clarity and efficiency.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- CTA -->
             <div class="mil-soft-section mil-up mil-p-180-120">
                 <div class="container">
                     <div class="row mil-jcb mil-aic">
                         <div class="col-lg-7 mil-mb60">
-                            <h2 class="mil-fs68 mil-light mil-up">Need a more strategic and structured approach for your project?</h2>
+                            <h2 class="mil-fs68 mil-light mil-up" data-translate-key="cta-text">¿Quieres trabajar con Angie en tu próximo proyecto?</h2>
                         </div>
                         <div class="col-lg-4 mil-jce mil-992-jcs mil-mb60">
-                            <div class="mil-up">
-                                <a href="contact.html" class="mil-btn mil-btn-border mil-btn-lg mil-c-gone">Contact us</a>
+                            <div class="mil-up" style="display:flex; flex-direction:column; gap:14px; align-items:flex-start;">
+                                <a href="contact.html" class="mil-btn mil-btn-border mil-btn-lg mil-c-gone" data-translate-key="cta-btn">Contáctanos</a>
+                                <button class="gs-cv-btn" onclick="openCV()">
+                                    <i class="far fa-id-card"></i>
+                                    <span data-translate-key="btn-cv">Ver Hoja de Vida</span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- footer -->
             <footer>
                 <div class="container mil-p-120-0">
                     <div class="row mil-jcb">
                         <div class="col-8 col-lg-4 mil-mb90">
-                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
+                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone">
+                                <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                            </a>
                             <p class="mil-text mil-fs16 mil-mb60 mil-up">We are a creative duo focused on strategy, multimedia design and human-centered solutions for growing brands.</p>
                             <ul class="mil-social mil-up">
                                 <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
@@ -288,9 +315,8 @@
                         <div class="col-lg-4 mil-mb90">
                             <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
                             <ul class="mil-footer-list">
-                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
-                                <li class="mil-text mil-up">Email: support@okai.design</li>
-                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, Estados Unidos</li>
+                                <li class="mil-text mil-up">Phone: +57 304 347 2299</li>
+                                <li class="mil-text mil-up">Email: Carolina4pachon@gmail.com</li>
                             </ul>
                         </div>
                     </div>
@@ -308,29 +334,46 @@
                     </div>
                 </div>
             </footer>
-            <!-- footer end -->
 
         </div>
-        <!-- content -->
-
     </div>
-    <!-- wrapper end -->
 
-    <!-- gsap js -->
+    <!-- CV Overlay -->
+    <div class="gs-cv-overlay" id="gs-cv-overlay">
+        <div class="gs-cv-bar">
+            <button class="gs-cv-close" onclick="closeCV()"><i class="fas fa-times"></i> Cerrar</button>
+            <span class="gs-cv-bar-title">Angie Pachon — Hoja de Vida</span>
+        </div>
+        <iframe id="gs-cv-iframe" src="" title="CV Angie Pachon"></iframe>
+    </div>
+
     <script src="js/plugins/gsap.min.js"></script>
-    <!-- scroll smoother -->
     <script src="js/plugins/ScrollSmoother.min.js"></script>
-    <!-- scroll trigger js -->
     <script src="js/plugins/ScrollTrigger.min.js"></script>
-    <!-- scroll to js -->
     <script src="js/plugins/ScrollTo.min.js"></script>
-    <!-- swiper js -->
     <script src="js/plugins/swiper.min.js"></script>
-    <!-- site translation -->
     <script src="js/site-translate.js"></script>
-    <!-- okai js -->
     <script src="js/main.js?v=particles-3"></script>
 
-</body>
+    <script>
+        function openCV() {
+            var overlay = document.getElementById('gs-cv-overlay');
+            var iframe = document.getElementById('gs-cv-iframe');
+            iframe.src = 'cv-angie-pachon.html';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCV() {
+            var overlay = document.getElementById('gs-cv-overlay');
+            var iframe = document.getElementById('gs-cv-iframe');
+            overlay.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCV();
+        });
+    </script>
 
+</body>
 </html>

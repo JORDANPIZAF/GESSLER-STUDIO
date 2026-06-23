@@ -7,83 +7,180 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="HandheldFriendly" content="true">
-    <meta name="author" content="bslthemes" />
+    <meta name="author" content="Gessler Studio" />
 
-    <!-- grid css -->
     <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
     <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
-    <!-- swiper css -->
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- okai css -->
     <link rel="stylesheet" href="css/style.css?v=particles-3">
-    <!-- page title -->
-    <title>Gessler Studio | Jordan Piza</title>
-
-    <!-- Favicon -->
+    <title>Jordan Piza — Gessler Studio</title>
     <link rel="shortcut icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
+
+    <style>
+        /* CV overlay */
+        .gs-cv-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0,0,0,0.92);
+            flex-direction: column;
+        }
+        .gs-cv-overlay.active { display: flex; }
+        .gs-cv-bar {
+            background: #1c1c1c;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid #2a2a2a;
+            flex-shrink: 0;
+        }
+        .gs-cv-bar-title {
+            flex: 1;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #666;
+        }
+        .gs-cv-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 4px 12px;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+        }
+        .gs-cv-close:hover { opacity: 1; }
+        .gs-cv-overlay iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+
+        /* CV button */
+        .gs-cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 26px;
+            background: none;
+            border: 1px solid #F35A38;
+            color: #F35A38;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+            margin-top: 24px;
+            font-family: inherit;
+        }
+        .gs-cv-btn:hover { background: #F35A38; color: #fff; }
+
+        /* Tags */
+        .mil-profile-tags span {
+            display: inline-block;
+            padding: 5px 14px;
+            border: 1px solid #2a2a2a;
+            border-radius: 3px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #888;
+            margin: 4px 4px 4px 0;
+        }
+
+        /* Experience timeline mini */
+        .gs-exp-list { list-style: none; padding: 0; }
+        .gs-exp-item {
+            display: flex;
+            gap: 18px;
+            padding: 16px 0;
+            border-bottom: 1px solid #1e1e1e;
+        }
+        .gs-exp-item:last-child { border-bottom: none; }
+        .gs-exp-years {
+            width: 80px;
+            flex-shrink: 0;
+            text-align: right;
+        }
+        .gs-exp-year-from { font-size: 14px; font-weight: 700; color: #F35A38; }
+        .gs-exp-year-to { font-size: 11px; color: #555; }
+        .gs-exp-org { font-size: 14px; color: #e0e0e0; font-weight: 600; margin-bottom: 2px; }
+        .gs-exp-role { font-size: 12px; color: #1497e0; }
+
+        /* Skills row */
+        .gs-skill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .gs-skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border: 1px solid #222;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #888;
+        }
+        .gs-skill-tag.o { color: #F35A38; border-color: rgba(243,90,56,0.25); }
+        .gs-skill-tag.b { color: #1497e0; border-color: rgba(20,151,224,0.2); }
+    </style>
 
 </head>
 
 <body class="mil-theme-jordan">
 
-    <!-- wrapper -->
     <div id="smooth-wrapper" class="mil-page-wrapper">
 
-        <!-- cursor -->
         <div class="mil-cursor-follower"></div>
-        <!-- cursor end -->
-
-        <!-- scroll progress -->
-        <div class="mil-progress-track">
-            <div class="mil-progress"></div>
-        </div>
-        <!-- scroll progress end -->
+        <div class="mil-progress-track"><div class="mil-progress"></div></div>
 
         <!-- top panel -->
         <div class="mil-top-panel">
             <div class="container">
                 <div class="row mil-aic">
                     <div class="col-6">
-                        <a href="index.html" class="mil-logo mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
+                        <a href="index.html" class="mil-logo mil-c-gone" aria-label="Gessler Studio home">
+                            <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                        </a>
                     </div>
                     <div class="col-6 mil-jce mil-aic">
                         <div class="mil-buttons-frame">
                             <div class="mil-language-switcher mil-c-gone" data-language-switcher>
-    <button type="button" class="mil-language-option" data-language-option="en">EN</button>
-    <span class="mil-language-divider" aria-hidden="true">|</span>
-    <button type="button" class="mil-language-option" data-language-option="es">ES</button>
-</div>
-                            <div class="mil-menu-btn mil-c-gone">
-                                <span></span>
+                                <button type="button" class="mil-language-option" data-language-option="en">EN</button>
+                                <span class="mil-language-divider" aria-hidden="true">|</span>
+                                <button type="button" class="mil-language-option" data-language-option="es">ES</button>
                             </div>
+                            <div class="mil-menu-btn mil-c-gone"><span></span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- top panel end -->
 
         <!-- menu -->
         <div class="mil-menu-window">
             <div class="container">
                 <ul class="mil-main-menu mil-c-gone">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="portfolio-2.html">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About us</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio-2.html">Portfolio</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <ul class="mil-social mil-center">
                     <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
@@ -92,41 +189,28 @@
                 </ul>
             </div>
         </div>
-        <!-- menu end -->
 
         <!-- content -->
         <div id="smooth-content" class="mil-content">
-
-            <div class="mil-banner-inner">
+            <!-- breadcrumb -->
+            <div class="gs-breadcrumb-bar">
                 <div class="container">
-                    <div class="mil-banner-text">
-                        <div>
-                            <h1 class="mil-fs68 mil-mb30">Jordan Piza</h1>
-                            <ul class="mil-breadcrumbs">
-                                <li>
-                                    <a href="index.html" class="mil-c-gone">Home</a>
-                                </li>
-                                <li>
-                                    <a href="about.html" class="mil-c-gone">About us</a>
-                                </li>
-                                <li>
-                                    <a href="jordan-piza.html" class="mil-c-gone">Jordan Piza</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="mil-banner-img">
-                    <img src="img/banners/18.jpg" alt="Jordan Piza banner" class="mil-scale-img" data-value-1=".90" data-value-2="1.11">
+                    <ul class="gs-breadcrumb" data-lang-bc="es"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="about.html" class="mil-c-gone">Nosotros</a></li><li><span>Jordan Piza</span></li></ul>
+                    <ul class="gs-breadcrumb" data-lang-bc="en" style="display:none;"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><a href="about.html" class="mil-c-gone">About us</a></li><li><span>Jordan Piza</span></li></ul>
                 </div>
             </div>
+            <div class="gs-breadcrumb-spacer"></div>
 
+
+            <!-- hero section -->
             <div class="mil-p-120-120">
                 <div class="container">
                     <div class="row mil-aic mil-jcb">
+
+                        <!-- photo + skill cloud -->
                         <div class="col-lg-5 mil-mb90">
                             <div class="mil-profile-portrait mil-profile-skill-stage mil-up">
-                                <img src="img/about/team/1.jpg" alt="Jordan Piza" class="mil-scale-img" data-value-1="1" data-value-2="1.15">
+                                <img src="img/about/team/jordan-piza.png" alt="Jordan Piza" class="mil-scale-img" data-value-1="1" data-value-2="1.15">
                                 <div class="mil-skill-cloud" aria-label="Jordan design and development tools">
                                     <span class="mil-skill-badge" style="--skill-x: 2%; --skill-y: 12%; --skill-color: #ff9a00;" title="Adobe Illustrator"><i class="fab fa-adobe"></i><span>Ai</span></span>
                                     <span class="mil-skill-badge" style="--skill-x: 78%; --skill-y: 5%; --skill-color: #31a8ff;" title="Adobe Photoshop"><i class="fab fa-adobe"></i><span>Ps</span></span>
@@ -134,149 +218,176 @@
                                     <span class="mil-skill-badge" style="--skill-x: -4%; --skill-y: 43%; --skill-color: #d291ff;" title="Adobe After Effects"><i class="fab fa-adobe"></i><span>Ae</span></span>
                                     <span class="mil-skill-badge" style="--skill-x: 11%; --skill-y: 74%; --skill-color: #e34f26;" title="HTML5"><i class="fab fa-html5"></i></span>
                                     <span class="mil-skill-badge" style="--skill-x: 72%; --skill-y: 78%; --skill-color: #1572b6;" title="CSS3"><i class="fab fa-css3-alt"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 48%; --skill-y: -7%; --skill-color: #f7df1e;" title="JavaScript"><i class="fab fa-js"></i></span>
-                                    <span class="mil-skill-badge" style="--skill-x: 42%; --skill-y: 88%; --skill-color: #f97316;" title="Claude Code"><span>CC</span></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 48%; --skill-y: -7%; --skill-color: #ff61f6;" title="Adobe XD"><i class="fab fa-adobe"></i><span>Xd</span></span>
+                                    <span class="mil-skill-badge" style="--skill-x: 42%; --skill-y: 88%; --skill-color: #F35A38;" title="Branding"><i class="fas fa-paint-brush"></i></span>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- info -->
                         <div class="col-lg-6 mil-mb90">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Multimedia Designer</span>
-                            <h2 class="mil-fs42 mil-mb30 mil-up">Creative direction, visual systems and multimedia execution</h2>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">Jordan Piza develops visual concepts that connect strategy with aesthetics. His work focuses on creating brand experiences through design, digital assets, storytelling and strong visual consistency.</p>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">Inside Gessler Studio, Jordan leads the creative side of projects, shaping ideas into clear visual outputs that feel modern, intentional and aligned with each client.</p>
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" data-translate-key="jordan-title">Diseñador Multimedia</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up" data-translate-key="jordan-headline">Dirección creativa, identidad visual y ejecución multimedia</h2>
+                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up" data-translate-key="jordan-bio1">Diseñador Gráfico y Creador Multimedia con experiencia en branding, arte final, fotografía de producto y diseño digital. He desarrollado identidades visuales, portafolios y sitios web para marcas corporativas y gastronómicas.</p>
+                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up" data-translate-key="jordan-bio2">Me caracterizo por unir estrategia y creatividad, gestionando proyectos visuales de principio a fin dentro de Gessler Studio.</p>
+
                             <div class="mil-profile-tags mil-up">
                                 <span>Branding</span>
                                 <span>Multimedia</span>
                                 <span>Visual Design</span>
-                                <span>Creative Direction</span>
+                                <span data-translate-key="tag-photo">Fotografía</span>
+                                <span data-translate-key="tag-web">Diseño Web</span>
                             </div>
+
+                            <!-- action buttons -->
                             <ul class="mil-profile-social mil-up">
                                 <li>
-                                    <a href="#." class="mil-profile-action-btn mil-profile-action-btn-whatsapp mil-glow-follow mil-c-gone" aria-label="Jordan on WhatsApp">
-                                        <span class="mil-profile-action-btn-icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+                                    <a href="https://wa.me/573193490741?text=hola%2C%20Jordan" target="_blank" class="mil-profile-action-btn mil-profile-action-btn-whatsapp mil-glow-follow mil-c-gone" aria-label="Jordan WhatsApp">
+                                        <span class="mil-profile-action-btn-icon"><i class="fab fa-whatsapp"></i></span>
                                         <span class="mil-profile-action-btn-copy">
                                             <span class="mil-profile-action-btn-title">WhatsApp</span>
                                         </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#." class="mil-profile-action-btn mil-profile-action-btn-instagram mil-glow-follow mil-c-gone" aria-label="Jordan on Instagram">
-                                        <span class="mil-profile-action-btn-icon" aria-hidden="true"><i class="fab fa-instagram"></i></span>
-                                        <span class="mil-profile-action-btn-copy">
-                                            <span class="mil-profile-action-btn-title">Instagram</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#." class="mil-profile-action-btn mil-profile-action-btn-behance mil-glow-follow mil-c-gone" aria-label="Jordan on Behance">
-                                        <span class="mil-profile-action-btn-icon" aria-hidden="true"><i class="fab fa-behance"></i></span>
+                                    <a href="https://www.behance.net/jordanpiza" target="_blank" class="mil-profile-action-btn mil-profile-action-btn-behance mil-glow-follow mil-c-gone" aria-label="Jordan Behance">
+                                        <span class="mil-profile-action-btn-icon"><i class="fab fa-behance"></i></span>
                                         <span class="mil-profile-action-btn-copy">
                                             <span class="mil-profile-action-btn-title">Behance</span>
                                         </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#." class="mil-profile-action-btn mil-profile-action-btn-cv mil-glow-follow mil-c-gone" aria-label="Jordan CV PDF">
-                                        <span class="mil-profile-action-btn-icon" aria-hidden="true"><i class="far fa-file-pdf"></i></span>
+                                    <a href="https://www.instagram.com/soy.pigmalion/" target="_blank" class="mil-profile-action-btn mil-profile-action-btn-instagram mil-glow-follow mil-c-gone" aria-label="Jordan Instagram">
+                                        <span class="mil-profile-action-btn-icon"><i class="fab fa-instagram"></i></span>
                                         <span class="mil-profile-action-btn-copy">
-                                            <span class="mil-profile-action-btn-title">My CV</span>
+                                            <span class="mil-profile-action-btn-title">Instagram</span>
                                         </span>
                                     </a>
                                 </li>
                             </ul>
+
+                            <!-- CV button -->
+                            <div class="mil-up">
+                                <button class="gs-cv-btn" onclick="openCV()">
+                                    <i class="far fa-id-card"></i>
+                                    <span data-translate-key="btn-cv">Ver Hoja de Vida</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- experience -->
             <div class="mil-soft-section mil-p-120-90">
+                <div class="container">
+                    <div class="row mil-jcb">
+                        <div class="col-lg-5 mil-mb60">
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" data-translate-key="exp-label">Experiencia</span>
+                            <h2 class="mil-fs42 mil-mb60 mil-up" data-translate-key="exp-headline">5+ años en diseño multimedia y comunicación visual</h2>
+                            <ul class="gs-exp-list mil-up">
+                                <li class="gs-exp-item">
+                                    <div class="gs-exp-years"><div class="gs-exp-year-from">2025</div><div class="gs-exp-year-to">2023</div></div>
+                                    <div><div class="gs-exp-org">Beyond S.A.S</div><div class="gs-exp-role" data-translate-key="role-beyond">Creador Multimedia / Diseñador Gráfico</div></div>
+                                </li>
+                                <li class="gs-exp-item">
+                                    <div class="gs-exp-years"><div class="gs-exp-year-from">2023</div><div class="gs-exp-year-to">2022</div></div>
+                                    <div><div class="gs-exp-org">23 Ink</div><div class="gs-exp-role" data-translate-key="role-23ink">Diseñador Gráfico</div></div>
+                                </li>
+                                <li class="gs-exp-item">
+                                    <div class="gs-exp-years"><div class="gs-exp-year-from">2022</div><div class="gs-exp-year-to">2021</div></div>
+                                    <div><div class="gs-exp-org">WAC S.A.S</div><div class="gs-exp-role" data-translate-key="role-wac">Consultor en Diseño Gráfico y Multimedia</div></div>
+                                </li>
+                                <li class="gs-exp-item">
+                                    <div class="gs-exp-years"><div class="gs-exp-year-from">2021</div><div class="gs-exp-year-to">2020</div></div>
+                                    <div><div class="gs-exp-org">Grupo Kopelle LTDA</div><div class="gs-exp-role" data-translate-key="role-kopelle">Diseñador Gráfico / Community Manager</div></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 mil-mb60">
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" data-translate-key="skills-label">Herramientas</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up" data-translate-key="skills-headline">Software & habilidades</h2>
+                            <div class="gs-skill-row mil-up">
+                                <span class="gs-skill-tag o"><i class="fab fa-html5"></i> HTML5</span>
+                                <span class="gs-skill-tag b"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                <span class="gs-skill-tag o"><i class="fab fa-adobe"></i> Illustrator</span>
+                                <span class="gs-skill-tag"><i class="fab fa-adobe"></i> Photoshop</span>
+                                <span class="gs-skill-tag"><i class="fab fa-adobe"></i> Premiere Pro</span>
+                                <span class="gs-skill-tag"><i class="fab fa-adobe"></i> After Effects</span>
+                                <span class="gs-skill-tag"><i class="fab fa-adobe"></i> Media Encoder</span>
+                                <span class="gs-skill-tag"><i class="fab fa-adobe"></i> XD</span>
+                                <span class="gs-skill-tag b"><i class="fas fa-camera"></i> <span data-translate-key="skill-photo">Fotografía</span></span>
+                                <span class="gs-skill-tag o"><i class="fas fa-paint-brush"></i> Branding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- jordan banner image -->
+            <div class="mil-just-image mil-h mil-shortened mil-up">
+                <img src="img/banners/banner-jordan-piza.png" alt="Jordan Piza" class="mil-scale-img" data-value-1="1" data-value-2="1.2" loading="lazy">
+            </div>
+
+            <!-- cards -->
+            <div class="mil-p-120-120">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Focus</span>
-                                <h3 class="mil-fs26 mil-mb20">Brand identity and communication</h3>
-                                <p class="mil-text mil-fs16">Building visual languages that feel distinctive, coherent and ready to grow across digital and printed formats.</p>
+                                <span class="mil-suptitle mil-accent mil-mb20" data-translate-key="card1-label">Enfoque</span>
+                                <h3 class="mil-fs26 mil-mb20" data-translate-key="card1-title">Identidad de marca y comunicación</h3>
+                                <p class="mil-text mil-fs16" data-translate-key="card1-body">Construcción de lenguajes visuales distintivos, coherentes y listos para crecer en formatos digitales e impresos.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Approach</span>
-                                <h3 class="mil-fs26 mil-mb20">Design with message and structure</h3>
-                                <p class="mil-text mil-fs16">Every decision responds to a concept, a user need and a visual system that supports the brand instead of decorating it.</p>
+                                <span class="mil-suptitle mil-accent mil-mb20" data-translate-key="card2-label">Metodología</span>
+                                <h3 class="mil-fs26 mil-mb20" data-translate-key="card2-title">Diseño con mensaje y estructura</h3>
+                                <p class="mil-text mil-fs16" data-translate-key="card2-body">Cada decisión responde a un concepto, una necesidad del usuario y un sistema visual que sostiene la marca en lugar de decorarla.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Role in the studio</span>
-                                <h3 class="mil-fs26 mil-mb20">Creative lead and visual execution</h3>
-                                <p class="mil-text mil-fs16">From moodboards to final assets, Jordan transforms direction into polished multimedia pieces ready to launch.</p>
+                                <span class="mil-suptitle mil-accent mil-mb20" data-translate-key="card3-label">Rol en el estudio</span>
+                                <h3 class="mil-fs26 mil-mb20" data-translate-key="card3-title">Liderazgo creativo y ejecución visual</h3>
+                                <p class="mil-text mil-fs16" data-translate-key="card3-body">Desde moodboards hasta artes finales, Jordan transforma la dirección en piezas multimedia pulidas y listas para lanzar.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="mil-p-120-120">
-                <div class="container">
-                    <div class="row mil-jcb mil-aic">
-                        <div class="col-lg-5 mil-mb60">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Presentation video</span>
-                            <h2 class="mil-fs42 mil-mb30 mil-up">A space to introduce Jordan in his own voice</h2>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">This block is ready for a short presentation video where Jordan can talk about his creative approach, the kind of projects he enjoys and how he works with clients.</p>
-                            <p class="mil-text mil-fs16 mil-light mil-up">When you have the final video, we can replace this placeholder with YouTube, Vimeo or a local video file.</p>
-                        </div>
-                        <div class="col-lg-6 mil-mb60">
-                            <div class="mil-profile-video mil-up">
-                                <div class="mil-profile-video-frame">
-                                    <span class="mil-profile-video-icon"><i class="fas fa-play"></i></span>
-                                    <span class="mil-profile-video-label">Jordan presentation video</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mil-p-120-120">
-                <div class="container">
-                    <div class="row mil-jcb">
-                        <div class="col-lg-7 mil-mb60">
-                            <h2 class="mil-fs42 mil-mb30 mil-up">How Jordan adds value</h2>
-                            <p class="mil-text mil-fs16 mil-light mil-mb30 mil-up">His strength is turning abstract ideas into visual systems that clients can actually use. Whether it is a presentation, a campaign asset, a social media concept or a broader identity direction, the work is always oriented toward clarity and impact.</p>
-                            <p class="mil-text mil-fs16 mil-light mil-up">Jordan brings a multimedia mindset to the studio, helping each project feel dynamic, cohesive and expressive across the channels where brands need to be seen.</p>
-                        </div>
-                        <div class="col-lg-4 mil-mb60">
-                            <div class="mil-profile-note mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Profile note</span>
-                                <p class="mil-text mil-fs16 mil-light">Best fit for branding, visual campaigns, presentation design, content systems and creative guidance for small businesses.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- CTA -->
             <div class="mil-soft-section mil-up mil-p-180-120">
                 <div class="container">
                     <div class="row mil-jcb mil-aic">
                         <div class="col-lg-7 mil-mb60">
-                            <h2 class="mil-fs68 mil-light mil-up">Want to work with Jordan on your next visual project?</h2>
+                            <h2 class="mil-fs68 mil-light mil-up" data-translate-key="cta-text">¿Quieres trabajar con Jordan en tu próximo proyecto visual?</h2>
                         </div>
                         <div class="col-lg-4 mil-jce mil-992-jcs mil-mb60">
-                            <div class="mil-up">
-                                <a href="contact.html" class="mil-btn mil-btn-border mil-btn-lg mil-c-gone">Contact us</a>
+                            <div class="mil-up" style="display:flex; flex-direction:column; gap:14px; align-items:flex-start;">
+                                <a href="contact.html" class="mil-btn mil-btn-border mil-btn-lg mil-c-gone" data-translate-key="cta-btn">Contáctanos</a>
+                                <button class="gs-cv-btn" onclick="openCV()">
+                                    <i class="far fa-id-card"></i>
+                                    <span data-translate-key="btn-cv">Ver Hoja de Vida</span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- footer -->
             <footer>
                 <div class="container mil-p-120-0">
                     <div class="row mil-jcb">
                         <div class="col-8 col-lg-4 mil-mb90">
-                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
-                            <p class="mil-text mil-fs16 mil-mb60 mil-up">We are a creative duo focused on strategy, multimedia design and human-centered solutions for growing brands.</p>
+                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone">
+                                <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                            </a>
+                            <p class="mil-text mil-fs16 mil-mb60 mil-up" data-translate-key="footer-tagline">Somos un dúo creativo enfocado en estrategia, diseño multimedia y soluciones centradas en el usuario para marcas en crecimiento.</p>
                             <ul class="mil-social mil-up">
                                 <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
@@ -294,11 +405,11 @@
                             </ul>
                         </div>
                         <div class="col-lg-4 mil-mb90">
-                            <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
+                            <h5 class="mil-fs16 mil-mb60 mil-up" data-translate-key="footer-contact-title">Contáctanos</h5>
                             <ul class="mil-footer-list">
-                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
-                                <li class="mil-text mil-up">Email: support@okai.design</li>
-                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, Estados Unidos</li>
+                                <li class="mil-text mil-up">Phone: 319-349-0741</li>
+                                <li class="mil-text mil-up">Email: Felipe12.florez14@gmail.com</li>
+                                <li class="mil-text mil-up">Behance: behance.net/jordanpiza</li>
                             </ul>
                         </div>
                     </div>
@@ -316,29 +427,46 @@
                     </div>
                 </div>
             </footer>
-            <!-- footer end -->
 
         </div>
-        <!-- content -->
-
     </div>
-    <!-- wrapper end -->
 
-    <!-- gsap js -->
+    <!-- CV Overlay -->
+    <div class="gs-cv-overlay" id="gs-cv-overlay">
+        <div class="gs-cv-bar">
+            <button class="gs-cv-close" onclick="closeCV()"><i class="fas fa-times"></i> Cerrar</button>
+            <span class="gs-cv-bar-title">Jordan Piza — Hoja de Vida</span>
+        </div>
+        <iframe id="gs-cv-iframe" src="" title="CV Jordan Piza"></iframe>
+    </div>
+
     <script src="js/plugins/gsap.min.js"></script>
-    <!-- scroll smoother -->
     <script src="js/plugins/ScrollSmoother.min.js"></script>
-    <!-- scroll trigger js -->
     <script src="js/plugins/ScrollTrigger.min.js"></script>
-    <!-- scroll to js -->
     <script src="js/plugins/ScrollTo.min.js"></script>
-    <!-- swiper js -->
     <script src="js/plugins/swiper.min.js"></script>
-    <!-- site translation -->
     <script src="js/site-translate.js"></script>
-    <!-- okai js -->
     <script src="js/main.js?v=particles-3"></script>
 
-</body>
+    <script>
+        function openCV() {
+            var overlay = document.getElementById('gs-cv-overlay');
+            var iframe = document.getElementById('gs-cv-iframe');
+            iframe.src = 'cv-jordan-piza.html';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCV() {
+            var overlay = document.getElementById('gs-cv-overlay');
+            var iframe = document.getElementById('gs-cv-iframe');
+            overlay.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCV();
+        });
+    </script>
 
+</body>
 </html>
