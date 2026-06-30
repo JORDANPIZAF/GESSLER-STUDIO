@@ -408,6 +408,15 @@ function updateLanguageButton(language) {
     });
 }
 
+function translateDataAttributes(language) {
+    document.querySelectorAll('[data-en]').forEach((el) => {
+        if (el.dataset.es === undefined) {
+            el.dataset.es = el.textContent.trim();
+        }
+        el.textContent = language === 'en' ? el.dataset.en : el.dataset.es;
+    });
+}
+
 function applyLanguagePreference(language) {
     const normalizedLanguage = language === "es" ? "es" : SITE_DEFAULT_LANGUAGE;
 
@@ -417,6 +426,7 @@ function applyLanguagePreference(language) {
     translateDocumentTitle(normalizedLanguage);
     translateTextNodes(normalizedLanguage);
     translateAttributes(normalizedLanguage);
+    translateDataAttributes(normalizedLanguage);
     updateLanguageButton(normalizedLanguage);
 
     if (typeof window.initializeMenuLetterHover === "function") {
