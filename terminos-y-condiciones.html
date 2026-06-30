@@ -18,11 +18,82 @@
     <!-- Gessler Studio css -->
     <link rel="stylesheet" href="css/style.css">
     <!-- page title -->
-    <title>Gessler Studio | About us</title>
+    <title>Gessler Studio | Terms &amp; Conditions</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
+
+    <style>
+        .gs-pdf-section {
+            padding: 60px 0 120px;
+        }
+        .gs-pdf-header {
+            margin-bottom: 48px;
+        }
+        .gs-pdf-embed-wrap {
+            position: relative;
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(115, 118, 123, 0.15);
+            background: #14151A;
+        }
+        .gs-pdf-embed-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 80vh;
+            min-height: 600px;
+            border: none;
+        }
+        .gs-pdf-fallback {
+            display: none;
+            padding: 60px 30px;
+            text-align: center;
+        }
+        .gs-pdf-download-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: rgba(20, 21, 26, 0.98);
+            border-bottom: 1px solid rgba(115, 118, 123, 0.15);
+            gap: 16px;
+        }
+        .gs-pdf-download-bar span {
+            font-size: 13px;
+            color: rgba(115, 118, 123, 0.8);
+            letter-spacing: 0.04em;
+        }
+        .gs-pdf-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #F35A38;
+            text-decoration: none;
+            border: 1px solid rgba(243, 90, 56, 0.35);
+            padding: 7px 16px;
+            border-radius: 4px;
+            transition: background 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+        .gs-pdf-download-btn:hover {
+            background: rgba(243, 90, 56, 0.08);
+            border-color: rgba(243, 90, 56, 0.7);
+        }
+        @media (max-width: 767px) {
+            .gs-pdf-embed-wrap iframe {
+                height: 65vh;
+                min-height: 420px;
+            }
+            .gs-pdf-download-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
 
 </head>
 
@@ -85,123 +156,57 @@
                         <a href="contact.html">Contact</a>
                     </li>
                 </ul>
-                <ul class="mil-social mil-center">
-                    <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
-                    <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
-                </ul>
             </div>
         </div>
         <!-- menu end -->
 
         <!-- content -->
         <div id="smooth-content" class="mil-content">
+
             <!-- breadcrumb -->
             <div class="gs-breadcrumb-bar">
                 <div class="container">
-                    <ul class="gs-breadcrumb" data-lang-bc="es"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><span>Nosotros</span></li></ul>
-                    <ul class="gs-breadcrumb" data-lang-bc="en" style="display:none;"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><span>About us</span></li></ul>
+                    <ul class="gs-breadcrumb" data-lang-bc="es"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><span>Términos y Condiciones</span></li></ul>
+                    <ul class="gs-breadcrumb" data-lang-bc="en" style="display:none;"><li><a href="index.html" class="mil-c-gone">Home</a></li><li><span>Terms &amp; Conditions</span></li></ul>
                 </div>
             </div>
             <div class="gs-breadcrumb-spacer"></div>
 
-
-
-            <div class="mil-p-120-120">
+            <!-- pdf section -->
+            <div class="gs-pdf-section">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 mil-mb60">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Small agency, strong vision</span>
-                            <h2 class="mil-fs68 mil-mb30 mil-up">A creative and strategic partnership behind every project</h2>
-                            <p class="mil-text mil-fs18 mil-light mil-up" style="max-width:720px;">Gessler Studio is built by two complementary profiles. Jordan leads multimedia design, visual communication and brand execution, while Angie brings industrial engineering thinking, structure and process clarity to each project.</p>
-                            <p class="mil-text mil-fs18 mil-light mil-up" style="max-width:720px;margin-top:16px;">This page is the entry point to get to know us better. Choose the profile you want to explore and discover how each of us contributes to the studio.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="mil-soft-section mil-p-120-90">
-                <div class="container">
-                    <div class="mil-tac mil-mb90">
-                        <span class="mil-suptitle mil-accent mil-mb30 mil-up">Choose a profile</span>
-                        <h2 class="mil-fs42 mil-up">Meet the people behind Gessler Studio</h2>
+                    <div class="gs-pdf-header mil-up">
+                        <span class="mil-suptitle mil-accent mil-mb30">Legal</span>
+                        <h1 class="mil-fs42 mil-mb20">Terms &amp; Conditions</h1>
+                        <p class="mil-text mil-fs16 mil-light" style="max-width:600px;">This document governs the relationship between Gessler Studio and its clients. It applies to all design, web development, photography, video and digital production services offered by the studio.</p>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <a href="jordan-piza.html" class="mil-profile-card mil-c-gone mil-up">
-                                <div class="mil-profile-card-image">
-                                    <img src="img/about/team/jordan-piza.png" alt="Jordan Piza" class="mil-scale-img" data-value-1="1" data-value-2="1.10">
-                                </div>
-                                <div class="mil-profile-card-content">
-                                    <h3 class="mil-fs26 mil-mb15" translate="no">Jordan Piza</h3>
-                                    <p class="mil-text mil-fs16 mil-light mil-mb20">Multimedia Designer</p>
-                                    <p class="mil-text mil-fs16">Focused on branding, digital design, visual storytelling and creative direction for modern businesses.</p>
-                                    <span class="mil-profile-link">View profile</span>
-                                </div>
+
+                    <div class="gs-pdf-embed-wrap mil-up">
+                        <div class="gs-pdf-download-bar">
+                            <span>Gessler Studio — Términos y Condiciones de Servicios · v1.0 · Junio 2025</span>
+                            <a href="terminos-y-condiciones.pdf" download class="gs-pdf-download-btn">
+                                <i class="fas fa-download"></i>
+                                <span>Download PDF</span>
                             </a>
                         </div>
-                        <div class="col-lg-6">
-                            <a href="angie-pachon.html" class="mil-profile-card mil-c-gone mil-up">
-                                <div class="mil-profile-card-image">
-                                    <img src="img/about/team/angie-pachon-sn.png" alt="Angie Pachon" class="mil-scale-img" data-value-1="1" data-value-2="1.10">
-                                </div>
-                                <div class="mil-profile-card-content">
-                                    <h3 class="mil-fs26 mil-mb15" translate="no">Angie Pachon</h3>
-                                    <p class="mil-text mil-fs16 mil-light mil-mb20">Industrial Engineer</p>
-                                    <p class="mil-text mil-fs16">Bringing strategic analysis, operational thinking and organized decision-making to every service we offer.</p>
-                                    <span class="mil-profile-link">View profile</span>
-                                </div>
+                        <iframe
+                            src="terminos-y-condiciones.pdf"
+                            title="Gessler Studio — Términos y Condiciones"
+                            aria-label="Gessler Studio Terms and Conditions PDF"
+                        ></iframe>
+                        <div class="gs-pdf-fallback">
+                            <p class="mil-text mil-fs16 mil-mb30">Your browser cannot display the PDF inline.</p>
+                            <a href="terminos-y-condiciones.pdf" download class="mil-btn mil-btn-border mil-c-gone">
+                                <i class="fas fa-download" style="margin-right:8px;"></i> Download PDF
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="mil-p-120-90">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Creative</span>
-                                <h3 class="mil-fs26 mil-mb20">Visual identity and brand expression</h3>
-                                <p class="mil-text mil-fs16">We shape memorable visuals, digital assets and multimedia experiences that communicate clearly.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Strategic</span>
-                                <h3 class="mil-fs26 mil-mb20">Process, structure and decision support</h3>
-                                <p class="mil-text mil-fs16">We organize ideas, define priorities and help projects move with more order and better execution.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="mil-stat-card mil-up">
-                                <span class="mil-suptitle mil-accent mil-mb20">Together</span>
-                                <h3 class="mil-fs26 mil-mb20">A balanced studio with two perspectives</h3>
-                                <p class="mil-text mil-fs16">Design and engineering thinking come together to create solutions that are both attractive and functional.</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <!-- pdf section end -->
 
-            <div class="mil-soft-section mil-up mil-p-180-120">
-                <div class="container">
-                    <div class="row mil-jcb mil-aic">
-                        <div class="col-lg-7 mil-mb60">
-                            <h2 class="mil-fs68 mil-light mil-up">Ready to build your next project with us?</h2>
-                        </div>
-                        <div class="col-lg-5 mil-jce mil-992-jcs mil-mb60">
-                            <div class="mil-up" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:flex-end;">
-                                <a href="contact.html" class="mil-btn mil-btn-orange mil-btn-lg mil-c-gone">Get in touch</a>
-                                <a href="terminos-y-condiciones.html" class="mil-btn mil-btn-border mil-btn-lg mil-c-gone">
-                                    <i class="fas fa-file-contract" style="margin-right:10px;margin-left:0;font-size:15px;"></i>Terms &amp; Conditions
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- footer -->
             <footer>
                 <div class="container mil-p-120-0">

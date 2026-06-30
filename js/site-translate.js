@@ -261,7 +261,18 @@ const TRANSLATIONS = {
         "Need your social media to feel more coherent?": "¿Necesitas que tu social media se sienta más coherente?",
         "Strategic direction": "Dirección estratégica",
         "We help brands communicate with more purpose and less noise.": "Ayudamos a las marcas a comunicar con más propósito y menos ruido.",
-        "Need a clearer communication route for your brand?": "¿Necesitas una ruta de comunicación más clara para tu marca?"
+        "Need a clearer communication route for your brand?": "¿Necesitas una ruta de comunicación más clara para tu marca?",
+        "Terms & Conditions": "Términos y Condiciones",
+        "Terms and Conditions PDF": "PDF Términos y Condiciones",
+        "Tell us about your project.": "Cuéntanos sobre tu proyecto.",
+        "Gessler Studio | Contact": "Gessler Studio | Contacto",
+        "Gessler Studio is built by two complementary profiles. Jordan leads multimedia design, visual communication and brand execution, while Angie brings industrial engineering thinking, structure and process clarity to each project.": "Gessler Studio está formado por dos perfiles complementarios. Jordan lidera el diseño multimedia, la comunicación visual y la ejecución de marca, mientras Angie aporta pensamiento de ingeniería industrial, estructura y claridad de procesos a cada proyecto.",
+        "This page is the entry point to get to know us better. Choose the profile you want to explore and discover how each of us contributes to the studio.": "Esta página es el punto de entrada para conocernos mejor. Elige el perfil que quieres explorar y descubre cómo cada uno aporta al estudio.",
+        "Download our Terms & Conditions": "Descargar Términos y Condiciones",
+        "Legal document": "Documento legal",
+        "Name": "Nombre",
+        "Email": "Correo electrónico",
+        "Your message": "Tu mensaje"
         ,
         "About the agency": "Sobre la agencia",
         "A creative duo building brands, visuals and communication with intention.": "Un dúo creativo construyendo marcas, visuales y comunicación con intención.",
@@ -327,6 +338,17 @@ function translateDocumentTitle(language) {
     document.title = getTranslation(originalTitle, language);
 }
 
+function isNoTranslate(element) {
+    let el = element;
+    while (el && el !== document.body) {
+        if (el.getAttribute('translate') === 'no' || el.hasAttribute('data-no-translate')) {
+            return true;
+        }
+        el = el.parentElement;
+    }
+    return false;
+}
+
 function translateTextNodes(language) {
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
         acceptNode(node) {
@@ -335,6 +357,10 @@ function translateTextNodes(language) {
             }
 
             if (["SCRIPT", "STYLE", "NOSCRIPT"].includes(node.parentElement.tagName)) {
+                return NodeFilter.FILTER_REJECT;
+            }
+
+            if (isNoTranslate(node.parentElement)) {
                 return NodeFilter.FILTER_REJECT;
             }
 
@@ -401,6 +427,9 @@ function applyLanguagePreference(language) {
     }
     if (typeof window.initializeFooterContactButtons === "function") {
         window.initializeFooterContactButtons();
+    }
+    if (typeof window.refreshFooterLegalLabel === "function") {
+        window.refreshFooterLegalLabel();
     }
 
     document.querySelectorAll('[data-lang-bc]').forEach(function(el) {

@@ -108,6 +108,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createFloatingBackToTop();
 
+    const createFooterLegal = () => {
+        document.querySelectorAll('.mil-footer-bottom').forEach((footerBottom) => {
+            if (footerBottom.querySelector('.gs-terms-link')) return;
+            const copyright = footerBottom.querySelector('.mil-fs14.mil-soft');
+            if (!copyright) return;
+
+            const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+            const label = lang === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions';
+
+            const link = document.createElement('a');
+            link.href = 'terminos-y-condiciones.html';
+            link.className = 'gs-terms-link mil-fs14 mil-c-gone';
+            link.setAttribute('aria-label', label);
+            link.setAttribute('data-terms-link', '');
+            link.textContent = label;
+            link.style.cssText = 'display:inline-flex;align-items:center;gap:6px;color:rgba(115,118,123,0.7);text-decoration:none;border-bottom:1px solid rgba(115,118,123,0.25);padding-bottom:1px;transition:color .2s,border-color .2s;margin-top:8px;';
+            link.onmouseover = () => { link.style.color = '#F35A38'; link.style.borderColor = 'rgba(243,90,56,0.5)'; };
+            link.onmouseout = () => { link.style.color = 'rgba(115,118,123,0.7)'; link.style.borderColor = 'rgba(115,118,123,0.25)'; };
+
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-file-alt';
+            icon.style.fontSize = '11px';
+            link.prepend(icon);
+
+            copyright.parentElement.appendChild(link);
+        });
+    };
+
+    window.refreshFooterLegalLabel = () => {
+        const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+        document.querySelectorAll('[data-terms-link]').forEach((link) => {
+            const label = lang === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions';
+            link.lastChild.textContent = label;
+            link.setAttribute('aria-label', label);
+        });
+    };
+
+    createFooterLegal();
+
     const createThemeSwitcher = () => {
         document.querySelectorAll('.mil-buttons-frame').forEach((frame) => {
             let switcher = frame.querySelector('[data-theme-switcher]');
@@ -891,12 +930,8 @@ document.addEventListener("DOMContentLoaded", function () {
             (('ontouchstart' in window) && window.innerWidth < 1024);
 
         if (isMobileDevice) {
-            sequence.style.minHeight = '0';
-            const poster = sequence.querySelector('[data-sequence-poster]');
-            if (poster) {
-                poster.style.cssText = 'display:block;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;';
-            }
             canvas.style.display = 'none';
+            sequence.classList.add('mil-sequence-mobile');
             return;
         }
 
@@ -1730,6 +1765,12 @@ document.addEventListener("DOMContentLoaded", function () {
             updateSkillTargets();
         });
     }
+
+    window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+    });
 
 });
 
