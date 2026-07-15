@@ -13,7 +13,7 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone@7.23.10/babel.min.js"></script>
   <script type="text/babel">
-const { useState, useMemo } = React;
+const { useState, useMemo, useEffect } = React;
 
 const CREDENTIALS = { user:"Admingessler", pass:"Adminjordan28" };
 const BRAND = { name:"GESSLER STUDIO", tagline:"Precision Under Pressure", email:"hola@gesslerstudio.com", phone:"+57 300 000 0000", web:"www.gesslerstudio.com", city:"Bogotá, Colombia" };
@@ -477,6 +477,26 @@ function Main({onLogout}){
   const [projects,setProjects]=useState(SAMPLE_PROJECTS);
   const [counter,setCounter]=useState(5);
   const [taxes,setTaxes]=useState(COLOMBIA_TAXES);
+  const [loaded,setLoaded]=useState(false);
+  useEffect(()=>{
+    fetch("/api/state").then(r=>r.ok?r.json():null).then(data=>{
+      if(data){
+        if(data.services)setServices(data.services);
+        if(data.combos)setCombos(data.combos);
+        if(data.quotes)setQuotes(data.quotes);
+        if(data.projects)setProjects(data.projects);
+        if(data.counter)setCounter(data.counter);
+        if(data.taxes)setTaxes(data.taxes);
+      }
+    }).catch(()=>{}).finally(()=>setLoaded(true));
+  },[]);
+  useEffect(()=>{
+    if(!loaded)return;
+    const t=setTimeout(()=>{
+      fetch("/api/state",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({services,combos,quotes,projects,counter,taxes})}).catch(()=>{});
+    },400);
+    return ()=>clearTimeout(t);
+  },[services,combos,quotes,projects,counter,taxes,loaded]);
   const [selected,setSelected]=useState({});
   const [manualDisc,setManualDisc]=useState(0);
   const [appliedCombo,setAppliedCombo]=useState(null);
