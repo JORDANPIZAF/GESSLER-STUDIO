@@ -1416,7 +1416,7 @@ top panel
   --panel-glow-x: 50%;
   --panel-glow-y: 50%;
   --panel-glow-color: rgba(20, 151, 224, 0.22);
-  height: 120px;
+  height: 88px;
   display: flex;
   align-items: center;
   background-color: rgba(10, 11, 15, 0.9);
@@ -1644,7 +1644,7 @@ body {
 }
 @media (max-width: 768px) {
   .mil-top-panel {
-    height: 90px;
+    height: 68px;
   }
   .mil-top-panel .mil-phone {
     display: none;
@@ -4039,6 +4039,42 @@ team
 .mil-scroll-sequence-frame.mil-canvas-ready img {
   opacity: 0;
 }
+.mil-home-video {
+  position: relative;
+  margin-top: 0;
+  min-height: 260vh;
+  background-color: #050608;
+}
+.mil-home-video-stage {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px 0;
+  box-sizing: border-box;
+}
+.mil-home-video-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  will-change: width, height, border-radius;
+}
+.mil-home-video-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 575px) {
+  .mil-home-video-stage {
+    padding: 32px 0;
+  }
+  .mil-home-video-card {
+    border-radius: 14px;
+  }
+}
 .mil-scroll-sequence-home {
   min-height: 275vh;
   margin-top: 0;
@@ -4880,4 +4916,42 @@ body.mil-day-mode footer .mil-footer-contact-btn-meta {
 }
 .mil-top-panel.mil-nav-hidden {
     transform: translateY(-100%);
+}
+
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+.gs-whatsapp-btn {
+    position: fixed;
+    right: 28px;
+    bottom: 100px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gs-whatsapp-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+.gs-whatsapp-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+}
+@media (max-width: 768px) {
+    .gs-whatsapp-btn {
+        right: 18px;
+        bottom: 84px;
+        width: 52px;
+        height: 52px;
+    }
+    .gs-whatsapp-btn svg {
+        width: 26px;
+        height: 26px;
+    }
 }

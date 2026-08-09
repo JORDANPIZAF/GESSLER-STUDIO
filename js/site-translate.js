@@ -79,6 +79,9 @@ const TRANSLATIONS = {
         "Phone: +051 - 958 237 851": "Teléfono: +051 - 958 237 851",
         "Email: hola@gesslerstudio.com": "Correo: hola@gesslerstudio.com",
         "Address: 300 St. Mary's L, Suite 8060, Houston,": "Dirección: 300 St. Mary's L, Suite 8060, Houston,",
+        "TX 77079, United States": "TX 77079, Estados Unidos",
+        "© 2026 Gessler Studio. All rights reserved.": "© 2026 Gessler Studio. Todos los derechos reservados.",
+        "Admin": "Admin",
         "Hi. I'm Tinny": "Hola. Soy Tinny",
         "I love visual": "Me encanta el diseño visual",
         "web designer": "diseñadora web",
@@ -104,6 +107,7 @@ const TRANSLATIONS = {
         "December 10, 2023 at 10:13": "10 de diciembre de 2023 a las 10:13",
         "Tell more about your new business plan": "Cuéntanos más sobre tu nuevo plan de negocio",
         "Start your next": "Comienza tu próximo",
+        "Start your next project": "Comienza tu próximo proyecto",
         "A very well planned vision will take you to your destination": "Una visión bien planificada te llevará a tu destino",
         "Strategic Vision": "Visión estratégica",
         "Small agency, strong vision": "Agencia pequeña, visión clara",
@@ -290,6 +294,115 @@ const TRANSLATIONS = {
         ,"My CV": "Mi CV"
         ,"Jordan CV PDF": "CV PDF de Jordan"
         ,"Angie CV PDF": "CV PDF de Angie"
+
+        ,"CV Jordan Piza": "CV de Jordan Piza"
+        ,"CV Angie Pachon": "CV de Angie Pachon"
+        ,"Phone: 319-349-0741": "Teléfono: 319-349-0741"
+        ,"Email: Felipe12.florez14@gmail.com": "Correo: Felipe12.florez14@gmail.com"
+        ,"Phone: +57 304 347 2299": "Teléfono: +57 304 347 2299"
+        ,"Email: Carolina4pachon@gmail.com": "Correo: Carolina4pachon@gmail.com"
+        ,"Jordan design and development tools": "Herramientas de diseño y desarrollo de Jordan"
+        ,"Jordan WhatsApp": "WhatsApp de Jordan"
+        ,"Jordan Behance": "Behance de Jordan"
+        ,"Jordan Instagram": "Instagram de Jordan"
+        ,"Angie tools and competencies": "Herramientas y competencias de Angie"
+        ,"Angie WhatsApp": "WhatsApp de Angie"
+        ,"Angie Email": "Correo de Angie"
+        ,"Angie Instagram": "Instagram de Angie"
+        ,"Process Control": "Control de procesos"
+        ,"Data Validation": "Validación de datos"
+        ,"Audit": "Auditoría"
+        ,"Compliance": "Cumplimiento"
+        ,"Risk Detection": "Detección de riesgos"
+
+        ,"Visual concept and mood direction": "Concepto visual y dirección de mood"
+        ,"Logo system and variations": "Sistema de logo y variaciones"
+        ,"Color palette and typography selection": "Selección de paleta de color y tipografía"
+        ,"Brand applications for digital formats": "Aplicaciones de marca para formatos digitales"
+        ,"Mini guideline or usage document": "Mini guía o documento de uso"
+
+        ,"This service is focused on websites, landing pages and digital layouts that organize information better and make brands feel more professional online.": "Este servicio se enfoca en sitios web, landing pages y diseños digitales que organizan mejor la información y hacen que las marcas se vean más profesionales en línea."
+        ,"We work on visual hierarchy, section flow, responsive design and the overall clarity of the experience so the site supports your business and not just the aesthetics.": "Trabajamos la jerarquía visual, el flujo de secciones, el diseño responsive y la claridad general de la experiencia para que el sitio respalde tu negocio y no solo la estética."
+        ,"Landing pages": "Landing pages"
+        ,"Portfolio sites": "Sitios de portafolio"
+        ,"Service websites": "Sitios de servicios"
+        ,"Brand refreshes": "Renovaciones de marca"
+        ,"Structure": "Estructura"
+        ,"We organize the page around what users need to understand first.": "Organizamos la página en torno a lo que los usuarios necesitan entender primero."
+        ,"We shape a look that matches the tone and identity of the brand.": "Creamos una apariencia que coincide con el tono y la identidad de la marca."
+        ,"Refinement": "Refinamiento"
+        ,"We adjust spacing, sections and details so the experience feels polished.": "Ajustamos espaciados, secciones y detalles para que la experiencia se sienta pulida."
+        ,"Landing page design": "Diseño de landing page"
+        ,"Service page structure": "Estructura de página de servicio"
+        ,"Responsive visual system": "Sistema visual responsive"
+        ,"CTA and hierarchy planning": "Planeación de CTA y jerarquía"
+        ,"Visual assets for launch": "Piezas visuales para el lanzamiento"
+        ,"We can build a web design route that improves how your brand is presented online.": "Podemos construir una ruta de diseño web que mejore cómo se presenta tu marca en línea."
+
+        ,"This service combines animation thinking and editing structure to produce content that feels more dynamic, more watchable and better adapted to current digital platforms.": "Este servicio combina pensamiento de animación y estructura de edición para producir contenido más dinámico, más atractivo de ver y mejor adaptado a las plataformas digitales actuales."
+        ,"It can include promotional edits, animated graphics, short-form content and visual pacing adjustments that help the message land faster.": "Puede incluir ediciones promocionales, gráficos animados, contenido de formato corto y ajustes de ritmo visual que ayudan a que el mensaje llegue más rápido."
+        ,"Reels and shorts": "Reels y shorts"
+        ,"Campaign videos": "Videos de campaña"
+        ,"Explainer content": "Contenido explicativo"
+        ,"Motion assets": "Piezas de motion"
+        ,"Concept": "Concepto"
+        ,"We define tone, pacing and visual intention before editing starts.": "Definimos tono, ritmo e intención visual antes de comenzar la edición."
+        ,"Edit": "Editar"
+        ,"We shape the narrative flow, rhythm, cuts and content hierarchy.": "Damos forma al flujo narrativo, el ritmo, los cortes y la jerarquía del contenido."
+        ,"Enhance": "Potenciar"
+        ,"We add motion details, graphic support and export-ready versions.": "Agregamos detalles de motion, soporte gráfico y versiones listas para exportar."
+        ,"Short-form video editing": "Edición de video de formato corto"
+        ,"Motion graphics support": "Soporte de motion graphics"
+        ,"Animated titles and transitions": "Títulos y transiciones animadas"
+        ,"Promo or campaign edits": "Ediciones promocionales o de campaña"
+        ,"Platform-ready exports": "Exportaciones listas para plataformas"
+        ,"We can help you build motion pieces that look cleaner, stronger and more platform-ready.": "Podemos ayudarte a construir piezas en movimiento más limpias, sólidas y listas para plataformas."
+
+        ,"Social media needs more than isolated posts. This service focuses on building visual consistency, content direction and practical assets that help a brand communicate better over time.": "El social media necesita más que publicaciones aisladas. Este servicio se enfoca en construir consistencia visual, dirección de contenido y piezas prácticas que ayudan a una marca a comunicarse mejor con el tiempo."
+        ,"It can support launches, ongoing content systems or campaign-based content where the main need is coherence and structure.": "Puede apoyar lanzamientos, sistemas de contenido continuos o contenido de campaña donde la necesidad principal es coherencia y estructura."
+        ,"Content planning": "Planeación de contenido"
+        ,"Campaign visuals": "Piezas visuales de campaña"
+        ,"Post systems": "Sistemas de posts"
+        ,"Feed consistency": "Consistencia del feed"
+        ,"Organize": "Organizar"
+        ,"We define categories, formats and a cleaner structure for communication.": "Definimos categorías, formatos y una estructura más clara para la comunicación."
+        ,"We create the visual pieces that keep the system recognizable.": "Creamos las piezas visuales que mantienen el sistema reconocible."
+        ,"We prepare assets that can be used directly or adapted internally.": "Preparamos piezas que pueden usarse directamente o adaptarse internamente."
+        ,"Content pillars and themes": "Pilares y temas de contenido"
+        ,"Post and story design system": "Sistema de diseño de posts e historias"
+        ,"Campaign visual assets": "Piezas visuales de campaña"
+        ,"Launch support materials": "Materiales de apoyo para lanzamiento"
+        ,"Templates for ongoing communication": "Plantillas para comunicación continua"
+        ,"We can build a cleaner content system that gives your brand more consistency online.": "Podemos construir un sistema de contenido más claro que le dé a tu marca más consistencia en línea."
+
+        ,"When communication feels unclear, inconsistent or disconnected from the business, this service helps define the strategic structure behind the message.": "Cuando la comunicación se siente poco clara, inconsistente o desconectada del negocio, este servicio ayuda a definir la estructura estratégica detrás del mensaje."
+        ,"We focus on narrative clarity, communication priorities and frameworks that can support campaigns, launches or broader brand decisions.": "Nos enfocamos en la claridad narrativa, las prioridades de comunicación y los marcos que pueden apoyar campañas, lanzamientos o decisiones de marca más amplias."
+        ,"Launch planning": "Planeación de lanzamiento"
+        ,"Brand messaging": "Mensaje de marca"
+        ,"Campaign structure": "Estructura de campaña"
+        ,"Teams needing clarity": "Equipos que necesitan claridad"
+        ,"Diagnose": "Diagnosticar"
+        ,"We identify what the brand needs to communicate more clearly.": "Identificamos qué necesita comunicar la marca con mayor claridad."
+        ,"Prioritize": "Priorizar"
+        ,"We define key messages, audiences and communication routes.": "Definimos mensajes clave, audiencias y rutas de comunicación."
+        ,"Align": "Alinear"
+        ,"We connect communication with the broader direction of the project.": "Conectamos la comunicación con la dirección más amplia del proyecto."
+        ,"Message framework": "Marco de mensaje"
+        ,"Audience and tone definition": "Definición de audiencia y tono"
+        ,"Campaign concept support": "Apoyo de concepto de campaña"
+        ,"Communication priorities": "Prioridades de comunicación"
+        ,"Strategic recommendations": "Recomendaciones estratégicas"
+        ,"We can shape a strategy that helps your message become more consistent and useful.": "Podemos construir una estrategia que ayude a que tu mensaje sea más consistente y útil."
+
+        ,"Legal": "Legal"
+        ,"This document governs the relationship between Gessler Studio and its clients. It applies to all design, web development, photography, video and digital production services offered by the studio.": "Este documento rige la relación entre Gessler Studio y sus clientes. Aplica a todos los servicios de diseño, desarrollo web, fotografía, video y producción digital que ofrece el estudio."
+        ,"Download PDF": "Descargar PDF"
+        ,"Your browser cannot display the PDF inline.": "Tu navegador no puede mostrar el PDF integrado."
+        ,"Gessler Studio — Términos y Condiciones": "Gessler Studio — Términos y Condiciones"
+        ,"Gessler Studio Terms and Conditions PDF": "PDF de Términos y Condiciones de Gessler Studio"
+        ,"Gessler Studio intro video": "Video de introducción de Gessler Studio"
+        ,"Gessler Studio logo reveal motion sequence": "Secuencia animada del logo de Gessler Studio"
+        ,"Chat on WhatsApp": "Chatear por WhatsApp"
     }
 };
 
@@ -429,6 +542,12 @@ function applyLanguagePreference(language) {
     translateDataAttributes(normalizedLanguage);
     updateLanguageButton(normalizedLanguage);
 
+    if (typeof window.initializeTypingHero === "function") {
+        window.initializeTypingHero();
+    }
+    if (typeof window.initializeWhatsappButton === "function") {
+        window.initializeWhatsappButton();
+    }
     if (typeof window.initializeMenuLetterHover === "function") {
         window.initializeMenuLetterHover();
     }

@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     night: 'Switch to night mode'
                 },
                 es: {
-                    day: 'Cambiar a modo dÃ­a',
+                    day: 'Cambiar a modo día',
                     night: 'Cambiar a modo noche'
                 }
             };
@@ -823,11 +823,17 @@ document.addEventListener("DOMContentLoaded", function () {
     typing hero
 
     ------------------------------------------- */
-    document.querySelectorAll('[data-type-html]').forEach((element) => {
+    const runTypingHtml = (element) => {
         const template = document.createElement('template');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const currentLanguage = localStorage.getItem('site-language') || 'en';
+        const sourceAttr = currentLanguage === 'es' && element.hasAttribute('data-type-html-es')
+            ? 'data-type-html-es'
+            : 'data-type-html';
 
-        template.innerHTML = element.getAttribute('data-type-html') || '';
+        element.innerHTML = '';
+        element.classList.remove('mil-typing-complete');
+        template.innerHTML = element.getAttribute(sourceAttr) || '';
 
         const sourceSpans = Array.from(template.content.querySelectorAll('span'));
         const targetSpans = sourceSpans.map((span) => {
@@ -873,7 +879,13 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         window.setTimeout(typeNext, 360);
-    });
+    };
+
+    document.querySelectorAll('[data-type-html]').forEach(runTypingHtml);
+
+    window.initializeTypingHero = () => {
+        document.querySelectorAll('[data-type-html]').forEach(runTypingHtml);
+    };
 
     document.querySelectorAll('[data-type-text]').forEach((element) => {
         const text = element.getAttribute('data-type-text') || '';
@@ -1115,6 +1127,60 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+    /* -------------------------------------------
+
+    home video expand on scroll
+
+    ------------------------------------------- */
+    (function () {
+        const section = document.querySelector('[data-video-expand]');
+        if (!section) return;
+
+        const stage = section.querySelector('.mil-home-video-stage');
+        const card = section.querySelector('.mil-home-video-card');
+        const video = section.querySelector('.mil-home-video-media');
+
+        if (!stage || !card) return;
+
+        const setInitialSize = () => {
+            const ratio = (video && video.videoWidth && video.videoHeight)
+                ? video.videoHeight / video.videoWidth
+                : 9 / 16;
+            const availableWidth = stage.clientWidth * 0.95;
+            const availableHeight = stage.clientHeight - 120;
+            const width = Math.min(availableWidth, availableHeight / ratio);
+
+            card.style.width = `${width}px`;
+            card.style.height = `${width * ratio}px`;
+        };
+
+        setInitialSize();
+        window.addEventListener('resize', setInitialSize);
+
+        if (video) {
+            video.addEventListener('loadedmetadata', setInitialSize, { once: true });
+        }
+
+        if (typeof ScrollTrigger === 'undefined' || typeof gsap === 'undefined') {
+            return;
+        }
+
+        gsap.to(card, {
+            width: () => window.innerWidth,
+            height: () => window.innerHeight,
+            borderRadius: 0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: 'bottom bottom',
+                pin: stage,
+                pinSpacing: false,
+                scrub: 0.5,
+                invalidateOnRefresh: true
+            }
+        });
+    }());
     /* -------------------------------------------
 
     counters
@@ -1834,3 +1900,35 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 }());
+
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+document.addEventListener('DOMContentLoaded', function () {
+    "use strict";
+
+    var GS_WHATSAPP_NUMBER = '573193490741';
+    var GS_WHATSAPP_MESSAGES = {
+        en: 'Hello, I would like information about your services',
+        es: 'Hola, quiero información sobre sus servicios'
+    };
+    var GS_WHATSAPP_LABELS = {
+        en: 'Chat on WhatsApp',
+        es: 'Chatear por WhatsApp'
+    };
+
+    var link = document.createElement('a');
+    link.className = 'gs-whatsapp-btn';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.innerHTML = '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.484 1.34 5.002L2 22l5.117-1.342a9.955 9.955 0 0 0 4.887 1.244h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.18-2.928-7.07a9.935 9.935 0 0 0-7.07-2.928zm0 18.164h-.003a8.166 8.166 0 0 1-4.166-1.14l-.299-.177-3.037.797.811-2.96-.195-.304a8.16 8.16 0 0 1-1.25-4.383c0-4.509 3.669-8.178 8.182-8.178 2.186 0 4.24.852 5.786 2.399a8.13 8.13 0 0 1 2.394 5.788c0 4.509-3.67 8.158-8.223 8.158z"/></svg>';
+
+    document.body.appendChild(link);
+
+    var updateWhatsappButton = function () {
+        var currentLanguage = localStorage.getItem('site-language') === 'es' ? 'es' : 'en';
+        link.href = 'https://wa.me/' + GS_WHATSAPP_NUMBER + '?text=' + encodeURIComponent(GS_WHATSAPP_MESSAGES[currentLanguage]);
+        link.setAttribute('aria-label', GS_WHATSAPP_LABELS[currentLanguage]);
+    };
+
+    updateWhatsappButton();
+    window.initializeWhatsappButton = updateWhatsappButton;
+});
