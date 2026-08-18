@@ -776,6 +776,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ------------------------------------------- */
     const appearance = document.querySelectorAll(".mil-up");
     appearance.forEach((section) => {
+        const staggerDelay = parseFloat(section.getAttribute("data-stagger")) || 0;
         gsap.fromTo(section, {
             opacity: 0,
             y: 60,
@@ -785,6 +786,7 @@ document.addEventListener("DOMContentLoaded", function () {
             y: 0,
             opacity: 1,
             scale: 1,
+            delay: staggerDelay,
             scrollTrigger: {
                 trigger: section,
                 toggleActions: 'play none none reverse',
@@ -1270,26 +1272,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    var agencySwiper = new Swiper('.mil-agency-slider', {
-        slidesPerView: 1.2,
-        spaceBetween: 18,
-        speed: 900,
-        loop: true,
-        autoplay: {
-            delay: 2200,
-            disableOnInteraction: false
-        },
-        breakpoints: {
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 20
-            },
-            992: {
-                slidesPerView: 2.2,
-                spaceBetween: 24
-            }
-        }
-    });
 
     var swiper = new Swiper('.mil-portfolio-slider', {
         parallax: true,

@@ -36,6 +36,130 @@
         .gs-placeholder.gs-ph-card { height: 340px; }
         .gs-placeholder.gs-ph-wide { height: 420px; }
 
+        /* Gallery photos */
+        .gs-gallery-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #2a2a2a;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s;
+        }
+        .gs-gallery-img:hover { opacity: 0.85; }
+
+        /* Photo lightbox */
+        .gs-photo-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0,0,0,0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .gs-photo-lightbox.active { display: flex; }
+        .gs-photo-lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+        .gs-photo-lightbox-close {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .gs-photo-lightbox-close:hover { opacity: 1; }
+
+        /* Site link button */
+        .gs-site-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 12px 20px;
+            border: 1px solid #F35A38;
+            border-radius: 4px;
+            color: #F35A38;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .gs-site-link-btn:hover { background: #F35A38; color: #fff; }
+
+        /* Tech stack tags */
+        .gs-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 60px;
+        }
+        .gs-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .gs-tag.orange { border: 1px solid #F35A38; color: #F35A38; }
+        .gs-tag.blue { border: 1px solid #1497e0; color: #1497e0; }
+        .gs-tag i { font-size: 11px; }
+
+        /* Highlight stats */
+        .gs-stats {
+            display: flex;
+            gap: 0;
+            margin-bottom: 60px;
+            border: 1px solid #2a2a2a;
+        }
+        .gs-stat {
+            flex: 1;
+            padding: 28px 24px;
+            border-right: 1px solid #2a2a2a;
+        }
+        .gs-stat:last-child { border-right: none; }
+        .gs-stat-num {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .gs-stat-num.orange { color: #F35A38; }
+        .gs-stat-num.blue { color: #1497e0; }
+        .gs-stat-label {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Section divider accent */
+        .gs-accent-line {
+            width: 40px;
+            height: 3px;
+            background: #F35A38;
+            margin-bottom: 30px;
+        }
+        .gs-accent-line.blue { background: #1497e0; }
+
         /* Browser mockup */
         .gs-browser {
             background: #111;
@@ -88,11 +212,57 @@
             border-radius: 4px;
         }
         .gs-browser-expand:hover { color: #F35A38; border-color: #F35A38; }
+
+        /* Device switcher buttons */
+        .gs-device-btns { display: flex; gap: 4px; }
+        .gs-device-btn {
+            background: none;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #555;
+            padding: 4px 9px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: color 0.2s, border-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .gs-device-btn span { font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+        .gs-device-btn:hover { color: #aaa; border-color: #555; }
+        .gs-device-btn.active.orange { color: #F35A38; border-color: #F35A38; }
+        .gs-device-btn.active.blue { color: #1497e0; border-color: #1497e0; }
+
+        /* Frame wrapper — handles centering in mobile/tablet mode */
+        .gs-browser-frame-wrap {
+            background: #0d0d0d;
+            padding: 0;
+            transition: padding 0.3s ease;
+            overflow: hidden;
+        }
+        .gs-browser-frame-wrap.device-mobile,
+        .gs-browser-frame-wrap.device-tablet { padding: 20px; }
         .gs-browser-frame {
             position: relative;
             width: 100%;
             height: 600px;
             overflow: hidden;
+            border-radius: 0;
+            margin: 0 auto;
+            transition: width 0.35s cubic-bezier(.4,0,.2,1), height 0.35s cubic-bezier(.4,0,.2,1), border-radius 0.3s;
+        }
+        .gs-browser-frame.device-mobile {
+            width: 375px;
+            height: 667px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+        .gs-browser-frame.device-tablet {
+            width: 768px;
+            height: 1024px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            max-width: 100%;
         }
         .gs-browser-frame iframe {
             width: 100%;
@@ -100,6 +270,47 @@
             border: none;
             display: block;
         }
+
+        /* Deferred load overlay */
+        .gs-load-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0d0d0d;
+            gap: 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+        .gs-load-overlay:hover { background: #111; }
+        .gs-load-overlay i { font-size: 36px; color: #2a2a2a; }
+        .gs-load-overlay .gs-load-title {
+            color: #aaa;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .gs-load-overlay .gs-load-sub { color: #444; font-size: 12px; }
+        .gs-load-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border: 1px solid #F35A38;
+            border-radius: 4px;
+            color: #F35A38;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            margin-top: 8px;
+        }
+        .gs-load-btn:hover { background: #F35A38; color: #fff; }
         .gs-browser-placeholder {
             width: 100%;
             height: 600px;
@@ -226,25 +437,34 @@
             </div>
             <div class="gs-breadcrumb-spacer"></div>
 
+            <div class="container">
+                <img src="img/portfolio/wac-sas-cover-web.jpg" alt="WAC SAS — cover" style="width:100%; height:480px; object-fit:cover; border-radius:6px; display:block;" class="mil-up">
+            </div>
 
             <!-- project -->
             <div class="mil-p-240-120 mil-992-p-150-120">
                 <div class="container">
 
-                    <!-- hero -->
-                    <div class="mil-just-image mil-h mil-shortened mil-mb30 mil-up">
-                        <div class="gs-placeholder gs-ph-hero"><span>Cover image — WAC SAS</span></div>
-                    </div>
-                    <div class="mil-just-image mil-h mil-shortened mil-mb120 mil-up">
-                        <div class="gs-placeholder gs-ph-hero"><span>Hero image 2</span></div>
-                    </div>
-
-                    <!-- description + meta -->
-                    <div class="row mil-jcb">
+                    <!-- 1. INFO -->
+                    <div class="row mil-jcb mil-mb90">
                         <div class="col-lg-7 mil-mb60">
-                            <h2 class="mil-fs42 mil-mb60 mil-up">WAC SAS</h2>
+                            <div class="gs-accent-line mil-up"></div>
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up" style="display:block;">Diseño & Desarrollo Web</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up">WAC SAS</h2>
                             <p class="mil-text mil-mb30 mil-up">Diseño y desarrollo del sitio web para WAC SAS, empresa colombiana fabricante de equipos eléctricos industriales, con un catálogo de productos y flujo de cotización vía WhatsApp.</p>
-                            <p class="mil-text mil-mb60 mil-up">Construimos una plataforma web moderna que organiza el catálogo de productos de la empresa y facilita el contacto comercial directo. La interfaz refleja la solidez técnica de WAC con un diseño limpio, funcional y orientado a la conversión.</p>
+                            <img src="img/portfolio/wac-sas-cover-web.jpg" alt="WAC SAS: mockup del sitio web" class="gs-gallery-img mil-mb30 mil-up" style="height:auto; width:90%;">
+                            <p class="mil-text mil-mb30 mil-up">Construimos una plataforma web moderna que organiza el catálogo de productos de la empresa y facilita el contacto comercial directo. La interfaz refleja la solidez técnica de WAC con un diseño limpio, funcional y orientado a la conversión.</p>
+
+                            <!-- tech tags -->
+                            <div class="gs-tags mil-up">
+                                <span class="gs-tag orange"><i class="fab fa-react"></i> Next.js</span>
+                                <span class="gs-tag orange"><i class="fab fa-react"></i> React</span>
+                                <span class="gs-tag blue"><i class="fab fa-whatsapp"></i> Flujo WhatsApp</span>
+                                <span class="gs-tag orange"><i class="fas fa-boxes"></i> Catálogo B2B</span>
+                                <span class="gs-tag blue"><i class="fas fa-user-shield"></i> Panel Admin</span>
+                                <span class="gs-tag orange"><i class="fas fa-mobile-alt"></i> Responsive</span>
+                            </div>
+
                             <div class="mil-share mil-up">
                                 <p>Share:</p>
                                 <ul class="mil-social">
@@ -254,7 +474,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-4 mil-mb120">
+                        <div class="col-lg-4 mil-mb60">
                             <div class="mil-mb30 mil-up">
                                 <h5 class="mil-fs16 mil-mb15">Client:</h5>
                                 <p>WAC SAS</p>
@@ -274,34 +494,46 @@
                                 <h5 class="mil-fs16 mil-mb15">Year:</h5>
                                 <p>2026</p>
                             </div>
+                            <div class="mil-up" style="margin-top: 40px;">
+                                <div class="gs-stats">
+                                    <div class="gs-stat">
+                                        <div class="gs-stat-num orange">100%</div>
+                                        <div class="gs-stat-label">Colombiano</div>
+                                    </div>
+                                    <div class="gs-stat">
+                                        <div class="gs-stat-num blue">B2B</div>
+                                        <div class="gs-stat-label">Catálogo digital</div>
+                                    </div>
+                                </div>
+                                <a href="https://www.wacsas.com" target="_blank" rel="noopener" class="gs-site-link-btn">
+                                    <i class="fas fa-external-link-alt"></i> Link de la página web
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- design screens -->
+                    <!-- historia del cliente -->
                     <div class="mil-mb30 mil-up">
-                        <span class="mil-suptitle mil-accent mil-mb30" style="display:block;">Diseño</span>
+                        <div class="gs-accent-line"></div>
+                        <span class="mil-suptitle mil-accent mil-mb15" style="display:block;">El Cliente</span>
                     </div>
-                    <div class="row mil-mb60">
-                        <div class="col-lg-6 mil-mb30 mil-up">
-                            <div class="gs-placeholder gs-ph-wide"><span>Pantalla diseño 1</span></div>
+                    <div class="row mil-mb120">
+                        <div class="col-lg-7 mil-mb30 mil-up">
+                            <p class="mil-text mil-mb30">WAC SAS es una empresa colombiana especializada en la fabricación y distribución de productos para el sector eléctrico. Con años de experiencia en el mercado, se ha consolidado como un referente en calidad y confiabilidad.</p>
+                            <p class="mil-text">Su planta de producción cuenta con tecnología de punta para garantizar que cada producto cumpla con los estándares técnicos y de certificación del sector eléctrico colombiano e internacional.</p>
                         </div>
-                        <div class="col-lg-6 mil-mb30 mil-up">
-                            <div class="gs-placeholder gs-ph-wide"><span>Pantalla diseño 2</span></div>
-                        </div>
-                        <div class="col-lg-4 mil-mb30 mil-up">
-                            <div class="gs-placeholder gs-ph-card"><span>Diseño catálogo</span></div>
-                        </div>
-                        <div class="col-lg-4 mil-mb30 mil-up">
-                            <div class="gs-placeholder gs-ph-card"><span>Diseño producto</span></div>
-                        </div>
-                        <div class="col-lg-4 mil-mb30 mil-up">
-                            <div class="gs-placeholder gs-ph-card"><span>Flujo WhatsApp</span></div>
+                        <div class="col-lg-4 offset-lg-1 mil-mb30 mil-up">
+                            <h5 class="mil-fs16 mil-mb15">El reto del sitio:</h5>
+                            <p class="mil-text mil-mb30">WAC necesitaba llevar su catálogo físico a un formato digital que sus clientes B2B pudieran navegar fácil, armar una lista de cotización y enviarla directo a un asesor, sin fricción.</p>
+                            <h5 class="mil-fs16 mil-mb15">La solución:</h5>
+                            <p class="mil-text">Un catálogo web en Next.js con ficha técnica por producto, carrito de cotización y envío directo por WhatsApp al equipo comercial.</p>
                         </div>
                     </div>
 
                     <!-- live web preview -->
                     <div class="mil-mb30 mil-up">
-                        <span class="mil-suptitle mil-accent mil-mb30" style="display:block;">Sitio Web en Desarrollo</span>
+                        <span class="mil-suptitle mil-accent mil-mb30" style="display:block;">Sitio Web Interactivo</span>
+                        <p class="mil-text mil-soft" style="font-size:13px;">Navega el sitio real — scroll, botones y secciones funcionan.</p>
                     </div>
                     <div class="mil-mb120 mil-up">
                         <div class="gs-browser">
@@ -309,36 +541,70 @@
                                 <div class="gs-browser-dots">
                                     <span></span><span></span><span></span>
                                 </div>
-                                <div class="gs-browser-url" id="wac-url">wacsas.com</div>
+                                <div class="gs-browser-url" id="wac-url">www.wacsas.com</div>
+                                <!-- device switcher -->
+                                <div class="gs-device-btns">
+                                    <button class="gs-device-btn active orange" onclick="setDevice('desktop', this)" title="Desktop">
+                                        <i class="fas fa-desktop"></i><span>PC</span>
+                                    </button>
+                                    <button class="gs-device-btn blue" onclick="setDevice('tablet', this)" title="Tablet">
+                                        <i class="fas fa-tablet-alt"></i><span>Tablet</span>
+                                    </button>
+                                    <button class="gs-device-btn orange" onclick="setDevice('mobile', this)" title="Mobile">
+                                        <i class="fas fa-mobile-alt"></i><span>Móvil</span>
+                                    </button>
+                                </div>
                                 <a href="#." class="gs-browser-expand" onclick="openFullscreen('wac'); return false;">
                                     <i class="fas fa-expand-alt"></i> Ampliar
                                 </a>
                             </div>
-                            <div class="gs-browser-frame" id="wac-frame-wrap">
-                                <!-- Reemplazar src con la URL real de WAC SAS cuando esté publicada -->
-                                <div class="gs-browser-placeholder" id="wac-placeholder">
-                                    <i class="fas fa-globe"></i>
-                                    <p>Sitio web en desarrollo</p>
-                                    <span class="gs-url-hint">Pendiente: agregar URL de WAC SAS</span>
+                            <div class="gs-browser-frame-wrap" id="wac-frame-wrap">
+                                <div class="gs-browser-frame" id="wac-browser-frame">
+                                    <div class="gs-load-overlay" id="wac-load-overlay" onclick="loadWac()">
+                                        <i class="fas fa-globe"></i>
+                                        <span class="gs-load-title">WAC SAS — Sitio Interactivo</span>
+                                        <span class="gs-load-sub">Haz clic para cargar y navegar el sitio</span>
+                                        <button class="gs-load-btn"><i class="fas fa-play"></i> Cargar sitio</button>
+                                    </div>
+                                    <iframe id="wac-iframe" src="" title="WAC SAS website" loading="lazy"></iframe>
                                 </div>
-                                <!-- <iframe id="wac-iframe" src="https://wacsas.com" title="WAC SAS website"></iframe> -->
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- galería de fotos -->
+                    <div class="mil-mb30 mil-up">
+                        <div class="gs-accent-line blue"></div>
+                        <span class="mil-suptitle mil-mb15" style="display:block; color:#1497e0;">Galería</span>
+                    </div>
+                    <div class="row mil-mb120">
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <img src="img/portfolio/wac-foto-1.jpg" alt="WAC SAS: foto 1" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 1: reemplazar img/portfolio/wac-foto-1.jpg&lt;/span&gt;&lt;/div&gt;'">
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <img src="img/portfolio/wac-foto-2.jpg" alt="WAC SAS: foto 2" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 2: reemplazar img/portfolio/wac-foto-2.jpg&lt;/span&gt;&lt;/div&gt;'">
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <img src="img/portfolio/wac-foto-3.jpg" alt="WAC SAS: foto 3" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 3: reemplazar img/portfolio/wac-foto-3.jpg&lt;/span&gt;&lt;/div&gt;'">
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <img src="img/portfolio/wac-foto-4.jpg" alt="WAC SAS: foto 4" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 4: reemplazar img/portfolio/wac-foto-4.jpg&lt;/span&gt;&lt;/div&gt;'">
                         </div>
                     </div>
 
                     <!-- next project -->
                     <div class="row mil-jce">
                         <div class="col-lg-10">
-                            <a href="project-canasta-panaderia.html" class="row flex-sm-row-reverse mil-jcb mil-aic mil-c-next">
+                            <a href="project-beyond-sas.html" class="row flex-sm-row-reverse mil-jcb mil-aic mil-c-next">
                                 <div class="col-lg-7 mil-project-cover-frame">
                                     <div class="mil-cover-img mil-left mil-up">
-                                        <div class="gs-placeholder" style="height:300px;"><span>Canasta Panadería — cover</span></div>
+                                        <img src="img/portfolio/beyond-cover-web.jpg" alt="Beyond SAS" style="width:100%; height:300px; object-fit:cover; border-radius:4px;">
                                     </div>
                                 </div>
                                 <div class="col-lg-5 mil-relative">
                                     <div class="mil-project-text">
                                         <span class="mil-suptitle mil-accent mil-up">Next project</span>
-                                        <h2 class="mil-fs42 mil-mb30 mil-up">Canasta<br>Panadería</h2>
+                                        <h2 class="mil-fs42 mil-mb30 mil-up">Beyond<br>SAS</h2>
                                     </div>
                                 </div>
                             </a>
@@ -374,9 +640,9 @@
                         <div class="col-lg-4 mil-mb90">
                             <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
                             <ul class="mil-footer-list">
-                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
+                                <li class="mil-text mil-up">Phone: +57 319 349 0741</li>
                                 <li class="mil-text mil-up">Email: hola@gesslerstudio.com</li>
-                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, United States</li>
+                                <li class="mil-text mil-up">Address: Calle 80A Sur #5-18, Bogotá, Colombia</li>
                             </ul>
                         </div>
                     </div>
@@ -408,6 +674,12 @@
         <iframe id="gs-fullscreen-iframe" src="" title="Fullscreen preview"></iframe>
     </div>
 
+    <!-- photo lightbox -->
+    <div class="gs-photo-lightbox" id="gs-photo-lightbox" onclick="closePhotoLightbox()">
+        <button class="gs-photo-lightbox-close" onclick="closePhotoLightbox()"><i class="fas fa-times"></i></button>
+        <img id="gs-photo-lightbox-img" src="" alt="Foto ampliada" onclick="event.stopPropagation()">
+    </div>
+
     <script src="js/plugins/gsap.min.js"></script>
     <script src="js/plugins/ScrollSmoother.min.js"></script>
     <script src="js/plugins/ScrollTrigger.min.js"></script>
@@ -418,8 +690,38 @@
 
     <script>
         var siteUrls = {
-            wac: 'https://wacsas.com'
+            wac: 'https://www.wacsas.com'
         };
+
+        function loadWac() {
+            var overlay = document.getElementById('wac-load-overlay');
+            var iframe = document.getElementById('wac-iframe');
+            overlay.style.display = 'none';
+            iframe.src = siteUrls.wac;
+        }
+
+        function setDevice(device, btn) {
+            var frame = document.getElementById('wac-browser-frame');
+            var wrap = document.getElementById('wac-frame-wrap');
+            var btns = document.querySelectorAll('.gs-device-btn');
+
+            btns.forEach(function(b) { b.classList.remove('active', 'orange', 'blue'); });
+
+            frame.classList.remove('device-mobile', 'device-tablet');
+            wrap.classList.remove('device-mobile', 'device-tablet');
+
+            if (device === 'mobile') {
+                frame.classList.add('device-mobile');
+                wrap.classList.add('device-mobile');
+                btn.classList.add('active', 'orange');
+            } else if (device === 'tablet') {
+                frame.classList.add('device-tablet');
+                wrap.classList.add('device-tablet');
+                btn.classList.add('active', 'blue');
+            } else {
+                btn.classList.add('active', 'orange');
+            }
+        }
 
         function openFullscreen(site) {
             var overlay = document.getElementById('gs-fullscreen');
@@ -440,8 +742,22 @@
         }
 
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeFullscreen();
+            if (e.key === 'Escape') { closeFullscreen(); closePhotoLightbox(); }
         });
+
+        function openPhotoLightbox(src) {
+            var overlay = document.getElementById('gs-photo-lightbox');
+            var img = document.getElementById('gs-photo-lightbox-img');
+            img.src = src;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePhotoLightbox() {
+            var overlay = document.getElementById('gs-photo-lightbox');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     </script>
 
 </body>

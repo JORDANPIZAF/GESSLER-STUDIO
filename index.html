@@ -20,6 +20,202 @@
     <!-- page title -->
     <title>Gessler studio</title>
 
+    <style>
+        /* How we work: carrusel de pasos */
+        .gs-step-carousel {
+            position: relative;
+            background-color: #14151A;
+            padding: 40px;
+            min-height: 420px;
+            border: 1px solid #22232a;
+            border-top: 3px solid #F35A38;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-top-color 0.4s ease;
+        }
+        .gs-step-carousel.gs-carousel-blue { border-top-color: #1497e0; }
+        .gs-step-slide {
+            position: absolute;
+            inset: 0;
+            padding: 40px;
+            opacity: 0;
+            transform: translateX(24px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+        }
+        .gs-step-slide.gs-step-active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        /* Visual llamativo por paso (mismo tratamiento que las tarjetas de servicio) */
+        .gs-step-visual {
+            position: relative;
+            height: 160px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+        }
+        .gs-step-slide.gs-step-active .gs-step-visual { transform: scale(1.02); }
+        .gs-step-visual i {
+            position: relative;
+            z-index: 2;
+            font-size: 46px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        .gs-step-visual::before,
+        .gs-step-visual::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(28px);
+            opacity: 0.55;
+        }
+        .gs-step-visual-1 { background: linear-gradient(135deg, #2a130d 0%, #14151A 70%); }
+        .gs-step-visual-1::before { width: 140px; height: 140px; background: #F35A38; top: -40px; left: -20px; }
+        .gs-step-visual-1::after { width: 90px; height: 90px; background: #1497e0; bottom: -25px; right: 15px; opacity: 0.3; }
+
+        .gs-step-visual-2 { background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%); }
+        .gs-step-visual-2::before { width: 140px; height: 140px; background: #1497e0; top: -40px; right: -20px; }
+        .gs-step-visual-2::after { width: 90px; height: 90px; background: #F35A38; bottom: -25px; left: 15px; opacity: 0.3; }
+
+        .gs-step-visual-3 { background: linear-gradient(135deg, #2a130d 0%, #0d1f2a 100%); }
+        .gs-step-visual-3::before { width: 120px; height: 120px; background: #F35A38; top: -35px; left: 25%; }
+        .gs-step-visual-3::after { width: 120px; height: 120px; background: #1497e0; bottom: -40px; right: 15%; opacity: 0.35; }
+
+        .gs-step-visual-4 { background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%); }
+        .gs-step-visual-4::before { width: 130px; height: 130px; background: #1497e0; bottom: -35px; left: -15px; }
+        .gs-step-visual-4::after { width: 80px; height: 80px; background: #F35A38; top: -18px; right: 15px; opacity: 0.3; }
+        .gs-step-dots {
+            position: absolute;
+            left: 40px;
+            bottom: 24px;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        .gs-step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2a2a2a;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .gs-step-dot.gs-step-active {
+            background: #F35A38;
+            transform: scale(1.25);
+        }
+
+        /* Fotos de la agencia: sin caja, look más orgánico */
+        .mil-agency-slider-wrap {
+            background: none !important;
+            padding: 0 !important;
+            overflow: visible !important;
+        }
+        .mil-agency-slider-wrap .mil-agency-slide-frame {
+            background-color: transparent;
+            border-radius: 18px;
+            transform: scale(1.1);
+        }
+        .mil-agency-slider-wrap .mil-agency-slide-frame img {
+            border-radius: 18px;
+        }
+        .mil-agency-slider-wrap .row > .col-6:first-child {
+            margin-top: 48px;
+        }
+
+        /* Overlay gris que sube al hacer hover (estilo Reboost) */
+        .mil-portfolio .mil-project-card .mil-cover-frame .mil-hover-overlay {
+            opacity: 1 !important;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .mil-portfolio .mil-project-card:hover .mil-cover-frame .mil-hover-overlay {
+            transform: scaleY(1);
+        }
+
+        .gs-client-label {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            pointer-events: none;
+        }
+        .gs-client-label .gs-client-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #F35A38;
+        }
+        .gs-client-label .gs-client-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Testimonios */
+        .gs-testimonial-card {
+            position: relative;
+            height: 100%;
+            background-color: #14151A;
+            border: 1px solid #22232a;
+            border-top: 3px solid #F35A38;
+            border-radius: 8px;
+            padding: 44px 40px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .gs-testimonial-card:hover { transform: translateY(-6px); }
+        .gs-testimonial-card.gs-testimonial-blue { border-top-color: #1497e0; }
+        .gs-testimonial-quote-icon {
+            font-size: 28px;
+            color: rgba(243, 90, 56, 0.25);
+            margin-bottom: 18px;
+        }
+        .gs-testimonial-card.gs-testimonial-blue .gs-testimonial-quote-icon { color: rgba(20, 151, 224, 0.25); }
+        .gs-testimonial-stars { margin-bottom: 18px; }
+        .gs-testimonial-stars i { color: #F8C02D; font-size: 13px; margin-right: 3px; }
+        .gs-testimonial-text {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #d8d8d8;
+            font-style: italic;
+            margin-bottom: 32px;
+        }
+        .gs-testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .gs-testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 15px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .gs-testimonial-avatar.gs-testimonial-orange { background: linear-gradient(135deg, #F35A38, #b8341a); }
+        .gs-testimonial-avatar.gs-testimonial-blue-bg { background: linear-gradient(135deg, #1497e0, #0b5f8f); }
+        .gs-testimonial-role {
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
@@ -217,37 +413,15 @@
                         </div>
                         <div class="col-lg-6 mil-mb60">
                             <div class="mil-agency-slider-wrap mil-up">
-                                <div class="swiper-container mil-agency-slider">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="mil-agency-slide-frame">
-                                                <img src="img/about/destacado-1.png" alt="Jordan Piza portrait 1" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
-                                            </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mil-agency-slide-frame">
+                                            <img src="img/about/team/jordan-piza.png" alt="Jordan Piza" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="mil-agency-slide-frame">
-                                                <img src="img/about/destacado-2.png" alt="Angie Pachon portrait 1" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="mil-agency-slide-frame">
-                                                <img src="img/about/destacado-3.png" alt="Agency portrait 1" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="mil-agency-slide-frame">
-                                                <img src="img/about/destacado-4.png" alt="Jordan Piza portrait 2" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="mil-agency-slide-frame">
-                                                <img src="img/about/destacado-5.png" alt="Angie Pachon portrait 2" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="mil-agency-slide-frame">
-                                                <img src="img/about/destacado-1.png" alt="Agency portrait 2" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
-                                            </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mil-agency-slide-frame">
+                                            <img src="img/about/team/angie-pachon-sn.png" alt="Angie Pachon" class="mil-scale-img" data-value-1="1" data-value-2="1.08" loading="lazy" decoding="async">
                                         </div>
                                     </div>
                                 </div>
@@ -261,42 +435,40 @@
             <div class="mil-p-120-90">
                 <div class="container">
                     <div class="row mil-jcb">
+                        <div class="col-lg-6 mil-mb60">
+                            <div class="gs-step-carousel mil-up" id="gs-step-carousel">
+                                <div class="gs-step-slide gs-step-active" data-color="orange">
+                                    <div class="gs-step-visual gs-step-visual-1"><i class="fas fa-headphones-alt"></i></div>
+                                    <h3 class="mil-fs26 mil-mb20">Listen</h3>
+                                    <p class="mil-text mil-fs16">We understand the context, goals and current challenges before proposing any direction.</p>
+                                </div>
+                                <div class="gs-step-slide" data-color="blue">
+                                    <div class="gs-step-visual gs-step-visual-2"><i class="fas fa-bullseye"></i></div>
+                                    <h3 class="mil-fs26 mil-mb20">Define</h3>
+                                    <p class="mil-text mil-fs16">We shape the right scope, priorities and creative route for the specific service you need.</p>
+                                </div>
+                                <div class="gs-step-slide" data-color="orange">
+                                    <div class="gs-step-visual gs-step-visual-3"><i class="fas fa-layer-group"></i></div>
+                                    <h3 class="mil-fs26 mil-mb20">Build</h3>
+                                    <p class="mil-text mil-fs16">We turn the direction into visual pieces, systems or content that can move into the real world.</p>
+                                </div>
+                                <div class="gs-step-slide" data-color="blue">
+                                    <div class="gs-step-visual gs-step-visual-4"><i class="fas fa-rocket"></i></div>
+                                    <h3 class="mil-fs26 mil-mb20">Deliver</h3>
+                                    <p class="mil-text mil-fs16">We deliver assets, systems or recommendations that are ready to be used with confidence.</p>
+                                </div>
+                                <div class="gs-step-dots">
+                                    <span class="gs-step-dot gs-step-active"></span>
+                                    <span class="gs-step-dot"></span>
+                                    <span class="gs-step-dot"></span>
+                                    <span class="gs-step-dot"></span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-5 mil-mb60">
                             <span class="mil-suptitle mil-accent mil-mb30 mil-up">How we work</span>
                             <h2 class="mil-fs42 mil-mb30 mil-up">A simple process built for clarity.</h2>
                             <p class="mil-text mil-fs18 mil-light mil-up">We keep each service grounded in strategy, visual coherence and practical execution so the work is not only attractive, but useful for the business behind it.</p>
-                        </div>
-                        <div class="col-lg-6 mil-mb60">
-                            <div class="row mil-work-step-grid">
-                                <div class="col-md-6">
-                                    <div class="mil-stat-card mil-up">
-                                        <span class="mil-suptitle mil-accent mil-mb20">01</span>
-                                        <h3 class="mil-fs26 mil-mb20">Listen</h3>
-                                        <p class="mil-text mil-fs16">We understand the context, goals and current challenges before proposing any direction.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mil-stat-card mil-up">
-                                        <span class="mil-suptitle mil-accent mil-mb20">02</span>
-                                        <h3 class="mil-fs26 mil-mb20">Define</h3>
-                                        <p class="mil-text mil-fs16">We shape the right scope, priorities and creative route for the specific service you need.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mil-stat-card mil-up">
-                                        <span class="mil-suptitle mil-accent mil-mb20">03</span>
-                                        <h3 class="mil-fs26 mil-mb20">Build</h3>
-                                        <p class="mil-text mil-fs16">We turn the direction into visual pieces, systems or content that can move into the real world.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mil-stat-card mil-up">
-                                        <span class="mil-suptitle mil-accent mil-mb20">04</span>
-                                        <h3 class="mil-fs26 mil-mb20">Deliver</h3>
-                                        <p class="mil-text mil-fs16">We deliver assets, systems or recommendations that are ready to be used with confidence.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -317,15 +489,19 @@
                                     <p class="mil-text mil-fs16 mil-mb90 mil-up">Take a look at our latest design projects done for our newest clients, we have worked countless hours for total satisfaction.</p>
                                 </div>
                             </div>
-                            <a href="project.html" class="mil-project-card mil-mb30 mil-up mil-c-view">
+                            <a href="project-beyond-sas.html" class="mil-project-card mil-mb30 mil-up mil-c-view">
                                 <div class="mil-cover-frame mil-v">
                                     <div class="mil-hover-frame">
-                                        <img src="img/portfolio/imagen-100-1464.png.jpg" alt="project cover" class="mil-scale-img" data-value-1="1" data-value-2="1" loading="lazy" decoding="async">
+                                        <img src="img/portfolio/beyond-cover-web.jpg" alt="Beyond SAS — cover" class="mil-scale-img" data-value-1="1" data-value-2="1" loading="lazy" decoding="async">
                                     </div>
                                     <div class="mil-hover-overlay"></div>
+                                    <div class="gs-client-label">
+                                        <span class="gs-client-tag">Diseño & Desarrollo Web</span>
+                                        <span class="gs-client-name">Beyond SAS</span>
+                                    </div>
                                 </div>
                             </a>
-                            <a href="project.html" class="mil-project-card mil-mb30 mil-up mil-c-view">
+                            <a href="javascript:void(0)" onclick="return false;" style="cursor:default;" class="mil-project-card mil-mb30 mil-up mil-c-view">
                                 <div class="mil-cover-frame mil-s">
                                     <div class="mil-hover-frame">
                                         <img src="img/portfolio/imagen-100-1600.png" alt="project cover" class="mil-scale-img" data-value-1="1" data-value-2="1.25" loading="lazy" decoding="async">
@@ -335,15 +511,19 @@
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="project.html" class="mil-project-card mil-mb30 mil-up mil-c-view">
+                            <a href="project-wac-sas.html" class="mil-project-card mil-mb30 mil-up mil-c-view">
                                 <div class="mil-cover-frame mil-h">
                                     <div class="mil-hover-frame">
-                                        <img src="img/portfolio/imagen-100-667.png" alt="project cover" class="mil-scale-img" data-value-1="1" data-value-2="1.25" loading="lazy" decoding="async">
+                                        <img src="img/portfolio/wac-sas-cover-web.jpg" alt="WAC SAS — cover" class="mil-scale-img" data-value-1="1" data-value-2="1.25" loading="lazy" decoding="async">
                                     </div>
                                     <div class="mil-hover-overlay"></div>
+                                    <div class="gs-client-label">
+                                        <span class="gs-client-tag">Diseño & Desarrollo Web</span>
+                                        <span class="gs-client-name">WAC SAS</span>
+                                    </div>
                                 </div>
                             </a>
-                            <a href="project.html" class="mil-project-card mil-mb30 mil-up mil-c-view">
+                            <a href="javascript:void(0)" onclick="return false;" style="cursor:default;" class="mil-project-card mil-mb30 mil-up mil-c-view">
                                 <div class="mil-cover-frame mil-v">
                                     <div class="mil-hover-frame">
                                         <img src="img/portfolio/imagen-100-1500.png" alt="project cover" class="mil-scale-img" data-value-1="1" data-value-2="1.25" loading="lazy" decoding="async">
@@ -359,6 +539,50 @@
                 </div>
             </div>
             <!-- portfolio end -->
+            <!-- testimonials -->
+            <div class="mil-p-120-120">
+                <div class="container">
+                    <div class="mil-mb60">
+                        <span class="mil-suptitle mil-accent mil-mb30 mil-up" style="display:block;">Testimonials</span>
+                        <h2 class="mil-fs42 mil-up">Lo que dicen nuestros clientes.</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <div class="gs-testimonial-card">
+                                <i class="fas fa-quote-left gs-testimonial-quote-icon"></i>
+                                <div class="gs-testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="gs-testimonial-text">"El equipo de Gessler entendió exactamente lo que necesitábamos: un sitio que reflejara la solidez de nuestra planta y nuestra trayectoria. El resultado superó lo que teníamos en mente, y el proceso fue claro de principio a fin."</p>
+                                <div class="gs-testimonial-author">
+                                    <div class="gs-testimonial-avatar gs-testimonial-orange">JV</div>
+                                    <div>
+                                        <h5 class="mil-fs16 mil-mb0">Juan Vélez</h5>
+                                        <span class="gs-testimonial-role">Beyond SAS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <div class="gs-testimonial-card gs-testimonial-blue">
+                                <i class="fas fa-quote-left gs-testimonial-quote-icon"></i>
+                                <div class="gs-testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="gs-testimonial-text">"Pasar nuestro catálogo a un formato digital con cotización directa por WhatsApp cambió la forma en que nuestros clientes nos compran. Gessler lo entendió desde el primer día y lo entregó sin complicaciones."</p>
+                                <div class="gs-testimonial-author">
+                                    <div class="gs-testimonial-avatar gs-testimonial-blue-bg">AC</div>
+                                    <div>
+                                        <h5 class="mil-fs16 mil-mb0">Alex Cuéllar</h5>
+                                        <span class="gs-testimonial-role">WAC SAS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- testimonials end -->
             <!-- portfolio logo reveal sequence -->
             <section class="mil-scroll-sequence mil-scroll-sequence-logo-reveal" data-scroll-sequence data-sequence-immersive="true" data-frame-count="156" data-frame-path="img/sequence/logo-reveal/frame-{index}.jpg">
                 <div class="mil-scroll-sequence-stage">
@@ -436,9 +660,9 @@
                         <div class="col-lg-4 mil-mb90">
                             <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
                             <ul class="mil-footer-list">
-                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
+                                <li class="mil-text mil-up">Phone: +57 319 349 0741</li>
                                 <li class="mil-text mil-up">Email: hola@gesslerstudio.com</li>
-                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, United States</li>
+                                <li class="mil-text mil-up">Address: Calle 80A Sur #5-18, Bogotá, Colombia</li>
                             </ul>
                         </div>
                     </div>
@@ -479,6 +703,29 @@
     <script src="js/site-translate.js?v=gs-i18n-1"></script>
     <!-- Gessler Studio js -->
     <script src="js/main.js?v=gs-i18n-1"></script>
+
+    <script>
+        (function () {
+            var carousel = document.getElementById('gs-step-carousel');
+            if (!carousel) return;
+            var slides = carousel.querySelectorAll('.gs-step-slide');
+            var dots = carousel.querySelectorAll('.gs-step-dot');
+            var current = 0;
+
+            function goTo(index) {
+                slides[current].classList.remove('gs-step-active');
+                dots[current].classList.remove('gs-step-active');
+                current = index;
+                slides[current].classList.add('gs-step-active');
+                dots[current].classList.add('gs-step-active');
+                carousel.classList.toggle('gs-carousel-blue', slides[current].getAttribute('data-color') === 'blue');
+            }
+
+            setInterval(function () {
+                goTo((current + 1) % slides.length);
+            }, 2200);
+        })();
+    </script>
 
 </body>
 

@@ -34,6 +34,71 @@
         }
         .gs-placeholder.gs-ph-wide { height: 420px; }
 
+        /* Gallery photos */
+        .gs-gallery-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #2a2a2a;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s;
+        }
+        .gs-gallery-img:hover { opacity: 0.85; }
+
+        /* Photo lightbox */
+        .gs-photo-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0,0,0,0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .gs-photo-lightbox.active { display: flex; }
+        .gs-photo-lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+        .gs-photo-lightbox-close {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .gs-photo-lightbox-close:hover { opacity: 1; }
+
+        /* Site link button */
+        .gs-site-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 12px 20px;
+            border: 1px solid #F35A38;
+            border-radius: 4px;
+            color: #F35A38;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .gs-site-link-btn:hover { background: #F35A38; color: #fff; }
+
         /* Tech stack tags */
         .gs-tags {
             display: flex;
@@ -355,7 +420,6 @@
             </div>
             <div class="gs-breadcrumb-spacer"></div>
 
-
             <div class="mil-p-240-120 mil-992-p-150-120">
                 <div class="container">
 
@@ -365,17 +429,18 @@
                             <div class="gs-accent-line mil-up"></div>
                             <span class="mil-suptitle mil-accent mil-mb30 mil-up" style="display:block;">Diseño & Desarrollo Web</span>
                             <h2 class="mil-fs42 mil-mb30 mil-up">Beyond SAS</h2>
-                            <p class="mil-text mil-mb30 mil-up">Diseño y desarrollo completo del sitio web corporativo de Beyond SAS. Construido desde cero en <strong style="color:#F35A38;">HTML y CSS puro</strong>, sin frameworks, con enfoque en rendimiento, estructura clara y experiencia de navegación fluida.</p>
-                            <p class="mil-text mil-mb30 mil-up">Cada sección fue estructurada con código limpio y semántico, tipografía cuidada y una paleta visual coherente con la identidad de la empresa. El resultado: un sitio rápido, estable y 100% personalizado.</p>
+                            <p class="mil-text mil-mb30 mil-up">Diseño y desarrollo completo del sitio web corporativo de Beyond SAS. Construido con <strong style="color:#F35A38;">Next.js y React</strong>, con animaciones 3D en tiempo real y transiciones fluidas en cada sección.</p>
+                            <img src="img/portfolio/beyond-cover-web.jpg" alt="Beyond SAS: mockup del sitio web" class="gs-gallery-img mil-mb30 mil-up" style="height:auto; width:90%;">
+                            <p class="mil-text mil-mb30 mil-up">Cada sección fue estructurada con componentes reutilizables, tipografía cuidada y una paleta visual coherente con la identidad de la empresa. Sitio bilingüe (ES/EN), rápido, estable y 100% personalizado.</p>
 
                             <!-- tech tags -->
                             <div class="gs-tags mil-up">
-                                <span class="gs-tag orange"><i class="fab fa-html5"></i> HTML5</span>
-                                <span class="gs-tag orange"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                <span class="gs-tag orange"><i class="fab fa-react"></i> Next.js</span>
+                                <span class="gs-tag orange"><i class="fab fa-react"></i> React</span>
+                                <span class="gs-tag blue"><i class="fas fa-cube"></i> Three.js / R3F</span>
+                                <span class="gs-tag blue"><i class="fas fa-magic"></i> Framer Motion</span>
+                                <span class="gs-tag orange"><i class="fas fa-language"></i> Bilingüe ES/EN</span>
                                 <span class="gs-tag blue"><i class="fas fa-mobile-alt"></i> Responsive</span>
-                                <span class="gs-tag blue"><i class="fas fa-bolt"></i> Performance</span>
-                                <span class="gs-tag orange"><i class="fas fa-paint-brush"></i> UI Design</span>
-                                <span class="gs-tag blue"><i class="fas fa-layer-group"></i> UX Structure</span>
                             </div>
 
                             <div class="mil-share mil-up">
@@ -395,7 +460,7 @@
                             </div>
                             <div class="mil-mb30 mil-up">
                                 <h5 class="mil-fs16 mil-mb15">Servicios:</h5>
-                                <p>Diseño UI/UX · Desarrollo front-end · HTML & CSS</p>
+                                <p>Diseño UI/UX · Desarrollo front-end · Next.js / React</p>
                             </div>
                             <div class="mil-mb30 mil-up">
                                 <h5 class="mil-fs16 mil-mb15">Año:</h5>
@@ -404,14 +469,17 @@
                             <div class="mil-up" style="margin-top: 40px;">
                                 <div class="gs-stats">
                                     <div class="gs-stat">
-                                        <div class="gs-stat-num orange">100%</div>
-                                        <div class="gs-stat-label">HTML & CSS</div>
+                                        <div class="gs-stat-num orange">2008</div>
+                                        <div class="gs-stat-label">Fundada</div>
                                     </div>
                                     <div class="gs-stat">
-                                        <div class="gs-stat-num blue">0</div>
-                                        <div class="gs-stat-label">Frameworks</div>
+                                        <div class="gs-stat-num blue">5.000 m²</div>
+                                        <div class="gs-stat-label">Planta en Bogotá</div>
                                     </div>
                                 </div>
+                                <a href="https://www.beyondgroup.co" target="_blank" rel="noopener" class="gs-site-link-btn">
+                                    <i class="fas fa-external-link-alt"></i> Link de la página web
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -428,7 +496,7 @@
                                 <div class="gs-browser-dots">
                                     <span></span><span></span><span></span>
                                 </div>
-                                <div class="gs-browser-url">beyondsas.com</div>
+                                <div class="gs-browser-url">beyondgroup.co</div>
                                 <!-- device switcher -->
                                 <div class="gs-device-btns">
                                     <button class="gs-device-btn active orange" onclick="setDevice('desktop', this)" title="Desktop">
@@ -459,13 +527,42 @@
                         </div>
                     </div>
 
-                    <!-- 3. IMAGES -->
+                    <!-- 3. HISTORIA DEL CLIENTE -->
+                    <div class="mil-mb30 mil-up">
+                        <div class="gs-accent-line"></div>
+                        <span class="mil-suptitle mil-accent mil-mb15" style="display:block;">El Cliente</span>
+                    </div>
+                    <div class="row mil-mb120">
+                        <div class="col-lg-7 mil-mb30 mil-up">
+                            <p class="mil-text mil-mb30">Beyond SAS nació en 2008 con una visión clara: construir la empresa de fabricación industrial más confiable de Colombia para marcas que exigen resultados de nivel internacional.</p>
+                            <p class="mil-text mil-mb30">Es una empresa colombiana especializada en el diseño, ingeniería, fabricación e implementación de soluciones para exhibición comercial, arquitectura comercial y mobiliario especializado para marcas nacionales e internacionales.</p>
+                            <p class="mil-text">Durante más de 15 años ha desarrollado proyectos para compañías del sector tecnológico, retail, moda y consumo masivo (Samsung, Apple, LG, Microsoft, Nestlé, Falabella), fabricando exhibidores comerciales, shop displays, mobiliario para experiencias de marca y arquitectura comercial desde su planta propia de 5.000 m² en Bogotá.</p>
+                        </div>
+                        <div class="col-lg-4 offset-lg-1 mil-mb30 mil-up">
+                            <h5 class="mil-fs16 mil-mb15">El reto del sitio:</h5>
+                            <p class="mil-text mil-mb30">Beyond necesitaba una presencia web que transmitiera la misma solidez industrial que su planta de producción: un sitio bilingüe, rápido y con presencia visual fuerte para competir por cuentas internacionales.</p>
+                            <h5 class="mil-fs16 mil-mb15">La solución:</h5>
+                            <p class="mil-text">Un sitio corporativo en Next.js/React con animación 3D en el hero, transiciones cuidadas y contenido en español e inglés, listo para mostrarse frente a marcas globales.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4. GALERÍA DE FOTOS -->
+                    <div class="mil-mb30 mil-up">
+                        <div class="gs-accent-line blue"></div>
+                        <span class="mil-suptitle mil-mb15" style="display:block; color:#1497e0;">Galería</span>
+                    </div>
                     <div class="row mil-mb120">
                         <div class="col-lg-6 mil-mb30 mil-up">
-                            <div class="gs-placeholder gs-ph-wide"><span>Screenshot — Beyond SAS</span></div>
+                            <img src="img/portfolio/beyond-foto-1.jpg" alt="Beyond SAS: foto 1" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 1: reemplazar img/portfolio/beyond-foto-1.jpg&lt;/span&gt;&lt;/div&gt;'">
                         </div>
                         <div class="col-lg-6 mil-mb30 mil-up">
-                            <div class="gs-placeholder gs-ph-wide"><span>Detalle de sección</span></div>
+                            <img src="img/portfolio/beyond-foto-2.jpg" alt="Beyond SAS: foto 2" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 2: reemplazar img/portfolio/beyond-foto-2.jpg&lt;/span&gt;&lt;/div&gt;'">
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <img src="img/portfolio/beyond-foto-3.jpg" alt="Beyond SAS: foto 3" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 3: reemplazar img/portfolio/beyond-foto-3.jpg&lt;/span&gt;&lt;/div&gt;'">
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <img src="img/portfolio/beyond-foto-4.jpg" alt="Beyond SAS: foto 4" class="gs-gallery-img" onclick="openPhotoLightbox(this.src)" onerror="this.parentElement.innerHTML='&lt;div class=&quot;gs-placeholder gs-ph-wide&quot;&gt;&lt;span&gt;Foto 4: reemplazar img/portfolio/beyond-foto-4.jpg&lt;/span&gt;&lt;/div&gt;'">
                         </div>
                     </div>
 
@@ -475,7 +572,7 @@
                             <a href="project-wac-sas.html" class="row flex-sm-row-reverse mil-jcb mil-aic mil-c-next">
                                 <div class="col-lg-7 mil-project-cover-frame">
                                     <div class="mil-cover-img mil-left mil-up">
-                                        <div class="gs-placeholder" style="height:300px;"><span>WAC SAS — cover</span></div>
+                                        <img src="img/portfolio/wac-sas-cover-web.jpg" alt="WAC SAS" style="width:100%; height:300px; object-fit:cover; border-radius:4px;">
                                     </div>
                                 </div>
                                 <div class="col-lg-5 mil-relative">
@@ -519,9 +616,9 @@
                         <div class="col-lg-4 mil-mb90">
                             <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
                             <ul class="mil-footer-list">
-                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
+                                <li class="mil-text mil-up">Phone: +57 319 349 0741</li>
                                 <li class="mil-text mil-up">Email: hola@gesslerstudio.com</li>
-                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, United States</li>
+                                <li class="mil-text mil-up">Address: Calle 80A Sur #5-18, Bogotá, Colombia</li>
                             </ul>
                         </div>
                     </div>
@@ -550,9 +647,15 @@
             <button class="gs-fullscreen-close" onclick="closeFullscreen()">
                 <i class="fas fa-times"></i> Cerrar
             </button>
-            <div class="gs-browser-url">beyondsas.com</div>
+            <div class="gs-browser-url">beyondgroup.co</div>
         </div>
         <iframe id="gs-fullscreen-iframe" src="" title="Beyond SAS fullscreen"></iframe>
+    </div>
+
+    <!-- photo lightbox -->
+    <div class="gs-photo-lightbox" id="gs-photo-lightbox" onclick="closePhotoLightbox()">
+        <button class="gs-photo-lightbox-close" onclick="closePhotoLightbox()"><i class="fas fa-times"></i></button>
+        <img id="gs-photo-lightbox-img" src="" alt="Foto ampliada" onclick="event.stopPropagation()">
     </div>
 
     <script src="js/plugins/gsap.min.js"></script>
@@ -568,7 +671,7 @@
             var overlay = document.getElementById('gs-load-overlay');
             var iframe = document.getElementById('beyond-iframe');
             overlay.style.display = 'none';
-            iframe.src = 'beyond/index.html';
+            iframe.src = 'https://www.beyondgroup.co';
         }
 
         function setDevice(device, btn) {
@@ -597,7 +700,7 @@
         function openFullscreen() {
             var overlay = document.getElementById('gs-fullscreen');
             var iframe = document.getElementById('gs-fullscreen-iframe');
-            iframe.src = 'beyond/index.html';
+            iframe.src = 'https://www.beyondgroup.co';
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -609,8 +712,22 @@
             document.body.style.overflow = '';
         }
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeFullscreen();
+            if (e.key === 'Escape') { closeFullscreen(); closePhotoLightbox(); }
         });
+
+        function openPhotoLightbox(src) {
+            var overlay = document.getElementById('gs-photo-lightbox');
+            var img = document.getElementById('gs-photo-lightbox-img');
+            img.src = src;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePhotoLightbox() {
+            var overlay = document.getElementById('gs-photo-lightbox');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     </script>
 
 </body>

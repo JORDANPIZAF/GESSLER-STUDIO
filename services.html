@@ -20,6 +20,65 @@
     <!-- page title -->
     <title>Gessler Studio</title>
 
+    <style>
+        /* Visual llamativo en cada tarjeta de servicio */
+        .mil-service-visual {
+            position: relative;
+            height: 180px;
+            border-radius: 8px;
+            margin-bottom: 28px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .mil-service-card:hover .mil-service-visual { transform: scale(1.03); }
+        .mil-service-visual i {
+            position: relative;
+            z-index: 2;
+            font-size: 54px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        .mil-service-visual::before,
+        .mil-service-visual::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.55;
+        }
+        .mil-visual-branding {
+            background: linear-gradient(135deg, #2a130d 0%, #14151A 70%);
+        }
+        .mil-visual-branding::before { width: 160px; height: 160px; background: #F35A38; top: -50px; left: -30px; }
+        .mil-visual-branding::after { width: 100px; height: 100px; background: #1497e0; bottom: -30px; right: 10px; opacity: 0.3; }
+
+        .mil-visual-web {
+            background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%);
+        }
+        .mil-visual-web::before { width: 160px; height: 160px; background: #1497e0; top: -50px; right: -30px; }
+        .mil-visual-web::after { width: 100px; height: 100px; background: #F35A38; bottom: -30px; left: 10px; opacity: 0.3; }
+
+        .mil-visual-video {
+            background: linear-gradient(135deg, #2a130d 0%, #0d1f2a 100%);
+        }
+        .mil-visual-video::before { width: 140px; height: 140px; background: #F35A38; top: -40px; left: 30%; }
+        .mil-visual-video::after { width: 140px; height: 140px; background: #1497e0; bottom: -50px; right: 20%; opacity: 0.35; }
+
+        .mil-visual-social {
+            background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%);
+        }
+        .mil-visual-social::before { width: 150px; height: 150px; background: #1497e0; bottom: -40px; left: -20px; }
+        .mil-visual-social::after { width: 90px; height: 90px; background: #F35A38; top: -20px; right: 20px; opacity: 0.3; }
+
+        .mil-visual-strategy {
+            background: linear-gradient(135deg, #2a130d 0%, #14151A 70%);
+        }
+        .mil-visual-strategy::before { width: 150px; height: 150px; background: #F35A38; bottom: -40px; right: -20px; }
+        .mil-visual-strategy::after { width: 90px; height: 90px; background: #1497e0; top: -20px; left: 20px; opacity: 0.3; }
+    </style>
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-gessler-studio.svg" type="image/svg+xml">
@@ -112,7 +171,7 @@
             <div class="mil-p-120-60">
                 <div class="container">
                     <div class="row mil-jcb">
-                        <div class="col-lg-5 mil-mb60">
+                        <div class="col-lg-7 mil-mb60">
                             <div class="mil-up">
                                 <span class="mil-service-eyebrow">5 core services</span>
                                 <h2 class="mil-fs46 mil-light mil-mb30">Creative and strategic services designed to move your brand forward.</h2>
@@ -120,18 +179,11 @@
                                 <p class="mil-text">Choose a service to explore the details, deliverables and the kind of projects where it creates the most value.</p>
                             </div>
                         </div>
-                        <div class="col-lg-6 mil-mb60">
-                            <div class="mil-just-image mil-h mil-mb30 mil-up">
-                                <img src="img/banners/18.jpg" alt="Services overview" class="mil-scale-img" data-value-1="1" data-value-2="1.15">
-                            </div>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 mil-mb30 mil-up">
                             <a href="service-branding.html" class="mil-service-card mil-c-gone">
-                                <span class="mil-service-card-top">
-                                    <span class="mil-service-card-icon"><i class="fas fa-star"></i></span>
-                                </span>
+                                <div class="mil-service-visual mil-visual-branding"><i class="fas fa-star"></i></div>
                                 <h3 class="mil-fs30 mil-light mil-mb20">Branding</h3>
                                 <p class="mil-text mil-mb30">Identity systems, brand voice and visual direction for businesses that need a clearer presence and a stronger first impression.</p>
                                 <ul class="mil-service-chip-list">
@@ -144,9 +196,7 @@
                         </div>
                         <div class="col-lg-6 mil-mb30 mil-up">
                             <a href="service-web-design.html" class="mil-service-card mil-c-gone">
-                                <span class="mil-service-card-top">
-                                    <span class="mil-service-card-icon"><i class="fas fa-laptop-code"></i></span>
-                                </span>
+                                <div class="mil-service-visual mil-visual-web"><i class="fas fa-laptop-code"></i></div>
                                 <h3 class="mil-fs30 mil-light mil-mb20">Web Design</h3>
                                 <p class="mil-text mil-mb30">Landing pages and websites with a clear message, intentional layout and a digital experience aligned with your brand.</p>
                                 <ul class="mil-service-chip-list">
@@ -159,9 +209,7 @@
                         </div>
                         <div class="col-lg-6 mil-mb30 mil-up">
                             <a href="service-animation-video.html" class="mil-service-card mil-c-gone">
-                                <span class="mil-service-card-top">
-                                    <span class="mil-service-card-icon"><i class="fas fa-play-circle"></i></span>
-                                </span>
+                                <div class="mil-service-visual mil-visual-video"><i class="fas fa-play-circle"></i></div>
                                 <h3 class="mil-fs30 mil-light mil-mb20">Animation and Video Editing</h3>
                                 <p class="mil-text mil-mb30">Visual motion pieces and edited video content that make communication more dynamic, memorable and platform-ready.</p>
                                 <ul class="mil-service-chip-list">
@@ -174,9 +222,7 @@
                         </div>
                         <div class="col-lg-6 mil-mb30 mil-up">
                             <a href="service-social-media.html" class="mil-service-card mil-c-gone">
-                                <span class="mil-service-card-top">
-                                    <span class="mil-service-card-icon"><i class="fas fa-hashtag"></i></span>
-                                </span>
+                                <div class="mil-service-visual mil-visual-social"><i class="fas fa-hashtag"></i></div>
                                 <h3 class="mil-fs30 mil-light mil-mb20">Social Media</h3>
                                 <p class="mil-text mil-mb30">Content systems and social assets that help brands stay consistent, visible and better organized across platforms.</p>
                                 <ul class="mil-service-chip-list">
@@ -189,9 +235,7 @@
                         </div>
                         <div class="col-lg-6 mil-mb30 mil-up">
                             <a href="service-communication-strategy.html" class="mil-service-card mil-c-gone">
-                                <span class="mil-service-card-top">
-                                    <span class="mil-service-card-icon"><i class="fas fa-comments"></i></span>
-                                </span>
+                                <div class="mil-service-visual mil-visual-strategy"><i class="fas fa-comments"></i></div>
                                 <h3 class="mil-fs30 mil-light mil-mb20">Communication Strategies</h3>
                                 <p class="mil-text mil-mb30">Strategic direction to define what a brand should say, how it should say it and how to align communication with business goals.</p>
                                 <ul class="mil-service-chip-list">
@@ -219,21 +263,21 @@
                             <div class="row">
                                 <div class="col-md-4 mil-mb30 mil-up">
                                     <div class="mil-service-step">
-                                        <span class="mil-service-step-number">01</span>
+                                        <div class="mil-service-visual mil-visual-branding"><i class="fas fa-headphones-alt"></i></div>
                                         <h5 class="mil-light mil-mb15">Listen</h5>
                                         <p class="mil-text">We understand the context, goals and current challenges before proposing any direction.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mil-mb30 mil-up">
                                     <div class="mil-service-step">
-                                        <span class="mil-service-step-number">02</span>
+                                        <div class="mil-service-visual mil-visual-web"><i class="fas fa-bullseye"></i></div>
                                         <h5 class="mil-light mil-mb15">Define</h5>
                                         <p class="mil-text">We shape the right scope, priorities and creative route for the specific service you need.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mil-mb30 mil-up">
                                     <div class="mil-service-step">
-                                        <span class="mil-service-step-number">03</span>
+                                        <div class="mil-service-visual mil-visual-video"><i class="fas fa-rocket"></i></div>
                                         <h5 class="mil-light mil-mb15">Build</h5>
                                         <p class="mil-text">We deliver assets, systems or recommendations that are ready to be used with confidence.</p>
                                     </div>
@@ -287,9 +331,9 @@
                         <div class="col-lg-4 mil-mb90">
                             <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
                             <ul class="mil-footer-list">
-                                <li class="mil-text mil-up">Phone: +051 - 958 237 851</li>
+                                <li class="mil-text mil-up">Phone: +57 319 349 0741</li>
                                 <li class="mil-text mil-up">Email: hola@gesslerstudio.com</li>
-                                <li class="mil-text mil-up">Address: 300 St. Mary's L, Suite 8060, Houston,<br> TX 77079, United States</li>
+                                <li class="mil-text mil-up">Address: Calle 80A Sur #5-18, Bogotá, Colombia</li>
                             </ul>
                         </div>
                     </div>
