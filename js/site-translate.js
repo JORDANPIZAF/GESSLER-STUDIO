@@ -51,6 +51,8 @@ const TRANSLATIONS = {
         "Latest news": "Últimas noticias",
         "Contact Us": "Contáctanos",
         "Menu": "Menú",
+        "Our Pages": "Nuestras páginas",
+        "Our Services": "Nuestros servicios",
         "Our Team": "Nuestro equipo",
         "Projects": "Proyectos",
         "Back to top": "Volver arriba",
