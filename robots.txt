@@ -1,0 +1,42 @@
+User-agent: *
+Allow: /
+
+# Panel interno y su API, no son contenido público
+Disallow: /admin.html
+Disallow: /api/
+
+# Sitio de otro cliente que quedó copiado dentro de este repositorio por error,
+# no es contenido de Gessler Studio
+Disallow: /beyond/
+
+# Páginas de demostración de la plantilla original, sin contenido real del negocio
+Disallow: /home-1.html
+Disallow: /home-2.html
+Disallow: /home-3.html
+Disallow: /home-4.html
+Disallow: /home-5.html
+Disallow: /home-6.html
+Disallow: /home-7.html
+Disallow: /home-8.html
+Disallow: /home-9.html
+Disallow: /home-10.html
+Disallow: /home-11.html
+Disallow: /home-12.html
+Disallow: /home-13.html
+Disallow: /portfolio-1.html
+Disallow: /portfolio-3.html
+Disallow: /portfolio-slider.html
+Disallow: /portfolio-slider-2.html
+Disallow: /item.html
+Disallow: /publication.html
+Disallow: /project.html
+Disallow: /store.html
+Disallow: /coming-soon.html
+Disallow: /blog.html
+Disallow: /pricing.html
+Disallow: /404.html
+
+# Caso de estudio con imágenes de marcador de posición (aún sin fotos reales del proyecto)
+Disallow: /project-canasta-panaderia.html
+
+Sitemap: https://gesslerstudio.com/sitemap.xml

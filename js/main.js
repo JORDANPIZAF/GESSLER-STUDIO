@@ -218,55 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createThemeSwitcher();
 
-    const initializeNavbarLogoHover = () => {
-        const hoverGifPath = 'img/logo-gessler-hover.gif';
-        const animationDuration = 2400;
-
-        document.querySelectorAll('.mil-top-panel .mil-logo-image').forEach((logoImage) => {
-            if (!logoImage.dataset.logoOriginal) {
-                logoImage.dataset.logoOriginal = logoImage.getAttribute('src') || 'img/logo-gessler-studio.svg';
-            }
-
-            if (!logoImage.dataset.logoHover) {
-                logoImage.dataset.logoHover = hoverGifPath;
-            }
-
-            const logoLink = logoImage.closest('.mil-logo');
-
-            if (!logoLink || logoLink.dataset.logoHoverBound === 'true') {
-                return;
-            }
-
-            logoLink.dataset.logoHoverBound = 'true';
-
-            const resetLogo = () => {
-                window.clearTimeout(logoLink.__logoHoverTimer);
-                logoLink.classList.remove('mil-logo-playing');
-                logoLink.classList.remove('mil-logo-returning');
-                logoImage.setAttribute('src', logoImage.dataset.logoOriginal);
-                void logoImage.offsetWidth;
-                logoLink.classList.add('mil-logo-returning');
-            };
-
-            const playLogoAnimation = () => {
-                window.clearTimeout(logoLink.__logoHoverTimer);
-                logoLink.classList.remove('mil-logo-returning');
-                logoLink.classList.add('mil-logo-playing');
-                logoImage.setAttribute('src', `${logoImage.dataset.logoHover}?play=${Date.now()}`);
-                logoLink.__logoHoverTimer = window.setTimeout(resetLogo, animationDuration);
-            };
-
-            logoLink.addEventListener('mouseenter', playLogoAnimation);
-            logoLink.addEventListener('focusin', playLogoAnimation);
-            logoImage.addEventListener('animationend', (event) => {
-                if (event.animationName === 'mil-logo-return') {
-                    logoLink.classList.remove('mil-logo-returning');
-                }
-            });
-        });
-    };
-
-    initializeNavbarLogoHover();
+    // Logo hover GIF-swap removed per request: the nav logo stays static now.
 
     const initializeTopPanelGlow = () => {
         document.querySelectorAll('.mil-top-panel').forEach((panel) => {
@@ -331,25 +283,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 whatsapp: 'WhatsApp',
                 whatsappMeta: 'Chat with us',
                 email: 'Email',
-                emailMeta: 'miltimedia@gessler.com',
+                emailMeta: 'hola@gesslerstudio.com',
                 location: 'Location',
-                locationMeta: 'Open map'
+                locationMeta: 'Bogot\u00e1, Colombia'
             },
             es: {
                 title: 'Cont\u00e1ctanos',
                 whatsapp: 'WhatsApp',
                 whatsappMeta: 'Escr\u00edbenos',
                 email: 'Correo',
-                emailMeta: 'miltimedia@gessler.com',
+                emailMeta: 'hola@gesslerstudio.com',
                 location: 'Ubicaci\u00f3n',
-                locationMeta: 'Abrir mapa'
+                locationMeta: 'Bogot\u00e1, Colombia'
             }
         };
 
         const contactLinks = {
-            whatsapp: 'https://wa.me/51958237851',
-            email: 'mailto:miltimedia@gessler.com',
-            location: 'https://maps.google.com/?q=Gessler+Studio'
+            whatsapp: 'https://wa.me/573193490741',
+            email: 'mailto:hola@gesslerstudio.com',
+            location: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Calle 80A Sur #5-18, Bogot\u00e1, Colombia')
         };
 
         const renderFooterContactButtons = () => {
@@ -710,17 +662,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* -------------------------------------------
 
-    menu
-
-    ------------------------------------------- */
-    document.addEventListener('click', function (event) {
-        if (event.target.classList.contains('mil-menu-btn')) {
-            event.target.classList.toggle('mil-active');
-            document.querySelector('.mil-menu-window').classList.toggle('mil-active');
-        }
-    });
-    /* -------------------------------------------
-
     back to top
 
     ------------------------------------------- */
@@ -828,7 +769,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const runTypingHtml = (element) => {
         const template = document.createElement('template');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const currentLanguage = localStorage.getItem('site-language') || 'en';
+        const currentLanguage = localStorage.getItem('site-language') || 'es';
         const sourceAttr = currentLanguage === 'es' && element.hasAttribute('data-type-html-es')
             ? 'data-type-html-es'
             : 'data-type-html';
@@ -1823,94 +1764,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-/* ===== HIDE NAV ON SCROLL ===== */
-(function () {
-    var panel = document.querySelector('.mil-top-panel');
-    if (!panel) return;
-
-    var lastY = 0;
-    var idleTimer = null;
-    var hidden = false;
-
-    function showNav() {
-        if (hidden) {
-            panel.classList.remove('mil-nav-hidden');
-            hidden = false;
-        }
-    }
-
-    function hideNav() {
-        if (!hidden) {
-            panel.classList.add('mil-nav-hidden');
-            hidden = true;
-        }
-    }
-
-    function resetIdle() {
-        clearTimeout(idleTimer);
-        idleTimer = setTimeout(showNav, 700);
-    }
-
-    function onScroll(currentY) {
-        var delta = currentY - lastY;
-        if (currentY > 150) {
-            if (delta > 4) {
-                hideNav();
-            } else if (delta < -2) {
-                showNav();
-            }
-        } else {
-            showNav();
-        }
-        resetIdle();
-        lastY = currentY;
-    }
-
-    // ScrollTrigger hook (funciona con GSAP ScrollSmoother)
-    window.addEventListener('DOMContentLoaded', function () {
-        if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.create({
-                onUpdate: function (self) {
-                    onScroll(self.scroll());
-                }
-            });
-        } else {
-            // fallback nativo
-            window.addEventListener('scroll', function () {
-                onScroll(window.scrollY);
-            }, { passive: true });
-        }
-    });
-}());
-
-/* ===== WHATSAPP FLOATING BUTTON ===== */
-document.addEventListener('DOMContentLoaded', function () {
-    "use strict";
-
-    var GS_WHATSAPP_NUMBER = '573193490741';
-    var GS_WHATSAPP_MESSAGES = {
-        en: 'Hello, I would like information about your services',
-        es: 'Hola, quiero información sobre sus servicios'
-    };
-    var GS_WHATSAPP_LABELS = {
-        en: 'Chat on WhatsApp',
-        es: 'Chatear por WhatsApp'
-    };
-
-    var link = document.createElement('a');
-    link.className = 'gs-whatsapp-btn';
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.innerHTML = '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.484 1.34 5.002L2 22l5.117-1.342a9.955 9.955 0 0 0 4.887 1.244h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.18-2.928-7.07a9.935 9.935 0 0 0-7.07-2.928zm0 18.164h-.003a8.166 8.166 0 0 1-4.166-1.14l-.299-.177-3.037.797.811-2.96-.195-.304a8.16 8.16 0 0 1-1.25-4.383c0-4.509 3.669-8.178 8.182-8.178 2.186 0 4.24.852 5.786 2.399a8.13 8.13 0 0 1 2.394 5.788c0 4.509-3.67 8.158-8.223 8.158z"/></svg>';
-
-    document.body.appendChild(link);
-
-    var updateWhatsappButton = function () {
-        var currentLanguage = localStorage.getItem('site-language') === 'es' ? 'es' : 'en';
-        link.href = 'https://wa.me/' + GS_WHATSAPP_NUMBER + '?text=' + encodeURIComponent(GS_WHATSAPP_MESSAGES[currentLanguage]);
-        link.setAttribute('aria-label', GS_WHATSAPP_LABELS[currentLanguage]);
-    };
-
-    updateWhatsappButton();
-    window.initializeWhatsappButton = updateWhatsappButton;
-});
+/* Nav scroll show/hide, logo hover, contact button and language pill now live in js/pillnav.js */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="es">
 
 <head>
 
@@ -16,12 +16,45 @@
     <!-- swiper css -->
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <!-- Gessler Studio css -->
-    <link rel="stylesheet" href="css/style.css?v=gs-nav-2">
+    <link rel="stylesheet" href="css/style.css?v=gs-nav-7">
     <!-- page title -->
-    <title>Gessler studio</title>
+    <title>Gessler Studio | Agencia de Diseño y Desarrollo Web en Bogotá</title>
+    <meta name="description" content="Gessler Studio es una agencia de diseño y desarrollo web en Bogotá. Creamos sitios corporativos, landing pages y catálogos online con identidad visual propia. Cuéntanos sobre tu proyecto.">
+    <link rel="canonical" href="https://gesslerstudio.com/">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Gessler Studio",
+        "image": "https://gesslerstudio.com/img/logo-gessler-studio.svg",
+        "url": "https://gesslerstudio.com/",
+        "telephone": "+57 319 349 0741",
+        "email": "hola@gesslerstudio.com",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle 80A Sur #5-18",
+            "addressLocality": "Bogotá",
+            "addressCountry": "CO"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Bogotá"
+        },
+        "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Gessler Studio",
+        "url": "https://gesslerstudio.com/"
+    }
+    </script>
 
     <style>
-        /* How we work: carrusel de pasos */
+        /* Cómo trabajamos: carrusel de pasos */
         .gs-step-carousel {
             position: relative;
             background-color: #14151A;
@@ -238,66 +271,59 @@
         <!-- scroll progress end -->
 
         <!-- top panel -->
-        <div class="mil-top-panel">
-            <div class="container">
-                <div class="row mil-aic">
-                    <div class="col-6">
-                        <a href="index.html" class="mil-logo mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
-                    </div>
-                    <div class="col-6 mil-jce mil-aic">
-                        <div class="mil-buttons-frame">
-                            <div class="mil-language-switcher mil-c-gone" data-language-switcher>
-    <button type="button" class="mil-language-option" data-language-option="en">EN</button>
-    <span class="mil-language-divider" aria-hidden="true">|</span>
-    <button type="button" class="mil-language-option" data-language-option="es">ES</button>
-</div>
-                            <div class="mil-menu-btn mil-c-gone">
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- floating pill nav (ported from Beyond) -->
+        <div class="gs-pillnav-wrap">
+            <div class="gs-pillnav">
+                <a href="index.html" class="gs-pillnav-logo mil-logo mil-c-gone" aria-label="Inicio de Gessler Studio">
+                    <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                </a>
+                <span class="gs-pillnav-sep" aria-hidden="true"></span>
+                <div class="gs-pillnav-items">
+                    <span class="gs-pillnav-highlight" aria-hidden="true"></span>
                 </div>
             </div>
-        </div>
-        <!-- top panel end -->
-
-        <!-- menu -->
-        <div class="mil-menu-window">
-            <div class="container">
-                <ul class="mil-main-menu mil-c-gone">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="portfolio-2.html">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About us</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                </ul>
-                <ul class="mil-social mil-center">
-                    <li><a href="#." class="mil-c-gone"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#." class="mil-c-gone"><i class="fab fa-behance"></i></a></li>
-                    <li><a href="#." class="mil-c-gone"><i class="fab fa-instagram"></i></a></li>
-                </ul>
+            <div class="gs-pillnav-contact">
+                <span class="gs-pillnav-contact-bg" aria-hidden="true"></span>
+                <a href="#" class="gs-pillnav-contact-link mil-c-gone" target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp">
+                    <span class="gs-pillnav-contact-icon"></span>
+                    <span class="gs-pillnav-contact-text">Chatear por WhatsApp</span>
+                </a>
+            </div>
+            <div class="gs-pillnav-lang" data-language-switcher>
+                <button type="button" class="mil-language-option mil-c-gone" data-language-option="en">EN</button>
+                <span aria-hidden="true">|</span>
+                <button type="button" class="mil-language-option mil-c-gone" data-language-option="es">ES</button>
+            </div>
+            <div class="gs-pillnav-mobile">
+                <a href="index.html" class="gs-pillnav-mobile-logo mil-logo mil-c-gone" aria-label="Inicio de Gessler Studio">
+                    <img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image">
+                </a>
+                <button type="button" class="gs-pillnav-burger mil-c-gone" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        <!-- menu end -->
+        <div class="gs-pillnav-overlay">
+            <div class="gs-pillnav-overlay-links"></div>
+            <a href="#" class="gs-pillnav-overlay-cta mil-c-gone" target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp">
+                <span class="gs-pillnav-overlay-cta-icon"></span>
+                <span class="gs-pillnav-overlay-cta-text">Chatear por WhatsApp</span>
+            </a>
+            <div class="gs-pillnav-overlay-lang" data-language-switcher>
+                <button type="button" class="mil-language-option mil-c-gone" data-language-option="en">EN</button>
+                <span aria-hidden="true">|</span>
+                <button type="button" class="mil-language-option mil-c-gone" data-language-option="es">ES</button>
+            </div>
+        </div>
+        <!-- floating pill nav end -->
 
-        <!-- content -->
+<!-- content -->
         <div id="smooth-content" class="mil-content">
 
             <!-- typing hero -->
             <section class="mil-typing-hero mil-title-particles">
                 <div class="container">
                     <div class="mil-typing-hero-inner">
-                        <h1 class="mil-typing-title" data-type-html="<span>HERE BEGINS THE </span><span class='mil-typing-orange'>CHANGE,</span><span> WE DEVELOP YOUR </span><span class='mil-typing-blue'>IDEAS.</span><span></span>" data-type-html-es="<span>AQUI EMPIEZA EL </span><span class='mil-typing-orange'>CAMBIO,</span><span> DESARROLLAMOS TUS </span><span class='mil-typing-blue'>IDEAS.</span><span></span>"></h1>
+                        <span class="mil-suptitle mil-accent mil-mb20 mil-up" style="display:block;">Bogotá, Colombia</span>
+                        <h1 class="mil-typing-title" data-type-html="<span>WE DESIGN AND </span><span class='mil-typing-orange'>DEVELOP</span><span> WEBSITES IN </span><span class='mil-typing-blue'>BOGOTÁ.</span><span></span>" data-type-html-es="<span>DISEÑAMOS Y </span><span class='mil-typing-orange'>DESARROLLAMOS</span><span> PÁGINAS WEB EN </span><span class='mil-typing-blue'>BOGOTÁ.</span><span></span>"></h1>
                         <div class="mil-typing-underline" aria-hidden="true"></div>
                     </div>
                 </div>
@@ -308,7 +334,7 @@
             <section class="mil-home-video" data-video-expand>
                 <div class="mil-home-video-stage">
                     <div class="mil-home-video-card">
-                        <video class="mil-home-video-media" autoplay muted loop playsinline preload="auto" poster="video/home-intro-poster.jpg" aria-label="Gessler Studio intro video">
+                        <video class="mil-home-video-media" autoplay muted loop playsinline preload="auto" poster="video/home-intro-poster.jpg" aria-label="Video de introducción de Gessler Studio">
                             <source src="video/home-intro.webm" type="video/webm">
                             <source src="video/home-intro.mp4" type="video/mp4">
                         </video>
@@ -322,80 +348,80 @@
                 <div class="mil-text-marquee mil-up">
                     <div class="mil-text-marquee-track">
                         <div class="mil-text-marquee-group">
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
                             <span class="mil-text-marquee-item mil-blue">Branding</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
-                            <span class="mil-text-marquee-item mil-orange">Design</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
+                            <span class="mil-text-marquee-item mil-orange">Diseño</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
                             <span class="mil-text-marquee-item mil-blue">Multimedia</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
                             <span class="mil-text-marquee-item mil-orange">Social Media</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
-                            <span class="mil-text-marquee-item mil-blue">Creative Direction</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
+                            <span class="mil-text-marquee-item mil-blue">Dirección creativa</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
-                            <span class="mil-text-marquee-item mil-orange">Visual Systems</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
+                            <span class="mil-text-marquee-item mil-orange">Sistemas visuales</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Content Strategy</span>
+                            <span class="mil-text-marquee-item">Estrategia de contenido</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Campaign Thinking</span>
+                            <span class="mil-text-marquee-item">Pensamiento de campaña</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Digital Presence</span>
+                            <span class="mil-text-marquee-item">Presencia digital</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Art Direction</span>
+                            <span class="mil-text-marquee-item">Dirección de arte</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Motion Ideas</span>
+                            <span class="mil-text-marquee-item">Ideas en movimiento</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Creative Systems</span>
+                            <span class="mil-text-marquee-item">Sistemas creativos</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Strategic Vision</span>
+                            <span class="mil-text-marquee-item">Visión estratégica</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Visual Identity</span>
+                            <span class="mil-text-marquee-item">Identidad visual</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Storytelling</span>
+                            <span class="mil-text-marquee-item">Narrativa</span>
                         </div>
                         <div class="mil-text-marquee-group" aria-hidden="true">
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
                             <span class="mil-text-marquee-item mil-blue">Branding</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
-                            <span class="mil-text-marquee-item mil-orange">Design</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
+                            <span class="mil-text-marquee-item mil-orange">Diseño</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
                             <span class="mil-text-marquee-item mil-blue">Multimedia</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
                             <span class="mil-text-marquee-item mil-orange">Social Media</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
-                            <span class="mil-text-marquee-item mil-blue">Creative Direction</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
+                            <span class="mil-text-marquee-item mil-blue">Dirección creativa</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Precision under pressure</span>
-                            <span class="mil-text-marquee-item mil-orange">Visual Systems</span>
+                            <span class="mil-text-marquee-item">Precisión bajo presión</span>
+                            <span class="mil-text-marquee-item mil-orange">Sistemas visuales</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Content Strategy</span>
+                            <span class="mil-text-marquee-item">Estrategia de contenido</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Campaign Thinking</span>
+                            <span class="mil-text-marquee-item">Pensamiento de campaña</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Digital Presence</span>
+                            <span class="mil-text-marquee-item">Presencia digital</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Art Direction</span>
+                            <span class="mil-text-marquee-item">Dirección de arte</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Motion Ideas</span>
+                            <span class="mil-text-marquee-item">Ideas en movimiento</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Creative Systems</span>
+                            <span class="mil-text-marquee-item">Sistemas creativos</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Strategic Vision</span>
+                            <span class="mil-text-marquee-item">Visión estratégica</span>
                             <span class="mil-text-marquee-item mil-orange">*</span>
-                            <span class="mil-text-marquee-item">Visual Identity</span>
+                            <span class="mil-text-marquee-item">Identidad visual</span>
                             <span class="mil-text-marquee-item mil-blue">*</span>
-                            <span class="mil-text-marquee-item">Storytelling</span>
+                            <span class="mil-text-marquee-item">Narrativa</span>
                         </div>
                     </div>
                 </div>
@@ -406,10 +432,10 @@
                 <div class="container">
                     <div class="row mil-aic mil-jcb">
                         <div class="col-lg-5 mil-mb60">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">About the agency</span>
-                            <h2 class="mil-fs42 mil-mb30 mil-up">A creative duo building brands, visuals and communication with intention.</h2>
-                            <p class="mil-text mil-fs18 mil-light mil-mb30 mil-up">Gessler Studio is the collaborative space behind Jordan Piza and Angie Pachon. We combine multimedia design, visual direction and strategic thinking to create work that feels both expressive and well structured.</p>
-                            <p class="mil-text mil-fs18 mil-light mil-up">This section is designed to introduce the people behind the agency. On the right, you can later replace these images with your own portraits and studio moments.</p>
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Sobre la agencia</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up">Un dúo creativo construyendo marcas, visuales y comunicación con intención.</h2>
+                            <p class="mil-text mil-fs18 mil-light mil-mb30 mil-up">Gessler Studio es el espacio colaborativo detrás de Jordan Piza y Angie Pachon. Combinamos diseño multimedia, dirección visual y pensamiento estratégico para crear trabajo que se sienta expresivo y bien estructurado.</p>
+                            <p class="mil-text mil-fs18 mil-light mil-up">Esta sección está pensada para presentar a las personas detrás de la agencia. A la derecha, luego puedes reemplazar estas imágenes por sus propios retratos y momentos de estudio.</p>
                         </div>
                         <div class="col-lg-6 mil-mb60">
                             <div class="mil-agency-slider-wrap mil-up">
@@ -439,23 +465,23 @@
                             <div class="gs-step-carousel mil-up" id="gs-step-carousel">
                                 <div class="gs-step-slide gs-step-active" data-color="orange">
                                     <div class="gs-step-visual gs-step-visual-1"><i class="fas fa-headphones-alt"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Listen</h3>
-                                    <p class="mil-text mil-fs16">We understand the context, goals and current challenges before proposing any direction.</p>
+                                    <h3 class="mil-fs26 mil-mb20">Escuchar</h3>
+                                    <p class="mil-text mil-fs16">Entendemos el contexto, los objetivos y los retos actuales antes de proponer una dirección.</p>
                                 </div>
                                 <div class="gs-step-slide" data-color="blue">
                                     <div class="gs-step-visual gs-step-visual-2"><i class="fas fa-bullseye"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Define</h3>
-                                    <p class="mil-text mil-fs16">We shape the right scope, priorities and creative route for the specific service you need.</p>
+                                    <h3 class="mil-fs26 mil-mb20">Definir</h3>
+                                    <p class="mil-text mil-fs16">Definimos el alcance correcto, las prioridades y la ruta creativa para el servicio específico que necesitas.</p>
                                 </div>
                                 <div class="gs-step-slide" data-color="orange">
                                     <div class="gs-step-visual gs-step-visual-3"><i class="fas fa-layer-group"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Build</h3>
-                                    <p class="mil-text mil-fs16">We turn the direction into visual pieces, systems or content that can move into the real world.</p>
+                                    <h3 class="mil-fs26 mil-mb20">Construir</h3>
+                                    <p class="mil-text mil-fs16">Convertimos la dirección en piezas visuales, sistemas o contenido que pueden pasar al mundo real.</p>
                                 </div>
                                 <div class="gs-step-slide" data-color="blue">
                                     <div class="gs-step-visual gs-step-visual-4"><i class="fas fa-rocket"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Deliver</h3>
-                                    <p class="mil-text mil-fs16">We deliver assets, systems or recommendations that are ready to be used with confidence.</p>
+                                    <h3 class="mil-fs26 mil-mb20">Entregar</h3>
+                                    <p class="mil-text mil-fs16">Entregamos piezas, sistemas o recomendaciones listas para usarse con confianza.</p>
                                 </div>
                                 <div class="gs-step-dots">
                                     <span class="gs-step-dot gs-step-active"></span>
@@ -466,9 +492,9 @@
                             </div>
                         </div>
                         <div class="col-lg-5 mil-mb60">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">How we work</span>
-                            <h2 class="mil-fs42 mil-mb30 mil-up">A simple process built for clarity.</h2>
-                            <p class="mil-text mil-fs18 mil-light mil-up">We keep each service grounded in strategy, visual coherence and practical execution so the work is not only attractive, but useful for the business behind it.</p>
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Cómo trabajamos</span>
+                            <h2 class="mil-fs42 mil-mb30 mil-up">Un proceso simple pensado para dar claridad.</h2>
+                            <p class="mil-text mil-fs18 mil-light mil-up">Mantenemos cada servicio anclado en estrategia, coherencia visual y ejecución práctica para que el trabajo no solo sea atractivo, sino útil para el negocio detrás.</p>
                         </div>
                     </div>
                 </div>
@@ -479,14 +505,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 mil-mb60">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Recent works</span>
-                            <h2 class="mil-fs42 mil-up">Portfolio</h2>
+                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Trabajos recientes</span>
+                            <h2 class="mil-fs42 mil-up">Portafolio</h2>
                         </div>
 
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-9">
-                                    <p class="mil-text mil-fs16 mil-mb90 mil-up">Take a look at our latest design projects done for our newest clients, we have worked countless hours for total satisfaction.</p>
+                                    <p class="mil-text mil-fs16 mil-mb90 mil-up">Mira algunos de nuestros proyectos de diseño más recientes realizados para nuevos clientes.</p>
                                 </div>
                             </div>
                             <a href="project-beyond-sas.html" class="mil-project-card mil-mb30 mil-up mil-c-view">
@@ -532,62 +558,19 @@
                                 </div>
                             </a>
                             <div class="mil-project-btn-frame mil-up">
-                                <a href="portfolio-3.html" class="mil-btn mil-btn-border mil-c-gone">Continue</a>
+                                <a href="portfolio-2.html" class="mil-btn mil-btn-border mil-c-gone">Ver portafolio</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- portfolio end -->
-            <!-- testimonials -->
-            <div class="mil-p-120-120">
-                <div class="container">
-                    <div class="mil-mb60">
-                        <span class="mil-suptitle mil-accent mil-mb30 mil-up" style="display:block;">Testimonials</span>
-                        <h2 class="mil-fs42 mil-up">Lo que dicen nuestros clientes.</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mil-mb30 mil-up">
-                            <div class="gs-testimonial-card">
-                                <i class="fas fa-quote-left gs-testimonial-quote-icon"></i>
-                                <div class="gs-testimonial-stars">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="gs-testimonial-text">"El equipo de Gessler entendió exactamente lo que necesitábamos: un sitio que reflejara la solidez de nuestra planta y nuestra trayectoria. El resultado superó lo que teníamos en mente, y el proceso fue claro de principio a fin."</p>
-                                <div class="gs-testimonial-author">
-                                    <div class="gs-testimonial-avatar gs-testimonial-orange">JV</div>
-                                    <div>
-                                        <h5 class="mil-fs16 mil-mb0">Juan Vélez</h5>
-                                        <span class="gs-testimonial-role">Beyond SAS</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mil-mb30 mil-up">
-                            <div class="gs-testimonial-card gs-testimonial-blue">
-                                <i class="fas fa-quote-left gs-testimonial-quote-icon"></i>
-                                <div class="gs-testimonial-stars">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="gs-testimonial-text">"Pasar nuestro catálogo a un formato digital con cotización directa por WhatsApp cambió la forma en que nuestros clientes nos compran. Gessler lo entendió desde el primer día y lo entregó sin complicaciones."</p>
-                                <div class="gs-testimonial-author">
-                                    <div class="gs-testimonial-avatar gs-testimonial-blue-bg">AC</div>
-                                    <div>
-                                        <h5 class="mil-fs16 mil-mb0">Alex Cuéllar</h5>
-                                        <span class="gs-testimonial-role">WAC SAS</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- testimonials end -->
+            <!-- testimonials: pendiente, ver sección "Pendientes" del informe SEO — se retiraron citas no confirmadas por los clientes -->
             <!-- portfolio logo reveal sequence -->
             <section class="mil-scroll-sequence mil-scroll-sequence-logo-reveal" data-scroll-sequence data-sequence-immersive="true" data-frame-count="156" data-frame-path="img/sequence/logo-reveal/frame-{index}.jpg">
                 <div class="mil-scroll-sequence-stage">
                     <div class="mil-scroll-sequence-frame">
-                        <canvas data-sequence-canvas aria-label="Gessler Studio logo reveal motion sequence"></canvas>
+                        <canvas data-sequence-canvas aria-label="Secuencia animada del logo de Gessler Studio"></canvas>
                         <img src="img/sequence/logo-reveal/frame-000.jpg" alt="" data-sequence-poster decoding="async" loading="lazy">
                     </div>
                 </div>
@@ -600,7 +583,7 @@
             <div class="mil-p-90-90">
                 <div class="container">
                     <div class="col-12 mil-mb60">
-                        <h2 class="mil-fs42 mil-up">Brands and spaces we can build with</h2>
+                        <h2 class="mil-fs42 mil-up">Marcas y espacios con los que podemos construir</h2>
                     </div>
                 </div>
                 <div class="mil-logo-marquee mil-up">
@@ -629,8 +612,8 @@
             <!-- call to action -->
             <div class="mil-accent-section mil-up mil-p-180-180">
                 <div class="container">
-                    <h2 class="mil-fs68 mil-light mil-mb30 mil-up">Contact us <a href="contact.html" class="mil-text-link mil-accent-soft mil-c-gone">now</a></h2>
-                    <p class="mil-text mil-fs26 mil-light mil-up">Just say Hello via <a href="contact.html" class="mil-text-link mil-light mil-c-gone">online chat</a>!</p>
+                    <h2 class="mil-fs68 mil-light mil-mb30 mil-up">Contáctanos <a href="contact.html" class="mil-text-link mil-accent-soft mil-c-gone">ahora</a></h2>
+                    <p class="mil-text mil-fs26 mil-light mil-up">Solo di Hola por <a href="contact.html" class="mil-text-link mil-light mil-c-gone">chat en línea</a>!</p>
                 </div>
             </div>
             <!-- call to action end -->
@@ -639,8 +622,8 @@
                 <div class="container mil-p-120-0">
                     <div class="row mil-jcb">
                         <div class="col-12 col-md-6 col-lg-3 mil-mb90">
-                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone" aria-label="Gessler Studio home"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
-                            <p class="mil-text mil-fs16 mil-mb60 mil-up">We are a creative duo focused on strategy, multimedia design and human-centered solutions for growing brands.</p>
+                            <a href="index.html" class="mil-logo mil-mb60 mil-up mil-c-gone" aria-label="Inicio de Gessler Studio"><img src="img/logo-gessler-studio.svg" alt="Gessler Studio" class="mil-logo-image"></a>
+                            <p class="mil-text mil-fs16 mil-mb60 mil-up">Somos un dúo creativo enfocado en estrategia, diseño multimedia y soluciones centradas en las personas para marcas en crecimiento.</p>
                             <ul class="mil-social mil-footer-social mil-up">
                                 <li><a href="#." class="mil-footer-social-btn mil-footer-social-facebook mil-glow-follow mil-c-gone" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#." class="mil-footer-social-btn mil-footer-social-behance mil-glow-follow mil-c-gone" aria-label="Behance"><i class="fab fa-behance"></i></a></li>
@@ -648,31 +631,31 @@
                             </ul>
                         </div>
                         <div class="col-6 col-md-3 col-lg-2 mil-mb90">
-                            <h5 class="mil-fs16 mil-mb60 mil-up">Our Pages</h5>
+                            <h5 class="mil-fs16 mil-mb60 mil-up">Nuestras páginas</h5>
                             <ul class="mil-footer-menu">
-                                <li class="mil-up"><a href="index.html" class="mil-c-gone">Home</a></li>
-                                <li class="mil-up"><a href="services.html" class="mil-c-gone">Services</a></li>
-                                <li class="mil-up"><a href="portfolio-2.html" class="mil-c-gone">Portfolio</a></li>
-                                <li class="mil-up"><a href="about.html" class="mil-c-gone">About us</a></li>
-                                <li class="mil-up"><a href="contact.html" class="mil-c-gone">Contact</a></li>
+                                <li class="mil-up"><a href="index.html" class="mil-c-gone">Inicio</a></li>
+                                <li class="mil-up"><a href="services.html" class="mil-c-gone">Servicios</a></li>
+                                <li class="mil-up"><a href="portfolio-2.html" class="mil-c-gone">Portafolio</a></li>
+                                <li class="mil-up"><a href="about.html" class="mil-c-gone">Sobre nosotros</a></li>
+                                <li class="mil-up"><a href="contact.html" class="mil-c-gone">Contacto</a></li>
                             </ul>
                         </div>
                         <div class="col-6 col-md-3 col-lg-3 mil-mb90">
-                            <h5 class="mil-fs16 mil-mb60 mil-up">Our Services</h5>
+                            <h5 class="mil-fs16 mil-mb60 mil-up">Nuestros servicios</h5>
                             <ul class="mil-footer-services">
                                 <li class="mil-up"><a href="service-branding.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-star"></i></span><span class="mil-footer-service-name">Branding</span></a></li>
-                                <li class="mil-up"><a href="service-web-design.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-laptop-code"></i></span><span class="mil-footer-service-name">Web Design</span></a></li>
-                                <li class="mil-up"><a href="service-animation-video.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-play-circle"></i></span><span class="mil-footer-service-name">Animation and Video Editing</span></a></li>
+                                <li class="mil-up"><a href="diseno-web.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-laptop-code"></i></span><span class="mil-footer-service-name">Diseño web</span></a></li>
+                                <li class="mil-up"><a href="service-animation-video.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-play-circle"></i></span><span class="mil-footer-service-name">Animación y edición de video</span></a></li>
                                 <li class="mil-up"><a href="service-social-media.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-hashtag"></i></span><span class="mil-footer-service-name">Social Media</span></a></li>
-                                <li class="mil-up"><a href="service-communication-strategy.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-comments"></i></span><span class="mil-footer-service-name">Communication Strategies</span></a></li>
+                                <li class="mil-up"><a href="service-communication-strategy.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-comments"></i></span><span class="mil-footer-service-name">Estrategias de comunicación</span></a></li>
                             </ul>
                         </div>
                         <div class="col-12 col-lg-4 mil-mb90">
-                            <h5 class="mil-fs16 mil-mb60 mil-up">Contact Us</h5>
+                            <h5 class="mil-fs16 mil-mb60 mil-up">Contáctanos</h5>
                             <ul class="mil-footer-list">
-                                <li class="mil-text mil-up">Phone: +57 319 349 0741</li>
-                                <li class="mil-text mil-up">Email: hola@gesslerstudio.com</li>
-                                <li class="mil-text mil-up">Address: Calle 80A Sur #5-18, Bogotá, Colombia</li>
+                                <li class="mil-text mil-up">Teléfono: +57 319 349 0741</li>
+                                <li class="mil-text mil-up">Correo: hola@gesslerstudio.com</li>
+                                <li class="mil-text mil-up">Dirección: Calle 80A Sur #5-18, Bogotá, Colombia</li>
                             </ul>
                         </div>
                     </div>
@@ -681,11 +664,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 mil-mb30">
-                                <p class="mil-fs14 mil-soft">&copy; 2026 Gessler Studio. All rights reserved.</p>
+                                <p class="mil-fs14 mil-soft">&copy; 2026 Gessler Studio. Todos los derechos reservados.</p>
                             </div>
                             <div class="col-lg-6 mil-jce mil-992-jcs mil-mb30" style="display:flex;align-items:center;gap:20px;">
                                 <a href="admin.html" title="Admin" style="width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid rgba(243,90,56,.18);color:rgba(243,90,56,.45);transition:all .2s;text-decoration:none;" onmouseover="this.style.borderColor='rgba(243,90,56,.6)';this.style.color='rgba(243,90,56,.9)';this.style.background='rgba(243,90,56,.07)'" onmouseout="this.style.borderColor='rgba(243,90,56,.18)';this.style.color='rgba(243,90,56,.45)';this.style.background='transparent'"><i class="fas fa-user-shield" style="font-size:11px;"></i></a>
-                                <a href="#." class="mil-group-text mil-accent mil-c-gone" id="mil-btt"><i class="fas fa-chevron-up"></i> <span>Back to top</span></a>
+                                <a href="#." class="mil-group-text mil-accent mil-c-gone" id="mil-btt"><i class="fas fa-chevron-up"></i> <span>Volver arriba</span></a>
                             </div>
                         </div>
                     </div>
@@ -710,9 +693,9 @@
     <!-- swiper js -->
     <script src="js/plugins/swiper.min.js"></script>
     <!-- site translation -->
-    <script src="js/site-translate.js?v=gs-i18n-1"></script>
+    <script src="js/pillnav.js?v=gs-nav-6"></script><script src="js/site-translate.js?v=gs-i18n-2"></script>
     <!-- Gessler Studio js -->
-    <script src="js/main.js?v=gs-i18n-1"></script>
+    <script src="js/main.js?v=gs-i18n-3"></script>
 
     <script>
         (function () {

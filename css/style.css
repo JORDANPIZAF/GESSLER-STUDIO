@@ -222,6 +222,11 @@ body {
   max-height: 48px;
   animation: mil-logo-return 0.16s linear;
 }
+/* Nav logo stays fully static: no GIF-swap, no hover scale (overrides .mil-logo:hover above). */
+.gs-pillnav-logo:hover .mil-logo-image,
+.gs-pillnav-mobile-logo:hover .mil-logo-image {
+  transform: scale(1);
+}
 
 @keyframes mil-logo-return {
   0% {
@@ -5087,49 +5092,386 @@ body.mil-day-mode footer .mil-footer-service-name {
     margin-top: 120px;
 }
 
-/* ===== HIDE ON SCROLL ===== */
-.mil-top-panel {
-    transform: translateY(0);
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.mil-top-panel.mil-nav-hidden {
-    transform: translateY(-100%);
-}
+/* ===== FLOATING PILL NAV (ported from Beyond, Gessler colors) ===== */
 
-/* ===== WHATSAPP FLOATING BUTTON ===== */
-.gs-whatsapp-btn {
+.gs-pillnav-wrap {
     position: fixed;
-    right: 28px;
-    bottom: 100px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #25D366;
+    top: 24px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-60px) scale(0.94);
+}
+/* Entrance and scroll show/hide are driven frame-by-frame in js/pillnav.js (a small spring-physics
+   engine using Beyond's exact stiffness/damping/mass numbers), not by CSS transitions. */
+
+.gs-pillnav {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    gap: 3px;
+    padding: 14px 14px 14px 28px;
+    border-radius: 999px;
+    background: rgba(18, 19, 24, 0.82);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(255, 255, 255, 0.04) inset;
+    pointer-events: auto;
 }
-.gs-whatsapp-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+.gs-pillnav-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 14px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
 }
-.gs-whatsapp-btn svg {
-    width: 30px;
-    height: 30px;
-    fill: #fff;
+.gs-pillnav-logo img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
 }
-@media (max-width: 768px) {
-    .gs-whatsapp-btn {
-        right: 18px;
-        bottom: 84px;
-        width: 52px;
-        height: 52px;
+
+.gs-pillnav-sep {
+    width: 3px;
+    height: 38px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    margin-right: 6px;
+    position: relative;
+    z-index: 2;
+}
+
+.gs-pillnav-items {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    overflow: hidden;
+    width: 0;
+}
+/* Width from 0 to its natural size is animated by GSAP (js/pillnav.js), not CSS. */
+
+.gs-pillnav-highlight {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-radius: 999px;
+    background: rgba(243, 90, 56, 0.14);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 0;
+}
+
+.gs-pillnav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 15px 19px;
+    border-radius: 999px;
+    text-decoration: none;
+    z-index: 1;
+    white-space: nowrap;
+    color: #73767B;
+}
+.gs-pillnav-item i {
+    font-size: 23px;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+.gs-pillnav-item-label {
+    display: inline-block;
+    max-width: 0;
+    margin-left: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    /* max-width/margin-left are driven frame-by-frame by the spring in js/pillnav.js
+       (Beyond's exact stiffness:90/damping:15/mass:1.6); only color+opacity stay as CSS transitions. */
+    transition: color 0.3s ease, opacity 0.32s ease;
+}
+.gs-pillnav-item.gs-pillnav-active i,
+.gs-pillnav-item.gs-pillnav-active .gs-pillnav-item-label,
+.gs-pillnav-item:hover i,
+.gs-pillnav-item:hover .gs-pillnav-item-label {
+    color: var(--gs-accent, #F35A38);
+}
+
+.gs-pillnav-contact {
+    position: relative;
+    height: 68px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    pointer-events: auto;
+    opacity: 0;
+    /* Entrance opacity/scale is animated by GSAP (js/pillnav.js); it hands the
+       transform property back to CSS afterwards via clearProps, so :hover/:active below still work. */
+}
+.gs-pillnav-contact:hover {
+    transform: scale(1.09);
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-pillnav-contact:active {
+    transform: scale(0.92);
+    transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-pillnav-contact-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #F35A38;
+    box-shadow: 0 8px 24px rgba(243, 90, 56, 0.35), 0 -1px 0 rgba(0, 0, 0, 0.12) inset;
+}
+.gs-pillnav-contact-link {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.gs-pillnav-contact-link svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+.gs-pillnav-contact-text {
+    display: inline-block;
+    max-width: 0;
+    margin-left: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    /* max-width/margin-left are driven frame-by-frame by the spring in js/pillnav.js */
+    transition: opacity 0.32s ease;
+}
+
+.gs-pillnav-lang {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    height: 68px;
+    border-radius: 999px;
+    background: rgba(18, 19, 24, 0.82);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+    flex-shrink: 0;
+}
+.gs-pillnav-lang button {
+    background: none;
+    border: none;
+    color: #73767B;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    padding: 4px 2px;
+    transition: color 0.2s ease;
+}
+.gs-pillnav-lang button.mil-active {
+    color: #F35A38;
+}
+.gs-pillnav-lang span {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 13px;
+}
+
+/* Mobile */
+.gs-pillnav-mobile {
+    display: none;
+}
+@media (max-width: 992px) {
+    .gs-pillnav-wrap {
+        left: 16px;
+        right: 16px;
+        justify-content: space-between;
     }
-    .gs-whatsapp-btn svg {
-        width: 26px;
-        height: 26px;
+    .gs-pillnav {
+        display: none;
+    }
+    .gs-pillnav-lang {
+        display: none;
+    }
+    .gs-pillnav-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        pointer-events: auto;
+    }
+    .gs-pillnav-mobile-logo {
+        display: flex;
+        align-items: center;
+        padding: 13px 22px;
+        border-radius: 999px;
+        background: rgba(18, 19, 24, 0.82);
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+    .gs-pillnav-mobile-logo img {
+        height: 30px;
+        width: auto;
+    }
+    .gs-pillnav-burger {
+        width: 60px;
+        height: 60px;
+        border-radius: 999px;
+        background: rgba(18, 19, 24, 0.82);
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: transform 0.15s ease;
+    }
+    .gs-pillnav-burger:active {
+        transform: scale(0.9);
+    }
+    .gs-pillnav-burger i {
+        font-size: 21px;
+    }
+}
+
+/* Mobile full-screen overlay menu */
+.gs-pillnav-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0A0B0F;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    clip-path: circle(0% at calc(100% - 42px) 42px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.55s;
+}
+.gs-pillnav-overlay.gs-pillnav-overlay-open {
+    visibility: visible;
+    pointer-events: auto;
+    transition: clip-path 0.62s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s;
+    clip-path: circle(160% at calc(100% - 42px) 42px);
+}
+.gs-pillnav-overlay-link {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 9vw, 48px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 28px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: color 0.2s ease, opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-pillnav-overlay.gs-pillnav-overlay-open .gs-pillnav-overlay-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+.gs-pillnav-overlay-link.gs-pillnav-active,
+.gs-pillnav-overlay-link:hover {
+    color: var(--gs-accent, #F35A38);
+}
+.gs-pillnav-overlay-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: #F35A38;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-pillnav-overlay.gs-pillnav-overlay-open .gs-pillnav-overlay-cta {
+    opacity: 1;
+    transform: translateY(0);
+}
+.gs-pillnav-overlay-cta svg {
+    width: 18px;
+    height: 18px;
+}
+.gs-pillnav-overlay-lang {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 26px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-pillnav-overlay.gs-pillnav-overlay-open .gs-pillnav-overlay-lang {
+    opacity: 1;
+    transform: translateY(0);
+}
+.gs-pillnav-overlay-lang button {
+    background: none;
+    border: none;
+    color: #73767B;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+.gs-pillnav-overlay-lang button.mil-active {
+    color: #F35A38;
+}
+.gs-pillnav-overlay-lang span {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+/* Content offset for the floating pill: overrides the pre-pillnav .gs-breadcrumb-spacer above */
+.gs-breadcrumb-spacer {
+    height: 42px;
+    margin-top: 140px;
+}
+@media (max-width: 992px) {
+    .gs-breadcrumb-spacer {
+        margin-top: 130px;
     }
 }
