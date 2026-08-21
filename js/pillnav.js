@@ -86,11 +86,13 @@
     var ACCENT_BLUE = '#1497E0';
 
     var NAV_LINKS = [
-        { href: 'index.html',    icon: 'fas fa-home',          key: 'Inicio',         color: ACCENT_ORANGE },
-        { href: 'services.html', icon: 'fas fa-layer-group',   key: 'Servicios',      color: ACCENT_BLUE },
-        { href: 'portfolio-2.html', icon: 'fas fa-briefcase',  key: 'Portafolio',     color: ACCENT_ORANGE },
-        { href: 'about.html',    icon: 'fas fa-users',         key: 'Sobre nosotros', color: ACCENT_BLUE },
-        { href: 'contact.html',  icon: 'fas fa-envelope',      key: 'Contacto',       color: ACCENT_ORANGE }
+        { href: 'index.html',    icon: 'fas fa-home',          key: 'Inicio',      color: ACCENT_ORANGE },
+        { href: 'services.html', icon: 'fas fa-layer-group',   key: 'Servicios',   color: ACCENT_BLUE },
+        { href: 'portfolio-2.html', icon: 'fas fa-briefcase',  key: 'Proyectos',   color: ACCENT_ORANGE },
+        { href: 'proceso.html',  icon: 'fas fa-route',          key: 'Proceso',     color: ACCENT_BLUE },
+        { href: 'blog.html',     icon: 'fas fa-newspaper',     key: 'Blog',        color: ACCENT_ORANGE },
+        { href: 'about.html',    icon: 'fas fa-users',         key: 'Nosotros',    color: ACCENT_BLUE },
+        { href: 'contact.html',  icon: 'fas fa-envelope',      key: 'Contacto',    color: ACCENT_ORANGE }
     ];
 
     function currentFile() {
@@ -120,11 +122,14 @@
             labelEl.style.marginLeft = Math.max(0, v.m) + 'px';
         };
 
-        function measure() {
-            if (natural !== null) return natural;
+        function measure(force) {
+            if (natural !== null && !force) return natural;
             var prevMax = labelEl.style.maxWidth;
             labelEl.style.maxWidth = 'none';
-            natural = labelEl.scrollWidth;
+            // +3px buffer: scrollWidth is an integer rounded from the advance width, and
+            // descender glyphs (g, j, y, p) can render a hair wider than that, so without
+            // slack the exact-fit overflow:hidden box clips their tail.
+            natural = labelEl.scrollWidth + 3;
             labelEl.style.maxWidth = prevMax;
             return natural;
         }
@@ -138,6 +143,17 @@
                 labelEl.style.opacity = '0';
             }
         }
+
+        /* Poppins loads async (@import in style.css); labels first measure against the
+           fallback font, so once the webfont swaps in we need to re-measure or the
+           (slightly wider) text gets clipped by max-width/overflow:hidden. */
+        apply.refresh = function () {
+            var w = measure(true);
+            if (isShown()) {
+                spring.set('w', w);
+                labelEl.style.maxWidth = w + 'px';
+            }
+        };
 
         apply(isShown());
         return apply;
@@ -199,6 +215,27 @@
         };
 
         var itemEls = [];
+        var labelRefreshers = [];
+        var followRaf = null;
+
+        // The label next to each icon expands from 0 on hover (see wireLabelSpring), so the
+        // item's own width grows over ~300ms. A single moveHighlight() call at mouseenter
+        // would snapshot the icon-only width and freeze there, looking like a small dot
+        // instead of a pill that grows to match the word. Keep re-measuring every frame while
+        // hovered so the highlight's spring target updates as the label keeps growing.
+        function followHighlight(el, color) {
+            if (followRaf) cancelAnimationFrame(followRaf);
+            function tick() {
+                moveHighlight(el, 1, false, color);
+                followRaf = requestAnimationFrame(tick);
+            }
+            tick();
+        }
+        function stopFollowingHighlight() {
+            if (followRaf) cancelAnimationFrame(followRaf);
+            followRaf = null;
+        }
+
         NAV_LINKS.forEach(function (link) {
             var a = document.createElement('a');
             a.href = link.href;
@@ -212,26 +249,61 @@
             var labelEl = a.querySelector('.gs-pillnav-item-label');
             var isHovered = false;
             var setLabel = wireLabelSpring(labelEl, function () { return active || isHovered; });
+            labelRefreshers.push(setLabel.refresh);
 
             a.addEventListener('mouseenter', function () {
                 isHovered = true;
-                moveHighlight(a, 1, false, link.color);
+                followHighlight(a, link.color);
                 setLabel(true);
             });
             a.addEventListener('mouseleave', function () {
                 isHovered = false;
+                stopFollowingHighlight();
                 if (highlight) {
                     highlight.style.transition = 'opacity 0.18s ease';
                     highlight.style.opacity = '0';
                 }
                 if (!active) setLabel(false);
             });
+
+            // In-page anchors (e.g. "index.html#gs-process"): ScrollSmoother replaces native
+            // scrolling, so a plain browser anchor jump gets silently overridden and the page
+            // just sits wherever it already was. When we're already on the target page, scroll
+            // through the smoother instead of letting the browser try (and fail) on its own.
+            if (link.href.indexOf('#') !== -1) {
+                a.addEventListener('click', function (e) {
+                    var parts = link.href.split('#');
+                    var targetPage = parts[0] || 'index.html';
+                    var hashId = parts[1];
+                    if (!hashId || targetPage !== currentFile()) return;
+                    var target = document.getElementById(hashId);
+                    if (!target) return;
+                    e.preventDefault();
+                    var smoother = (typeof ScrollSmoother !== 'undefined') ? ScrollSmoother.get() : null;
+                    if (smoother) {
+                        smoother.scrollTo(target, true, 'top 130px');
+                    } else {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    if (history.pushState) history.pushState(null, '', link.href);
+                });
+            }
         });
 
         // Highlight the currently active page on load too
         var activeItem = itemEls.find(function (el) { return el.classList.contains('gs-pillnav-active'); });
         if (activeItem && highlight) {
             moveHighlight(activeItem, 0.6, true, activeItem.style.getPropertyValue('--gs-accent'));
+        }
+
+        // Poppins loads async (@import in style.css) and can arrive after labels were first
+        // measured against the fallback font; re-measure once it's actually ready so the
+        // active item's label (visible by default) doesn't stay clipped at the old width.
+        if (window.document && document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function () {
+                labelRefreshers.forEach(function (refresh) { refresh(); });
+                if (activeItem) moveHighlight(activeItem, 0.6, true, activeItem.style.getPropertyValue('--gs-accent'));
+            });
         }
     }
 
@@ -487,11 +559,125 @@
         }
     }
 
+    /* ---- floating WhatsApp chat popup (separate from the pill nav's own WhatsApp button) ---- */
+    var GS_WA_COPY = {
+        es: {
+            openLabel: 'Abrir chat de WhatsApp',
+            closeLabel: 'Cerrar chat',
+            status: 'Normalmente responde en el día',
+            bubble: '¡Hola! 👋 ¿En qué podemos ayudarte con tu proyecto?',
+            cta: 'Iniciar conversación'
+        },
+        en: {
+            openLabel: 'Open WhatsApp chat',
+            closeLabel: 'Close chat',
+            status: 'Usually replies within a day',
+            bubble: 'Hi! 👋 How can we help with your project?',
+            cta: 'Start chat'
+        }
+    };
+
+    function buildWhatsAppWidget() {
+        if (document.querySelector('.gs-wa-widget')) return;
+
+        var wrap = document.createElement('div');
+        wrap.className = 'gs-wa-widget';
+        wrap.innerHTML =
+            '<button type="button" class="gs-wa-toggle">' +
+                '<span class="gs-wa-toggle-icon">' + WHATSAPP_SVG + '</span>' +
+                '<span class="gs-wa-toggle-close"><i class="fas fa-times"></i></span>' +
+            '</button>' +
+            '<div class="gs-wa-panel" role="dialog" aria-label="WhatsApp">' +
+                '<div class="gs-wa-panel-header">' +
+                    '<img src="img/about/team/jordan-piza.png" alt="" class="gs-wa-avatar">' +
+                    '<div class="gs-wa-panel-info">' +
+                        '<span class="gs-wa-panel-name">Gessler Studio</span>' +
+                        '<span class="gs-wa-panel-status"><span class="gs-wa-dot"></span><span class="gs-wa-status-text"></span></span>' +
+                    '</div>' +
+                    '<button type="button" class="gs-wa-panel-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>' +
+                '</div>' +
+                '<div class="gs-wa-bubble">' +
+                    '<p class="gs-wa-bubble-text"></p>' +
+                    '<span class="gs-wa-bubble-time"></span>' +
+                '</div>' +
+                '<a href="#" class="gs-wa-cta" target="_blank" rel="noopener">' +
+                    '<span class="gs-wa-cta-icon">' + WHATSAPP_SVG + '</span>' +
+                    '<span class="gs-wa-cta-text"></span>' +
+                '</a>' +
+            '</div>';
+        document.body.appendChild(wrap);
+
+        var toggle = wrap.querySelector('.gs-wa-toggle');
+        var panel = wrap.querySelector('.gs-wa-panel');
+        var closeBtn = wrap.querySelector('.gs-wa-panel-close');
+        var statusText = wrap.querySelector('.gs-wa-status-text');
+        var bubbleText = wrap.querySelector('.gs-wa-bubble-text');
+        var bubbleTime = wrap.querySelector('.gs-wa-bubble-time');
+        var ctaLink = wrap.querySelector('.gs-wa-cta');
+        var ctaText = wrap.querySelector('.gs-wa-cta-text');
+
+        var now = new Date();
+        var hh = now.getHours();
+        var mm = now.getMinutes();
+        var stamp = (hh % 12 === 0 ? 12 : hh % 12) + ':' + (mm < 10 ? '0' : '') + mm + (hh < 12 ? ' a.m.' : ' p.m.');
+        bubbleTime.textContent = stamp;
+
+        function refreshText() {
+            var lang = currentLang();
+            var copy = GS_WA_COPY[lang];
+            toggle.setAttribute('aria-label', copy.openLabel);
+            statusText.textContent = copy.status;
+            bubbleText.textContent = copy.bubble;
+            ctaText.textContent = copy.cta;
+            ctaLink.href = 'https://wa.me/' + GS_WHATSAPP_NUMBER + '?text=' + encodeURIComponent(GS_WHATSAPP_MESSAGES[lang]);
+        }
+        refreshText();
+
+        var prevInit = window.initializeWhatsappButton;
+        window.initializeWhatsappButton = function () {
+            if (typeof prevInit === 'function') prevInit();
+            refreshText();
+        };
+
+        function open() {
+            wrap.classList.add('gs-wa-active');
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.setAttribute('aria-label', GS_WA_COPY[currentLang()].closeLabel);
+        }
+        function close() {
+            wrap.classList.remove('gs-wa-active');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', GS_WA_COPY[currentLang()].openLabel);
+        }
+        toggle.addEventListener('click', function () {
+            if (wrap.classList.contains('gs-wa-active')) close(); else open();
+        });
+        closeBtn.addEventListener('click', close);
+        document.addEventListener('click', function (e) {
+            if (wrap.classList.contains('gs-wa-active') && !wrap.contains(e.target)) close();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && wrap.classList.contains('gs-wa-active')) close();
+        });
+        panel.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        var GS_WA_AUTOOPEN_KEY = 'gs_wa_auto_opened';
+        var alreadyAutoOpened = true;
+        try { alreadyAutoOpened = !!sessionStorage.getItem(GS_WA_AUTOOPEN_KEY); } catch (err) {}
+        if (!alreadyAutoOpened) {
+            setTimeout(function () {
+                if (!wrap.classList.contains('gs-wa-active')) open();
+                try { sessionStorage.setItem(GS_WA_AUTOOPEN_KEY, '1'); } catch (err) {}
+            }, 4000);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         buildDesktopPill();
         buildContactButton();
         buildMobileOverlay();
         buildLangPill();
+        buildWhatsAppWidget();
         initEntrance();
         initScrollHide();
     });

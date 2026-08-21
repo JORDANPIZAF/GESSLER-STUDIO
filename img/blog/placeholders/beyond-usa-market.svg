@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14151A"/>
+      <stop offset="100%" stop-color="#0A0B0F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="780" fill="url(#bgGrad3)"/>
+  <g opacity="0.08" stroke="#FFFFFF" stroke-width="1">
+    <line x1="0" y1="130" x2="1200" y2="130"/>
+    <line x1="0" y1="260" x2="1200" y2="260"/>
+    <line x1="0" y1="390" x2="1200" y2="390"/>
+    <line x1="0" y1="520" x2="1200" y2="520"/>
+    <line x1="0" y1="650" x2="1200" y2="650"/>
+    <line x1="200" y1="0" x2="200" y2="780"/>
+    <line x1="400" y1="0" x2="400" y2="780"/>
+    <line x1="600" y1="0" x2="600" y2="780"/>
+    <line x1="800" y1="0" x2="800" y2="780"/>
+    <line x1="1000" y1="0" x2="1000" y2="780"/>
+  </g>
+  <!-- globe with a route arrow (national -> international) -->
+  <g transform="translate(600,300)">
+    <circle cx="0" cy="0" r="110" fill="none" stroke="#1497E0" stroke-width="3" opacity="0.85"/>
+    <ellipse cx="0" cy="0" rx="110" ry="40" fill="none" stroke="#1497E0" stroke-width="2" opacity="0.5"/>
+    <ellipse cx="0" cy="0" rx="45" ry="110" fill="none" stroke="#1497E0" stroke-width="2" opacity="0.5"/>
+    <line x1="-110" y1="0" x2="110" y2="0" stroke="#1497E0" stroke-width="2" opacity="0.5"/>
+    <path d="M-70 60 Q 0 -40 90 -60" fill="none" stroke="#F35A38" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+    <path d="M90 -60 l-18 -6 M90 -60 l-4 18" fill="none" stroke="#F35A38" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <circle cx="-70" cy="60" r="7" fill="#F2B279"/>
+  </g>
+  <text x="600" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#73767B">Espacio para imagen — foto real de Beyond SAS</text>
+  <text x="600" y="632" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#4A4C52">Reemplazar por una foto real cuando esté disponible</text>
+</svg>

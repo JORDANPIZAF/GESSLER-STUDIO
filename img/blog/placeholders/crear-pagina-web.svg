@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14151A"/>
+      <stop offset="100%" stop-color="#0A0B0F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="780" fill="url(#bgGrad1)"/>
+  <g opacity="0.08" stroke="#FFFFFF" stroke-width="1">
+    <line x1="0" y1="130" x2="1200" y2="130"/>
+    <line x1="0" y1="260" x2="1200" y2="260"/>
+    <line x1="0" y1="390" x2="1200" y2="390"/>
+    <line x1="0" y1="520" x2="1200" y2="520"/>
+    <line x1="0" y1="650" x2="1200" y2="650"/>
+    <line x1="200" y1="0" x2="200" y2="780"/>
+    <line x1="400" y1="0" x2="400" y2="780"/>
+    <line x1="600" y1="0" x2="600" y2="780"/>
+    <line x1="800" y1="0" x2="800" y2="780"/>
+    <line x1="1000" y1="0" x2="1000" y2="780"/>
+  </g>
+  <!-- browser window icon -->
+  <g transform="translate(430,240)">
+    <rect x="0" y="0" width="340" height="230" rx="14" fill="none" stroke="#F35A38" stroke-width="3" opacity="0.85"/>
+    <line x1="0" y1="42" x2="340" y2="42" stroke="#F35A38" stroke-width="3" opacity="0.85"/>
+    <circle cx="24" cy="21" r="6" fill="#F35A38" opacity="0.85"/>
+    <circle cx="46" cy="21" r="6" fill="#1497E0" opacity="0.85"/>
+    <circle cx="68" cy="21" r="6" fill="#F2B279" opacity="0.85"/>
+    <rect x="28" y="70" width="284" height="16" rx="4" fill="#1497E0" opacity="0.55"/>
+    <rect x="28" y="100" width="200" height="12" rx="4" fill="#FFFFFF" opacity="0.25"/>
+    <rect x="28" y="122" width="230" height="12" rx="4" fill="#FFFFFF" opacity="0.18"/>
+    <rect x="28" y="154" width="120" height="36" rx="8" fill="#F35A38" opacity="0.85"/>
+  </g>
+  <text x="600" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#73767B">Espacio para imagen — captura de un sitio web / laptop</text>
+  <text x="600" y="632" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#4A4C52">Reemplazar por una foto real cuando esté disponible</text>
+</svg>

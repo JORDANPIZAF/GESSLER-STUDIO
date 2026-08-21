@@ -477,6 +477,25 @@ document.addEventListener("DOMContentLoaded", function () {
             smoothTouch: 0,
         });
     }
+
+    /* Deep-link into a hash on load (e.g. arriving at index.html#gs-process from another
+       page). ScrollSmoother overrides the browser's native anchor jump, so without this the
+       page just renders at the top and looks identical to visiting the plain URL. */
+    if (window.location.hash) {
+        const deepLinkId = window.location.hash.slice(1);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                const target = document.getElementById(deepLinkId);
+                if (!target) return;
+                const smoother = (typeof ScrollSmoother !== 'undefined') ? ScrollSmoother.get() : null;
+                if (smoother) {
+                    smoother.scrollTo(target, false, 'top 130px');
+                } else {
+                    target.scrollIntoView({ block: 'start' });
+                }
+            });
+        });
+    }
     /* -------------------------------------------
     
     tabs

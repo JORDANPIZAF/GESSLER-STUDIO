@@ -29,7 +29,7 @@
         "image": "https://gesslerstudio.com/img/logo-gessler-studio.svg",
         "url": "https://gesslerstudio.com/",
         "telephone": "+57 319 349 0741",
-        "email": "hola@gesslerstudio.com",
+        "email": "felipe12.florez14@gmail.com",
         "priceRange": "$$",
         "address": {
             "@type": "PostalAddress",
@@ -63,7 +63,7 @@
             border: 1px solid #22232a;
             border-top: 3px solid #F35A38;
             border-radius: 6px;
-            overflow: hidden;
+            overflow: visible;
             transition: border-top-color 0.4s ease;
         }
         .gs-step-carousel.gs-carousel-blue { border-top-color: #1497e0; }
@@ -109,21 +109,45 @@
             filter: blur(28px);
             opacity: 0.55;
         }
-        .gs-step-visual-1 { background: linear-gradient(135deg, #2a130d 0%, #14151A 70%); }
-        .gs-step-visual-1::before { width: 140px; height: 140px; background: #F35A38; top: -40px; left: -20px; }
-        .gs-step-visual-1::after { width: 90px; height: 90px; background: #1497e0; bottom: -25px; right: 15px; opacity: 0.3; }
 
-        .gs-step-visual-2 { background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%); }
-        .gs-step-visual-2::before { width: 140px; height: 140px; background: #1497e0; top: -40px; right: -20px; }
-        .gs-step-visual-2::after { width: 90px; height: 90px; background: #F35A38; bottom: -25px; left: 15px; opacity: 0.3; }
-
-        .gs-step-visual-3 { background: linear-gradient(135deg, #2a130d 0%, #0d1f2a 100%); }
-        .gs-step-visual-3::before { width: 120px; height: 120px; background: #F35A38; top: -35px; left: 25%; }
-        .gs-step-visual-3::after { width: 120px; height: 120px; background: #1497e0; bottom: -40px; right: 15%; opacity: 0.35; }
-
-        .gs-step-visual-4 { background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%); }
-        .gs-step-visual-4::before { width: 130px; height: 130px; background: #1497e0; bottom: -35px; left: -15px; }
-        .gs-step-visual-4::after { width: 80px; height: 80px; background: #F35A38; top: -18px; right: 15px; opacity: 0.3; }
+        /* Paso con imagen PNG real: sin caja, se ve como si sobresaliera encima de la tarjeta */
+        .gs-step-visual-image {
+            background: none;
+            overflow: visible;
+        }
+        .gs-step-visual-image::before,
+        .gs-step-visual-image::after {
+            display: none;
+        }
+        .gs-step-visual-image img {
+            position: absolute;
+            top: -110px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            max-width: 85%;
+            height: auto;
+            z-index: 3;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
+            pointer-events: none;
+        }
+        @media (max-width: 480px) {
+            .gs-step-visual-image img {
+                top: -70px;
+                width: 220px;
+            }
+        }
+        /* Variante para imágenes cuadradas (ej. Entendemos): más angosta para no tapar el texto */
+        .gs-step-visual-square img {
+            width: 210px;
+            top: -90px;
+        }
+        @media (max-width: 480px) {
+            .gs-step-visual-square img {
+                width: 170px;
+                top: -60px;
+            }
+        }
         .gs-step-dots {
             position: absolute;
             left: 40px;
@@ -290,9 +314,9 @@
                 </a>
             </div>
             <div class="gs-pillnav-lang" data-language-switcher>
-                <button type="button" class="mil-language-option mil-c-gone" data-language-option="en">EN</button>
+                <button type="button" class="mil-language-option mil-c-gone gs-lang-btn" data-language-option="en"><span class="gs-lang-code">EN</span><span class="gs-lang-full" translate="no">Inglés</span></button>
                 <span aria-hidden="true">|</span>
-                <button type="button" class="mil-language-option mil-c-gone" data-language-option="es">ES</button>
+                <button type="button" class="mil-language-option mil-c-gone gs-lang-btn" data-language-option="es"><span class="gs-lang-code">ES</span><span class="gs-lang-full" translate="no">Español</span></button>
             </div>
             <div class="gs-pillnav-mobile">
                 <a href="index.html" class="gs-pillnav-mobile-logo mil-logo mil-c-gone" aria-label="Inicio de Gessler Studio">
@@ -322,9 +346,14 @@
             <section class="mil-typing-hero mil-title-particles">
                 <div class="container">
                     <div class="mil-typing-hero-inner">
-                        <span class="mil-suptitle mil-accent mil-mb20 mil-up" style="display:block;">Bogotá, Colombia</span>
-                        <h1 class="mil-typing-title" data-type-html="<span>WE DESIGN AND </span><span class='mil-typing-orange'>DEVELOP</span><span> WEBSITES IN </span><span class='mil-typing-blue'>BOGOTÁ.</span><span></span>" data-type-html-es="<span>DISEÑAMOS Y </span><span class='mil-typing-orange'>DESARROLLAMOS</span><span> PÁGINAS WEB EN </span><span class='mil-typing-blue'>BOGOTÁ.</span><span></span>"></h1>
+                        <span class="mil-suptitle mil-accent mil-mb20 mil-up" style="display:block;">Bogotá, Colombia · Precisión bajo presión</span>
+                        <h1 class="mil-typing-title" data-type-html="<span>WE DESIGN </span><span class='mil-typing-orange'>BRANDS</span><span> AND </span><span class='mil-typing-blue'>WEBSITES</span><span> THAT GROW YOUR BUSINESS.</span>" data-type-html-es="<span>DISEÑAMOS </span><span class='mil-typing-orange'>MARCAS</span><span> Y </span><span class='mil-typing-blue'>PÁGINAS WEB</span><span> QUE HACEN CRECER TU NEGOCIO.</span>"></h1>
                         <div class="mil-typing-underline" aria-hidden="true"></div>
+                        <p class="mil-text mil-fs18 mil-light mil-up gs-hero-subheadline">Creamos identidades visuales, páginas web y contenido digital para empresas que quieren verse profesionales, diferenciarse y convertir más visitas en clientes.</p>
+                        <div class="gs-hero-cta-group mil-up">
+                            <a href="contact.html" class="mil-btn mil-btn-orange mil-c-gone">Cuéntanos tu proyecto</a>
+                            <a href="services.html" class="mil-btn mil-btn-border mil-c-gone">Ver nuestros servicios</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -427,6 +456,88 @@
                 </div>
             </div>
             <!-- phrase marquee end -->
+
+            <!-- servicios -->
+            <div class="mil-p-120-120" id="gs-services">
+                <div class="container">
+                    <div class="row mil-jcb mil-mb60">
+                        <div class="col-lg-7 mil-mb30">
+                            <span class="mil-service-eyebrow">Qué hacemos</span>
+                            <h2 class="mil-fs46 mil-light mil-mb30 mil-up">Cinco formas de ayudarte a verte y funcionar mejor.</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <a href="service-branding.html" class="mil-service-card mil-c-gone">
+                                <div class="mil-service-visual mil-visual-branding"><img src="img/service-branding.jpg" alt="Branding" loading="lazy"></div>
+                                <h3 class="mil-fs30 mil-light mil-mb20">Branding</h3>
+                                <p class="mil-text mil-mb30">Sistemas de identidad, voz de marca y dirección visual para negocios que necesitan una presencia más clara y una primera impresión más fuerte.</p>
+                                <ul class="mil-service-chip-list">
+                                    <li>Dirección de identidad</li>
+                                    <li>Sistemas de logo</li>
+                                    <li>Guías de marca</li>
+                                </ul>
+                                <span class="mil-service-card-link">Quiero construir mi marca <i class="fas fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <a href="diseno-web.html" class="mil-service-card mil-c-gone">
+                                <div class="mil-service-visual mil-visual-web"><img src="img/service-web-dev.jpg" alt="Diseño web" loading="lazy"></div>
+                                <h3 class="mil-fs30 mil-light mil-mb20">Diseño web</h3>
+                                <p class="mil-text mil-mb30">Landing pages y sitios web con un mensaje claro, una composición intencional y una experiencia digital alineada con tu marca.</p>
+                                <ul class="mil-service-chip-list">
+                                    <li>Estructura UI</li>
+                                    <li>Diseño responsive</li>
+                                    <li>Enfoque en conversión</li>
+                                </ul>
+                                <span class="mil-service-card-link">Quiero una página web <i class="fas fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <a href="service-animation-video.html" class="mil-service-card mil-c-gone">
+                                <div class="mil-service-visual mil-visual-video"><img src="img/service-video-editing.jpg" alt="Animación y edición de video" loading="lazy"></div>
+                                <h3 class="mil-fs30 mil-light mil-mb20">Animación y edición de video</h3>
+                                <p class="mil-text mil-mb30">Piezas en movimiento y contenido de video editado que vuelven la comunicación más dinámica, memorable y lista para plataformas.</p>
+                                <ul class="mil-service-chip-list">
+                                    <li>Motion graphics</li>
+                                    <li>Reels y promos</li>
+                                    <li>Edición de video</li>
+                                </ul>
+                                <span class="mil-service-card-link">Quiero video y animación <i class="fas fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <a href="service-social-media.html" class="mil-service-card mil-c-gone">
+                                <div class="mil-service-visual mil-visual-social"><img src="img/service-social-media.jpg" alt="Social Media" loading="lazy"></div>
+                                <h3 class="mil-fs30 mil-light mil-mb20">Social Media</h3>
+                                <p class="mil-text mil-mb30">Sistemas de contenido y piezas para redes que ayudan a las marcas a mantenerse consistentes, visibles y mejor organizadas en distintas plataformas.</p>
+                                <ul class="mil-service-chip-list">
+                                    <li>Pilares de contenido</li>
+                                    <li>Diseño de posts</li>
+                                    <li>Piezas de campaña</li>
+                                </ul>
+                                <span class="mil-service-card-link">Necesito contenido para redes <i class="fas fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 mil-mb30 mil-up">
+                            <a href="service-communication-strategy.html" class="mil-service-card mil-c-gone">
+                                <div class="mil-service-visual mil-visual-photo"><img src="img/service-photography.jpg" alt="Fotografía y Video" loading="lazy"></div>
+                                <h3 class="mil-fs30 mil-light mil-mb20">Fotografía y Video</h3>
+                                <p class="mil-text mil-mb30">Fotografía profesional de producto, marca y eventos, más grabación y edición de video para redes y campañas, para que tu marca tenga contenido real y no solo imágenes genéricas.</p>
+                                <ul class="mil-service-chip-list">
+                                    <li>Fotografía de producto</li>
+                                    <li>Fotografía de marca y eventos</li>
+                                    <li>Video para redes</li>
+                                </ul>
+                                <span class="mil-service-card-link">Quiero fotografía y video <i class="fas fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="mil-text mil-soft mil-up mil-tac" style="margin-top:10px;">¿Buscas algo más constante? <a href="plan-emprendimientos.html" class="mil-text-link mil-accent mil-c-gone">Diseño web por suscripción</a> desde $120.000 COP/mes.</p>
+                </div>
+            </div>
+            <!-- servicios end -->
+
             <!-- agency intro -->
             <div class="mil-p-120-120">
                 <div class="container">
@@ -458,30 +569,30 @@
             </div>
             <!-- agency intro end -->
             <!-- how we work -->
-            <div class="mil-p-120-90">
+            <div class="mil-p-120-90" id="gs-process">
                 <div class="container">
                     <div class="row mil-jcb">
                         <div class="col-lg-6 mil-mb60">
                             <div class="gs-step-carousel mil-up" id="gs-step-carousel">
                                 <div class="gs-step-slide gs-step-active" data-color="orange">
-                                    <div class="gs-step-visual gs-step-visual-1"><i class="fas fa-headphones-alt"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Escuchar</h3>
-                                    <p class="mil-text mil-fs16">Entendemos el contexto, los objetivos y los retos actuales antes de proponer una dirección.</p>
+                                    <div class="gs-step-visual gs-step-visual-image gs-step-visual-square"><img src="img/step-entendemos.png" alt="Entendemos" loading="lazy"></div>
+                                    <h3 class="mil-fs26 mil-mb20">01 — Entendemos</h3>
+                                    <p class="mil-text mil-fs16">Conocemos tu negocio, tus objetivos, tu audiencia y lo que necesitas conseguir.</p>
                                 </div>
                                 <div class="gs-step-slide" data-color="blue">
-                                    <div class="gs-step-visual gs-step-visual-2"><i class="fas fa-bullseye"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Definir</h3>
-                                    <p class="mil-text mil-fs16">Definimos el alcance correcto, las prioridades y la ruta creativa para el servicio específico que necesitas.</p>
+                                    <div class="gs-step-visual gs-step-visual-image"><img src="img/step-disenamos.png" alt="Diseñamos" loading="lazy"></div>
+                                    <h3 class="mil-fs26 mil-mb20">02 — Diseñamos</h3>
+                                    <p class="mil-text mil-fs16">Definimos la estrategia, estructura y dirección visual de tu proyecto.</p>
                                 </div>
                                 <div class="gs-step-slide" data-color="orange">
-                                    <div class="gs-step-visual gs-step-visual-3"><i class="fas fa-layer-group"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Construir</h3>
-                                    <p class="mil-text mil-fs16">Convertimos la dirección en piezas visuales, sistemas o contenido que pueden pasar al mundo real.</p>
+                                    <div class="gs-step-visual gs-step-visual-image"><img src="img/step-construimos.png" alt="Construimos" loading="lazy"></div>
+                                    <h3 class="mil-fs26 mil-mb20">03 — Construimos</h3>
+                                    <p class="mil-text mil-fs16">Convertimos la estrategia en una marca, página web o sistema de contenido funcional.</p>
                                 </div>
                                 <div class="gs-step-slide" data-color="blue">
-                                    <div class="gs-step-visual gs-step-visual-4"><i class="fas fa-rocket"></i></div>
-                                    <h3 class="mil-fs26 mil-mb20">Entregar</h3>
-                                    <p class="mil-text mil-fs16">Entregamos piezas, sistemas o recomendaciones listas para usarse con confianza.</p>
+                                    <div class="gs-step-visual gs-step-visual-image"><img src="img/step-lanzamos.png" alt="Lanzamos" loading="lazy"></div>
+                                    <h3 class="mil-fs26 mil-mb20">04 — Lanzamos</h3>
+                                    <p class="mil-text mil-fs16">Entregamos una solución lista para utilizar, comunicar y crecer.</p>
                                 </div>
                                 <div class="gs-step-dots">
                                     <span class="gs-step-dot gs-step-active"></span>
@@ -494,7 +605,8 @@
                         <div class="col-lg-5 mil-mb60">
                             <span class="mil-suptitle mil-accent mil-mb30 mil-up">Cómo trabajamos</span>
                             <h2 class="mil-fs42 mil-mb30 mil-up">Un proceso simple pensado para dar claridad.</h2>
-                            <p class="mil-text mil-fs18 mil-light mil-up">Mantenemos cada servicio anclado en estrategia, coherencia visual y ejecución práctica para que el trabajo no solo sea atractivo, sino útil para el negocio detrás.</p>
+                            <p class="mil-text mil-fs18 mil-light mil-up mil-mb30">Mantenemos cada servicio anclado en estrategia, coherencia visual y ejecución práctica para que el trabajo no solo sea atractivo, sino útil para el negocio detrás.</p>
+                            <a href="proceso.html" class="mil-text-link mil-accent mil-c-gone mil-up">Ver el proceso completo <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -576,8 +688,57 @@
                 </div>
             </section>
             <!-- portfolio logo reveal sequence end -->
-            <!-- call to action -->
-          
+
+            <!-- subscription plans -->
+            <div class="mil-soft-section mil-p-120-90 gs-plan-home-section">
+                <div class="container">
+                    <div class="mil-tac mil-mb90">
+                        <span class="mil-suptitle mil-accent mil-mb30 mil-up">Diseño web por suscripción</span>
+                        <h2 class="mil-fs42 mil-mb30 mil-up">Tu página web, mantenida todos los meses</h2>
+                        <p class="mil-text mil-fs18 mil-light mil-up" style="max-width:620px;margin:0 auto;">En vez de un pago único por un sitio que después queda abandonado, te lo mantenemos actualizado mes a mes por una tarifa fija. Como una suscripción, no como un proyecto que se entrega y se olvida.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 mil-mb30">
+                            <div class="gs-plan-card gs-plan-emprendimientos mil-up">
+                                <span class="gs-plan-badge">Para emprendimientos</span>
+                                <div class="gs-plan-price">
+                                    <span class="gs-plan-amount">$120.000</span>
+                                    <span class="gs-plan-period">COP / mes</span>
+                                </div>
+                                <p class="gs-plan-note">+ dominio aparte. Permanencia mínima de 10 meses.</p>
+                                <ul class="gs-plan-list">
+                                    <li><i class="fas fa-check"></i> Sitio web de hasta 3 páginas</li>
+                                    <li><i class="fas fa-check"></i> Edición básica de tus fotos</li>
+                                    <li><i class="fas fa-check"></i> Hosting en Cloudflare (SSL incluido)</li>
+                                    <li><i class="fas fa-check"></i> Actualizaciones menores cada mes</li>
+                                </ul>
+                                <a href="plan-emprendimientos.html" class="mil-btn mil-btn-border mil-c-gone mil-up">Ver el plan completo</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mil-mb30">
+                            <div class="gs-plan-card gs-plan-pymes mil-up">
+                                <span class="gs-plan-badge">Para Pymes</span>
+                                <span class="gs-plan-offer-badge"><i class="fas fa-tag"></i> Oferta de lanzamiento</span>
+                                <div class="gs-plan-price">
+                                    <span class="gs-plan-old-price">$250.000</span>
+                                    <span class="gs-plan-amount">$200.000</span>
+                                    <span class="gs-plan-period">COP / mes</span>
+                                </div>
+                                <p class="gs-plan-note">+ dominio aparte. Permanencia mínima de 10 meses.</p>
+                                <ul class="gs-plan-list">
+                                    <li><i class="fas fa-check"></i> Sitio web de hasta 6 páginas</li>
+                                    <li><i class="fas fa-check"></i> Catálogo de productos o servicios</li>
+                                    <li><i class="fas fa-check"></i> Blog y edición de fotografía ampliada</li>
+                                    <li><i class="fas fa-check"></i> Un ajuste moderado de estructura al mes</li>
+                                </ul>
+                                <a href="plan-pymes.html" class="mil-btn mil-btn-orange mil-c-gone mil-up">Ver el plan completo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mil-text mil-soft mil-up mil-tac" style="margin-top:20px;">El primer mes de cada plan se usa para diseñar y publicar tu sitio. Ningún plan incluye dominio propio ni correos corporativos, y crear páginas o secciones nuevas después de la entrega se cotiza aparte. <a href="contact.html" class="mil-text-link mil-accent mil-c-gone">¿Tienes dudas? Escríbenos</a>.</p>
+                </div>
+            </div>
+            <!-- subscription plans end -->
 
             <!-- logo marquee -->
             <div class="mil-p-90-90">
@@ -627,7 +788,7 @@
                             <ul class="mil-social mil-footer-social mil-up">
                                 <li><a href="#." class="mil-footer-social-btn mil-footer-social-facebook mil-glow-follow mil-c-gone" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#." class="mil-footer-social-btn mil-footer-social-behance mil-glow-follow mil-c-gone" aria-label="Behance"><i class="fab fa-behance"></i></a></li>
-                                <li><a href="#." class="mil-footer-social-btn mil-footer-social-instagram mil-footer-social-btn-lg mil-glow-follow mil-c-gone" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://www.instagram.com/gesslerstudio/" target="_blank" rel="noopener" class="mil-footer-social-btn mil-footer-social-instagram mil-footer-social-btn-lg mil-glow-follow mil-c-gone" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="col-6 col-md-3 col-lg-2 mil-mb90">
@@ -635,8 +796,8 @@
                             <ul class="mil-footer-menu">
                                 <li class="mil-up"><a href="index.html" class="mil-c-gone">Inicio</a></li>
                                 <li class="mil-up"><a href="services.html" class="mil-c-gone">Servicios</a></li>
-                                <li class="mil-up"><a href="portfolio-2.html" class="mil-c-gone">Portafolio</a></li>
-                                <li class="mil-up"><a href="about.html" class="mil-c-gone">Sobre nosotros</a></li>
+                                <li class="mil-up"><a href="portfolio-2.html" class="mil-c-gone">Proyectos</a></li><li class="mil-up"><a href="proceso.html" class="mil-c-gone">Proceso</a></li><li class="mil-up"><a href="blog.html" class="mil-c-gone">Blog</a></li>
+                                <li class="mil-up"><a href="about.html" class="mil-c-gone">Nosotros</a></li>
                                 <li class="mil-up"><a href="contact.html" class="mil-c-gone">Contacto</a></li>
                             </ul>
                         </div>
@@ -647,14 +808,15 @@
                                 <li class="mil-up"><a href="diseno-web.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-laptop-code"></i></span><span class="mil-footer-service-name">Diseño web</span></a></li>
                                 <li class="mil-up"><a href="service-animation-video.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-play-circle"></i></span><span class="mil-footer-service-name">Animación y edición de video</span></a></li>
                                 <li class="mil-up"><a href="service-social-media.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-hashtag"></i></span><span class="mil-footer-service-name">Social Media</span></a></li>
-                                <li class="mil-up"><a href="service-communication-strategy.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-comments"></i></span><span class="mil-footer-service-name">Estrategias de comunicación</span></a></li>
+                                <li class="mil-up"><a href="service-communication-strategy.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-camera-retro"></i></span><span class="mil-footer-service-name">Fotografía y Video</span></a></li>
+                                <li class="mil-up"><a href="plan-emprendimientos.html" class="mil-glow-follow mil-c-gone"><span class="mil-footer-service-icon"><i class="fas fa-crown"></i></span><span class="mil-footer-service-name">Planes de suscripción</span></a></li>
                             </ul>
                         </div>
                         <div class="col-12 col-lg-4 mil-mb90">
                             <h5 class="mil-fs16 mil-mb60 mil-up">Contáctanos</h5>
                             <ul class="mil-footer-list">
                                 <li class="mil-text mil-up">Teléfono: +57 319 349 0741</li>
-                                <li class="mil-text mil-up">Correo: hola@gesslerstudio.com</li>
+                                <li class="mil-text mil-up">Correo: felipe12.florez14@gmail.com</li>
                                 <li class="mil-text mil-up">Dirección: Calle 80A Sur #5-18, Bogotá, Colombia</li>
                             </ul>
                         </div>

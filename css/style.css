@@ -303,7 +303,7 @@ body {
 }
 
 .mil-accent-section {
-  background-color: #F35A38;
+  background-color: #1497E0;
 }
 
 .mil-out-section {
@@ -988,10 +988,10 @@ link
   background-color: #0A0B0F;
 }
 .mil-text-link.mil-accent-soft {
-  color: #f2b279;
+  color: #0B3D5C;
 }
 .mil-text-link.mil-accent-soft:after {
-  background-color: #f2b279;
+  background-color: #0B3D5C;
 }
 .mil-text-link:hover:after {
   width: 100%;
@@ -1067,6 +1067,69 @@ link
 .mil-service-card:hover .mil-service-card-link {
   gap: 16px;
 }
+.mil-service-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mil-service-card:hover .mil-service-visual { transform: scale(1.03); }
+.mil-service-visual i {
+  position: relative;
+  z-index: 2;
+  font-size: 54px;
+  color: rgba(255, 255, 255, 0.95);
+}
+.mil-service-visual::before,
+.mil-service-visual::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.55;
+}
+.mil-service-visual img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mil-visual-branding {
+  background: linear-gradient(135deg, #2a130d 0%, #14151A 70%);
+}
+.mil-visual-branding::before { width: 160px; height: 160px; background: #F35A38; top: -50px; left: -30px; }
+.mil-visual-branding::after { width: 100px; height: 100px; background: #1497e0; bottom: -30px; right: 10px; opacity: 0.3; }
+.mil-visual-web {
+  background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%);
+}
+.mil-visual-web::before { width: 160px; height: 160px; background: #1497e0; top: -50px; right: -30px; }
+.mil-visual-web::after { width: 100px; height: 100px; background: #F35A38; bottom: -30px; left: 10px; opacity: 0.3; }
+.mil-visual-video {
+  background: linear-gradient(135deg, #2a130d 0%, #0d1f2a 100%);
+}
+.mil-visual-video::before { width: 140px; height: 140px; background: #F35A38; top: -40px; left: 30%; }
+.mil-visual-video::after { width: 140px; height: 140px; background: #1497e0; bottom: -50px; right: 20%; opacity: 0.35; }
+.mil-visual-social {
+  background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%);
+}
+.mil-visual-social::before { width: 150px; height: 150px; background: #1497e0; bottom: -40px; left: -20px; }
+.mil-visual-social::after { width: 90px; height: 90px; background: #F35A38; top: -20px; right: 20px; opacity: 0.3; }
+.mil-visual-strategy {
+  background: linear-gradient(135deg, #2a130d 0%, #14151A 70%);
+}
+.mil-visual-strategy::before { width: 150px; height: 150px; background: #F35A38; bottom: -40px; right: -20px; }
+.mil-visual-strategy::after { width: 90px; height: 90px; background: #1497e0; top: -20px; left: 20px; opacity: 0.3; }
+.mil-visual-photo {
+  background: linear-gradient(135deg, #0d1f2a 0%, #14151A 70%);
+}
+.mil-visual-photo::before { width: 150px; height: 150px; background: #1497e0; bottom: -40px; right: -20px; }
+.mil-visual-photo::after { width: 90px; height: 90px; background: #F35A38; top: -20px; left: 20px; opacity: 0.3; }
 .mil-service-step {
   height: 100%;
   padding: 34px 30px;
@@ -1238,6 +1301,20 @@ spaces
 
 .mil-p-0-60 {
   margin-bottom: 60px;
+}
+
+.mil-p-90-0 {
+  padding-top: 90px;
+}
+
+.mil-p-60-120 {
+  padding-top: 60px;
+  padding-bottom: 120px;
+}
+
+.mil-p-90-120 {
+  padding-top: 90px;
+  padding-bottom: 120px;
 }
 
 @media (max-width: 768px) {
@@ -3976,6 +4053,40 @@ team
 .mil-typing-title.mil-typing-complete:after {
   background-color: #1497e0;
 }
+.gs-hero-subheadline {
+  max-width: 620px;
+  margin: 28px auto 0;
+  color: #B3B4B8;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.gs-hero-cta-group {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 34px;
+}
+.gs-hero-cta-group .mil-btn {
+  flex-shrink: 1;
+  min-width: 0;
+}
+@media (max-width: 560px) {
+  .gs-hero-cta-group {
+    gap: 8px;
+  }
+  .gs-hero-cta-group .mil-btn {
+    padding: 0 18px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 400px) {
+  .gs-hero-cta-group .mil-btn {
+    padding: 0 12px;
+    font-size: 9px;
+  }
+}
 .mil-typing-underline {
   width: min(320px, 54vw);
   height: 4px;
@@ -5028,15 +5139,19 @@ body.mil-day-mode footer .mil-footer-service-name {
   }
 }
 
-/* ===== BREADCRUMB BAR ===== */
+/* ===== BREADCRUMB BAR =====
+   In normal document flow (not fixed) so it scrolls away with the page instead of sitting
+   pinned on top of whatever content — a solid orange bar staying fixed over scrolling
+   portfolio thumbnails looked like a rendering bug rather than a wayfinding element. */
 .gs-breadcrumb-bar {
-    position: fixed;
-    top: 120px;
+    position: relative;
+    margin-top: 120px;
+    margin-bottom: 24px;
     left: 0;
     width: 100%;
     z-index: 998;
     background-color: #F35A38;
-    padding: 10px 0;
+    padding: 14px 0;
 }
 .gs-breadcrumb {
     list-style: none;
@@ -5071,15 +5186,8 @@ body.mil-day-mode footer .mil-footer-service-name {
     color: #fff;
     font-weight: 700;
 }
-@media (max-width: 768px) {
-    .gs-breadcrumb-bar { top: 90px; }
-}
-
-/* En mobile (scroll nativo, sin ScrollSmoother) el breadcrumb va con el flujo */
 @media (max-width: 991px) {
     .gs-breadcrumb-bar {
-        position: relative;
-        top: 0;
         margin-top: 90px;
     }
     .gs-breadcrumb-spacer {
@@ -5284,6 +5392,8 @@ body.mil-day-mode footer .mil-footer-service-name {
     flex-shrink: 0;
 }
 .gs-pillnav-lang button {
+    display: inline-flex;
+    align-items: center;
     background: none;
     border: none;
     color: #73767B;
@@ -5294,8 +5404,28 @@ body.mil-day-mode footer .mil-footer-service-name {
     padding: 4px 2px;
     transition: color 0.2s ease;
 }
-.gs-pillnav-lang button.mil-active {
+.gs-pillnav-lang button.mil-active,
+.gs-pillnav-lang button.mil-active .gs-lang-code,
+.gs-pillnav-lang button.mil-active .gs-lang-full {
     color: #F35A38;
+}
+.gs-pillnav-lang button .gs-lang-full {
+    display: inline-block;
+    min-width: 0;
+    max-width: 0;
+    margin-left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin-left 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+.gs-pillnav-lang button:hover .gs-lang-full,
+.gs-pillnav-lang button:focus-visible .gs-lang-full {
+    max-width: 90px;
+    margin-left: 6px;
+    opacity: 1;
 }
 .gs-pillnav-lang span {
     color: rgba(255, 255, 255, 0.15);
@@ -5465,13 +5595,657 @@ body.mil-day-mode footer .mil-footer-service-name {
     color: rgba(255, 255, 255, 0.15);
 }
 
-/* Content offset for the floating pill: overrides the pre-pillnav .gs-breadcrumb-spacer above */
+/* No longer needed: .gs-breadcrumb-bar is in normal flow now and spaces itself. */
 .gs-breadcrumb-spacer {
-    height: 42px;
-    margin-top: 140px;
+    display: none;
+}
+
+/* ===== BLOG ===== */
+.gs-blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.gs-blog-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(243, 90, 56, 0.35);
+    color: #F35A38;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+}
+.gs-blog-date {
+    color: #73767B;
+    font-size: 14px;
+}
+.gs-blog-prose h2 {
+    font-size: 32px;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin: 60px 0 20px;
+}
+.gs-blog-prose h3 {
+    font-size: 23px;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin: 36px 0 16px;
+}
+.gs-blog-prose p {
+    color: #B3B4B8;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.gs-blog-prose ul,
+.gs-blog-prose ol {
+    margin: 0 0 24px;
+    padding-left: 22px;
+}
+.gs-blog-prose li {
+    color: #B3B4B8;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+.gs-blog-prose li::marker {
+    color: #F35A38;
+}
+.gs-blog-prose strong {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+.gs-blog-callout {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin: 32px 0;
+}
+.gs-blog-callout p {
+    margin-bottom: 0 !important;
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+}
+/* Marked space for a future photo/screenshot. Swap for a real <img> when ready. */
+.gs-img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    min-height: 280px;
+    border-radius: 16px;
+    border: 1.5px dashed rgba(243, 90, 56, 0.35);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 30px;
+    margin: 32px 0;
+}
+.gs-img-placeholder i {
+    font-size: 26px;
+    color: rgba(243, 90, 56, 0.6);
+}
+.gs-img-placeholder span {
+    color: #73767B;
+    font-size: 14px;
+    max-width: 420px;
+    line-height: 1.5;
+}
+/* Real photo slot: points at a future file; falls back to the placeholder SVG via onerror
+   until the real file exists at that path, then just starts working with no code changes. */
+.gs-blog-photo {
+    display: block;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 32px 0;
+}
+.gs-blog-photo-caption {
+    display: block;
+    margin-top: -20px;
+    margin-bottom: 32px;
+    color: #73767B;
+    font-size: 13px;
+    text-align: center;
+}
+.gs-blog-cta {
+    text-align: center;
+    padding: 60px 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin: 60px 0 20px;
+}
+.gs-blog-share {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 40px;
+}
+.gs-blog-share span {
+    color: #73767B;
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+/* ===== SUBSCRIPTION PLANS ===== */
+.gs-plan-card {
+    position: relative;
+    padding: 50px 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    height: 100%;
+}
+.gs-plan-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    background: rgba(243, 90, 56, 0.12);
+    color: #F35A38;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 22px;
+}
+.gs-plan-card.gs-plan-pymes .gs-plan-badge {
+    background: rgba(20, 151, 224, 0.12);
+    color: #1497E0;
+}
+.gs-plan-offer-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 100px;
+    background: rgba(61, 214, 140, 0.12);
+    color: #3DD68C;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.gs-plan-old-price {
+    flex-basis: 100%;
+    color: #73767B;
+    font-size: 15px;
+    text-decoration: line-through;
+    margin-bottom: 6px;
+}
+.gs-plan-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+.gs-plan-price .gs-plan-amount {
+    font-size: 52px;
+    font-weight: 300;
+    color: #FFFFFF;
+    line-height: 1;
+}
+.gs-plan-price .gs-plan-period {
+    color: #73767B;
+    font-size: 16px;
+}
+.gs-plan-note {
+    color: #73767B;
+    font-size: 14px;
+    margin-bottom: 34px;
+}
+.gs-plan-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 34px;
+}
+.gs-plan-highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.gs-plan-highlight-item i {
+    color: #F35A38;
+    font-size: 15px;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.gs-plan-card.gs-plan-pymes .gs-plan-highlight-item i {
+    color: #1497E0;
+}
+.gs-plan-highlight-item span {
+    color: #DADBDE;
+    font-size: 14px;
+}
+.gs-plan-setup-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: rgba(20, 151, 224, 0.06);
+    margin-bottom: 30px;
+}
+.gs-plan-setup-note i {
+    color: #1497E0;
+    font-size: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+.gs-plan-setup-note p {
+    color: #B3B4B8;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+.gs-plan-list {
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+}
+.gs-plan-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    color: #DADBDE;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.gs-plan-list li i {
+    color: #3DD68C;
+    font-size: 13px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+.gs-plan-list.gs-plan-list-excluded li i {
+    color: #73767B;
+}
+.gs-plan-list.gs-plan-list-excluded li {
+    color: #73767B;
+}
+
+/* Sección "Diseño web por suscripción" del home: fondo naranja, tarjetas en colores distintos para que se lean bien encima */
+.mil-soft-section.gs-plan-home-section {
+    background: linear-gradient(135deg, #F35A38 0%, #D94A29 100%) !important;
+}
+.gs-plan-home-section .mil-suptitle.mil-accent {
+    color: #FFFFFF;
+}
+.gs-plan-home-section .mil-text {
+    color: rgba(255, 255, 255, 0.88);
+}
+.gs-plan-home-section .mil-text-link.mil-accent {
+    color: #14151A;
+    font-weight: 600;
+}
+.gs-plan-home-section .mil-text-link.mil-accent:after {
+    background-color: #14151A;
+}
+.gs-plan-home-section .gs-plan-card {
+    border: none;
+    box-shadow: 0 25px 60px rgba(20, 11, 6, 0.25);
+}
+/* Tarjeta Emprendimientos: clara, para contrastar con el naranja */
+.gs-plan-home-section .gs-plan-card.gs-plan-emprendimientos {
+    background: #FFF7F0;
+}
+.gs-plan-home-section .gs-plan-emprendimientos .gs-plan-amount,
+.gs-plan-home-section .gs-plan-emprendimientos .gs-plan-list li {
+    color: #14151A;
+}
+.gs-plan-home-section .gs-plan-emprendimientos .gs-plan-list li i {
+    color: #1F9D63;
+}
+.gs-plan-home-section .gs-plan-emprendimientos .mil-btn.mil-btn-border {
+    border-color: #14151A;
+    color: #14151A;
+}
+.gs-plan-home-section .gs-plan-emprendimientos .mil-btn.mil-btn-border:hover {
+    color: #FFFFFF;
+}
+/* Tarjeta Pymes: azul oscuro, no negro puro */
+.gs-plan-home-section .gs-plan-card.gs-plan-pymes {
+    background: linear-gradient(160deg, #123247 0%, #0D2434 100%);
+}
+
+.gs-plan-term {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    color: #B3B4B8;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+.gs-plan-term i {
+    color: #F2B279;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+.gs-plan-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.gs-plan-compare-table th,
+.gs-plan-compare-table td {
+    padding: 18px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 15px;
+    color: #DADBDE;
+}
+.gs-plan-compare-table th {
+    color: #73767B;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.gs-plan-compare-table td:first-child,
+.gs-plan-compare-table th:first-child {
+    color: #FFFFFF;
+}
+.gs-plan-compare-table i.fa-check {
+    color: #3DD68C;
+}
+.gs-plan-compare-table i.fa-xmark,
+.gs-plan-compare-table i.fa-times {
+    color: #73767B;
+}
+.gs-plan-faq-item {
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.gs-plan-faq-item:first-child {
+    padding-top: 0;
+}
+.gs-plan-faq-item h4 {
+    color: #FFFFFF;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.gs-plan-faq-item p {
+    color: #73767B;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* FAQ de contacto: solo se ven las preguntas, la respuesta aparece al pasar el cursor */
+.gs-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.gs-faq-item {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-faq-item:hover,
+.gs-faq-item:focus-within {
+    background: rgba(20, 151, 224, 0.08);
+    border-color: rgba(20, 151, 224, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+.gs-faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    padding: 28px 34px;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 19px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+}
+.gs-faq-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: #73767B;
+    font-size: 13px;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease, color 0.35s ease;
+}
+.gs-faq-item:hover .gs-faq-icon,
+.gs-faq-item:focus-within .gs-faq-icon {
+    transform: rotate(180deg);
+    background: #1497e0;
+    color: #FFFFFF;
+}
+.gs-faq-answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-faq-item:hover .gs-faq-answer-wrap,
+.gs-faq-item:focus-within .gs-faq-answer-wrap {
+    grid-template-rows: 1fr;
+}
+.gs-faq-answer-inner {
+    overflow: hidden;
+}
+.gs-faq-answer-inner p {
+    margin: 0 34px 28px;
+    color: #B3B4B8;
+    font-size: 15px;
+    line-height: 1.6;
+}
+@media (max-width: 768px) {
+    .gs-faq-question {
+        padding: 22px 24px;
+        font-size: 17px;
+    }
+    .gs-faq-answer-inner p {
+        margin: 0 24px 22px;
+    }
 }
 @media (max-width: 992px) {
-    .gs-breadcrumb-spacer {
-        margin-top: 130px;
+    .gs-plan-compare-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
+}
+
+/* ===== FLOATING WHATSAPP CHAT WIDGET ===== */
+.gs-wa-widget {
+    position: fixed;
+    right: 28px;
+    bottom: 100px;
+    z-index: 9999;
+}
+.gs-wa-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #25D366;
+    box-shadow: 0 12px 36px rgba(37, 211, 102, 0.35);
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0, 0, 0.3642, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.gs-wa-toggle:hover {
+    transform: translateY(-3px) scale(1.04);
+    background: #20BD5A;
+    box-shadow: 0 14px 40px rgba(37, 211, 102, 0.45);
+}
+.gs-wa-toggle-icon,
+.gs-wa-toggle-close {
+    position: absolute;
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.gs-wa-toggle-icon svg { width: 100%; height: 100%; }
+.gs-wa-toggle-close {
+    font-size: 18px;
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.6) rotate(-45deg);
+}
+.gs-wa-active .gs-wa-toggle-icon {
+    opacity: 0;
+    transform: scale(0.6) rotate(45deg);
+}
+.gs-wa-active .gs-wa-toggle-close {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+.gs-wa-panel {
+    position: absolute;
+    right: 0;
+    bottom: 70px;
+    width: min(320px, calc(100vw - 56px));
+    padding: 18px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(20, 21, 26, 0.98) 0%, rgba(13, 14, 18, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+    transform-origin: bottom right;
+    pointer-events: none;
+    transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-wa-active .gs-wa-panel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+.gs-wa-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.gs-wa-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(37, 211, 102, 0.5);
+    flex-shrink: 0;
+}
+.gs-wa-panel-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+.gs-wa-panel-name {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+}
+.gs-wa-panel-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #73767B;
+    font-size: 12px;
+}
+.gs-wa-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #25D366;
+    flex-shrink: 0;
+}
+.gs-wa-panel-close {
+    margin-left: auto;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.04);
+    color: #73767B;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+.gs-wa-panel-close:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+}
+.gs-wa-bubble {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px 14px 14px 14px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+}
+.gs-wa-bubble-text {
+    color: #DADBDE;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 6px;
+}
+.gs-wa-bubble-time {
+    display: block;
+    color: #73767B;
+    font-size: 11px;
+    text-align: right;
+}
+.gs-wa-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: 100px;
+    background: #25D366;
+    color: #0A0B0F;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+.gs-wa-cta:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+.gs-wa-cta-icon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+}
+.gs-wa-cta-icon svg { width: 100%; height: 100%; }
+@media (max-width: 768px) {
+    .gs-wa-widget { right: 18px; bottom: 84px; }
+    .gs-wa-toggle { width: 52px; height: 52px; }
 }
