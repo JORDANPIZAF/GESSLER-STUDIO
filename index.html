@@ -121,32 +121,22 @@
         }
         .gs-step-visual-image img {
             position: absolute;
-            top: -110px;
+            bottom: 106px;
             left: 50%;
             transform: translateX(-50%);
-            width: 300px;
-            max-width: 85%;
+            width: 100%;
             height: auto;
             z-index: 3;
             filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
             pointer-events: none;
         }
-        @media (max-width: 480px) {
-            .gs-step-visual-image img {
-                top: -70px;
-                width: 220px;
-            }
-        }
-        /* Variante para imágenes cuadradas (ej. Entendemos): más angosta para no tapar el texto */
+        /* Variante para imágenes cuadradas (ej. Entendemos): más angosta que las rectangulares
+           porque a lo ancho completo su altura sería excesiva y taparía el título. La ancla por
+           "bottom" (en vez de "top") hace que el borde inferior quede siempre a la misma distancia
+           del texto sin importar el ancho real de la tarjeta. */
         .gs-step-visual-square img {
-            width: 210px;
-            top: -90px;
-        }
-        @media (max-width: 480px) {
-            .gs-step-visual-square img {
-                width: 170px;
-                top: -60px;
-            }
+            width: 62%;
+            bottom: 40px;
         }
         .gs-step-dots {
             position: absolute;
@@ -533,7 +523,6 @@
                             </a>
                         </div>
                     </div>
-                    <p class="mil-text mil-soft mil-up mil-tac" style="margin-top:10px;">¿Buscas algo más constante? <a href="plan-emprendimientos.html" class="mil-text-link mil-accent mil-c-gone">Diseño web por suscripción</a> desde $120.000 COP/mes.</p>
                 </div>
             </div>
             <!-- servicios end -->
