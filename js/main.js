@@ -40,6 +40,14 @@ document.addEventListener("DOMContentLoaded", function () {
             transitionOverlay.classList.remove('mil-hidden');
         };
 
+        // Back/forward navigation restores the page from bfcache exactly as it was frozen —
+        // if that snapshot was taken mid-transition (overlay just shown, navigation about to
+        // fire), the overlay comes back visible and stays that way forever, since bfcache
+        // restores don't re-run DOMContentLoaded (so none of the hide fallbacks below fire).
+        window.addEventListener('pageshow', () => {
+            hideTransition();
+        });
+
         window.addEventListener('load', () => {
             setTimeout(hideTransition, 80);
         });

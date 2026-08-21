@@ -5207,7 +5207,7 @@ body.mil-day-mode footer .mil-footer-service-name {
     top: 24px;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -5528,13 +5528,13 @@ body.mil-day-mode footer .mil-footer-service-name {
     display: block;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: clamp(30px, 9vw, 48px);
+    font-size: clamp(22px, 6.5vw, 38px);
     text-transform: uppercase;
     letter-spacing: -0.01em;
     line-height: 1.15;
     text-decoration: none;
     color: #fff;
-    padding: 8px 28px;
+    padding: 6px 28px;
     opacity: 0;
     transform: translateY(28px);
     transition: color 0.2s ease, opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
