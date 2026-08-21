@@ -5436,7 +5436,7 @@ body.mil-day-mode footer .mil-footer-service-name {
 .gs-pillnav-mobile {
     display: none;
 }
-@media (max-width: 992px) {
+@media (max-width: 1080px) {
     .gs-pillnav-wrap {
         left: 16px;
         right: 16px;
