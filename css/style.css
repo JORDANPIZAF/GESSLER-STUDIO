@@ -243,18 +243,21 @@ body {
   background-color: #14151A;
 }
 
-.mil-theme-jordan .mil-content {
+.mil-theme-jordan .mil-content,
+.mil-theme-angie .mil-content {
   position: relative;
   isolation: isolate;
 }
-.mil-theme-jordan .mil-content:before {
+.mil-theme-jordan .mil-content:before,
+.mil-theme-angie .mil-content:before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -2;
   pointer-events: none;
 }
-.mil-theme-jordan .mil-content:after {
+.mil-theme-jordan .mil-content:after,
+.mil-theme-angie .mil-content:after {
   content: "";
   position: absolute;
   inset: 0;
@@ -270,18 +273,33 @@ body {
     linear-gradient(180deg, #0A0B0F 0%, #0A0B0F 56%, rgba(243, 90, 56, 0.12) 74%, rgba(243, 90, 56, 0.22) 88%, rgba(243, 90, 56, 0.3) 100%),
     radial-gradient(circle at 78% 88%, rgba(243, 90, 56, 0.18) 0%, rgba(243, 90, 56, 0) 38%);
 }
+.mil-theme-angie .mil-content:before {
+  background:
+    linear-gradient(180deg, #0A0B0F 0%, #0A0B0F 56%, rgba(20, 151, 224, 0.12) 74%, rgba(20, 151, 224, 0.22) 88%, rgba(20, 151, 224, 0.3) 100%),
+    radial-gradient(circle at 78% 88%, rgba(20, 151, 224, 0.18) 0%, rgba(20, 151, 224, 0) 38%);
+}
 .mil-theme-jordan .mil-content:after {
   background-image:
     radial-gradient(circle, rgba(243, 90, 56, 0.28) 0.7px, transparent 0.9px),
     radial-gradient(circle, rgba(255, 255, 255, 0.18) 0.6px, transparent 0.85px),
     radial-gradient(circle, rgba(243, 90, 56, 0.14) 0.8px, transparent 1px);
 }
-.mil-theme-jordan footer {
+.mil-theme-angie .mil-content:after {
+  background-image:
+    radial-gradient(circle, rgba(20, 151, 224, 0.28) 0.7px, transparent 0.9px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.18) 0.6px, transparent 0.85px),
+    radial-gradient(circle, rgba(20, 151, 224, 0.14) 0.8px, transparent 1px);
+}
+.mil-theme-jordan footer,
+.mil-theme-angie footer {
   position: relative;
   background: transparent;
 }
 .mil-theme-jordan .mil-soft-section {
   background: linear-gradient(180deg, rgba(20, 21, 26, 0.96) 0%, rgba(33, 21, 19, 0.94) 100%);
+}
+.mil-theme-angie .mil-soft-section {
+  background: linear-gradient(180deg, rgba(20, 21, 26, 0.96) 0%, rgba(14, 32, 44, 0.94) 100%);
 }
 
 .mil-accent-section {
@@ -3789,6 +3807,20 @@ team
   left: -30px;
   bottom: -40px;
   background: #1497e0;
+}
+.mil-theme-angie .mil-profile-video-frame:before {
+  width: 180px;
+  height: 180px;
+  top: -40px;
+  right: -30px;
+  background: #1497e0;
+}
+.mil-theme-angie .mil-profile-video-frame:after {
+  width: 150px;
+  height: 150px;
+  left: -30px;
+  bottom: -40px;
+  background: #F35A38;
 }
 .mil-profile-video-icon,
 .mil-profile-video-label {
