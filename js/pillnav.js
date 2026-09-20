@@ -95,15 +95,29 @@
         { href: 'contact.html',  icon: 'fas fa-envelope',      key: 'Contacto',    color: ACCENT_ORANGE }
     ];
 
+    /* Cloudflare Pages sirve URLs limpias (/contact en vez de /contact.html), así que el
+       nombre se normaliza siempre a "algo.html" antes de compararlo. */
     function currentFile() {
         var path = window.location.pathname.split('/').pop();
-        return path === '' ? 'index.html' : path;
+        if (path === '') return 'index.html';
+        return path.indexOf('.') === -1 ? path + '.html' : path;
     }
+
+    /* Qué páginas cuentan como parte de cada sección del menú (las subpáginas marcan su sección). */
+    var SECTION_MATCH = {
+        'index.html':       /^index\.html$/,
+        'services.html':    /^(services|diseno-web|service-[a-z-]+|plan-[a-z-]+)\.html$/,
+        'portfolio-2.html': /^(portfolio-2|project-[a-z-]+)\.html$/,
+        'proceso.html':     /^proceso\.html$/,
+        'blog.html':        /^(blog|blog-[a-z-]+)\.html$/,
+        'about.html':       /^(about|jordan-piza)\.html$/,
+        'contact.html':     /^contact\.html$/
+    };
 
     function isActiveLink(href) {
         var current = currentFile();
-        if (href === 'index.html') return current === 'index.html' || current === '';
-        return current === href;
+        var match = SECTION_MATCH[href];
+        return match ? match.test(current) : current === href;
     }
 
     function currentLang() {
