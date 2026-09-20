@@ -61,11 +61,6 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://gesslerstudio.com/angie-pachon</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://gesslerstudio.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
@@ -74,5 +69,55 @@
     <loc>https://gesslerstudio.com/terminos-y-condiciones</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/plan-emprendimientos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/plan-pymes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/proceso</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/blog</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/blog-crear-pagina-web</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/blog-publicidad-consultorio-odontologico</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/blog-caso-beyond-mercado-usa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/blog-de-carpinteria-a-muebles-de-autor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/blog-pagina-web-con-ia-un-prompt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gesslerstudio.com/blog-sesion-fotos-de-grado-momentos-especiales</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

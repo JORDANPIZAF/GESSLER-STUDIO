@@ -32,7 +32,6 @@ Disallow: /publication.html
 Disallow: /project.html
 Disallow: /store.html
 Disallow: /coming-soon.html
-Disallow: /blog.html
 Disallow: /pricing.html
 Disallow: /404.html
 

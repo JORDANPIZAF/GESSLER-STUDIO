@@ -243,21 +243,18 @@ body {
   background-color: #14151A;
 }
 
-.mil-theme-jordan .mil-content,
-.mil-theme-angie .mil-content {
+.mil-theme-jordan .mil-content {
   position: relative;
   isolation: isolate;
 }
-.mil-theme-jordan .mil-content:before,
-.mil-theme-angie .mil-content:before {
+.mil-theme-jordan .mil-content:before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -2;
   pointer-events: none;
 }
-.mil-theme-jordan .mil-content:after,
-.mil-theme-angie .mil-content:after {
+.mil-theme-jordan .mil-content:after {
   content: "";
   position: absolute;
   inset: 0;
@@ -273,33 +270,18 @@ body {
     linear-gradient(180deg, #0A0B0F 0%, #0A0B0F 56%, rgba(243, 90, 56, 0.12) 74%, rgba(243, 90, 56, 0.22) 88%, rgba(243, 90, 56, 0.3) 100%),
     radial-gradient(circle at 78% 88%, rgba(243, 90, 56, 0.18) 0%, rgba(243, 90, 56, 0) 38%);
 }
-.mil-theme-angie .mil-content:before {
-  background:
-    linear-gradient(180deg, #0A0B0F 0%, #0A0B0F 56%, rgba(20, 151, 224, 0.12) 74%, rgba(20, 151, 224, 0.22) 88%, rgba(20, 151, 224, 0.3) 100%),
-    radial-gradient(circle at 78% 88%, rgba(20, 151, 224, 0.18) 0%, rgba(20, 151, 224, 0) 38%);
-}
 .mil-theme-jordan .mil-content:after {
   background-image:
     radial-gradient(circle, rgba(243, 90, 56, 0.28) 0.7px, transparent 0.9px),
     radial-gradient(circle, rgba(255, 255, 255, 0.18) 0.6px, transparent 0.85px),
     radial-gradient(circle, rgba(243, 90, 56, 0.14) 0.8px, transparent 1px);
 }
-.mil-theme-angie .mil-content:after {
-  background-image:
-    radial-gradient(circle, rgba(20, 151, 224, 0.28) 0.7px, transparent 0.9px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.18) 0.6px, transparent 0.85px),
-    radial-gradient(circle, rgba(20, 151, 224, 0.14) 0.8px, transparent 1px);
-}
-.mil-theme-jordan footer,
-.mil-theme-angie footer {
+.mil-theme-jordan footer {
   position: relative;
   background: transparent;
 }
 .mil-theme-jordan .mil-soft-section {
   background: linear-gradient(180deg, rgba(20, 21, 26, 0.96) 0%, rgba(33, 21, 19, 0.94) 100%);
-}
-.mil-theme-angie .mil-soft-section {
-  background: linear-gradient(180deg, rgba(20, 21, 26, 0.96) 0%, rgba(14, 32, 44, 0.94) 100%);
 }
 
 .mil-accent-section {
@@ -3808,20 +3790,6 @@ team
   bottom: -40px;
   background: #1497e0;
 }
-.mil-theme-angie .mil-profile-video-frame:before {
-  width: 180px;
-  height: 180px;
-  top: -40px;
-  right: -30px;
-  background: #1497e0;
-}
-.mil-theme-angie .mil-profile-video-frame:after {
-  width: 150px;
-  height: 150px;
-  left: -30px;
-  bottom: -40px;
-  background: #F35A38;
-}
 .mil-profile-video-icon,
 .mil-profile-video-label {
   position: relative;
@@ -6256,3 +6224,28 @@ body.mil-day-mode footer .mil-footer-service-name {
     .gs-wa-widget { right: 18px; bottom: 84px; }
     .gs-wa-toggle { width: 52px; height: 52px; }
 }
+
+/* Títulos de grupo dentro de las preguntas frecuentes */
+.gs-faq-group-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #F35A38;
+    margin: 48px 0 20px;
+}
+.gs-faq-group-title:first-child { margin-top: 0; }
+
+/* Blog: galería, foto vertical y tabla */
+.gs-blog-photo-tall { display:block; width:100%; max-width:480px; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:16px; margin:32px auto; }
+.gs-blog-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:32px 0 12px; }
+.gs-blog-gallery img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:16px; display:block; }
+.gs-blog-prose .gs-blog-photo-caption { margin-top:0; }
+.gs-blog-table { width:100%; border-collapse:collapse; margin:24px 0 32px; font-size:15px; }
+.gs-blog-table th, .gs-blog-table td { text-align:left; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,0.1); vertical-align:top; }
+.gs-blog-table th { color:#F35A38; font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.06em; }
+@media (max-width:600px){ .gs-blog-gallery{grid-template-columns:1fr;} .gs-blog-table{display:block;overflow-x:auto;} }
+
+/* Blog: foto horizontal completa y galería de 2 */
+.gs-blog-photo-wide { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; border-radius:16px; margin:32px 0; }
+.gs-blog-gallery.two { grid-template-columns:repeat(2,1fr); }
+.gs-blog-gallery.two.land img { aspect-ratio:3/2; }
+@media (max-width:600px){ .gs-blog-gallery.two{grid-template-columns:1fr;} }

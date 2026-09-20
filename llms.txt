@@ -1,0 +1,44 @@
+# Gessler Studio
+
+> Gessler Studio es una agencia digital de Bogotá, Colombia, que diseña páginas web, identidades de marca (branding), contenido para redes sociales y animación para pymes y empresas. Trabaja de forma remota con clientes en Colombia y con empresas colombianas que venden a mercados internacionales. Sitio bilingüe en español e inglés.
+
+## Datos de contacto
+- Sitio: https://gesslerstudio.com
+- WhatsApp: +57 319 349 0741
+- Dirección: Calle 80A Sur #5-18, Bogotá, Colombia
+- Instagram: https://www.instagram.com/gesslerstudio/
+- Formulario: https://gesslerstudio.com/contact
+
+## Servicios
+- [Servicios (resumen)](https://gesslerstudio.com/services): desarrollo web, branding, contenido y redes sociales, diseño digital.
+- [Diseño y desarrollo web](https://gesslerstudio.com/diseno-web)
+- [Branding e identidad de marca](https://gesslerstudio.com/service-branding)
+- [Contenido y redes sociales](https://gesslerstudio.com/service-social-media)
+- [Animación y video](https://gesslerstudio.com/service-animation-video)
+- [Estrategia de comunicación](https://gesslerstudio.com/service-communication-strategy)
+
+## Precios (diseño web por suscripción, COP, 2026)
+- [Plan Emprendimientos](https://gesslerstudio.com/plan-emprendimientos): $120.000/mes. Hasta 3 páginas, hosting en Cloudflare con SSL, SEO básico, edición básica de fotos, actualizaciones mensuales menores.
+- [Plan Pymes](https://gesslerstudio.com/plan-pymes): $200.000/mes (precio de lanzamiento; regular $250.000/mes). Hasta 6 páginas, catálogo, blog, un ajuste moderado de estructura al mes, soporte prioritario.
+- Permanencia mínima de 10 meses; después mes a mes y cancelable sin penalidad. El primer mes se usa para construir y publicar el sitio.
+- No incluido: dominio propio (aprox. $50.000-$80.000 COP/año), correos corporativos, fotografía profesional, pauta publicitaria, páginas nuevas fuera de lo acordado.
+- También se trabaja por proyecto único, con cotización según alcance.
+
+## Casos de clientes
+- [Beyond SAS](https://gesslerstudio.com/project-beyond-sas): fabricante colombiano de exhibición comercial y mobiliario; sitio bilingüe con animación 3D.
+- [WAC SAS](https://gesslerstudio.com/project-wac-sas): catálogo web B2B.
+- Co-Creator: estudio de mobiliario de autor por series (Bogotá). Identidad, sistema de contenido y web. Caso contado en [De carpintería a marca de muebles de autor](https://gesslerstudio.com/blog-de-carpinteria-a-muebles-de-autor).
+
+## Proceso
+- [Cómo trabajamos](https://gesslerstudio.com/proceso): Entendemos, Diseñamos, Construimos, Lanzamos. Un sitio de pocas páginas suele tomar entre 2 y 4 semanas desde que se tiene el contenido.
+
+## Artículos
+- [Sesión de fotos profesional de grado: por qué enmarcar los momentos especiales](https://gesslerstudio.com/blog-sesion-fotos-de-grado-momentos-especiales)
+- [Una página web con un solo prompt: por qué es un mito](https://gesslerstudio.com/blog-pagina-web-con-ia-un-prompt)
+- [De carpintería a marca de muebles de autor: el caso Co-Creator](https://gesslerstudio.com/blog-de-carpinteria-a-muebles-de-autor)
+- [Cómo crear una página web para tu negocio](https://gesslerstudio.com/blog-crear-pagina-web)
+- [Publicidad para consultorios odontológicos](https://gesslerstudio.com/blog-publicidad-consultorio-odontologico)
+- [Cómo preparar tu negocio para el mercado de Estados Unidos: el caso Beyond SAS](https://gesslerstudio.com/blog-caso-beyond-mercado-usa)
+
+## Preguntas frecuentes
+- [Preguntas frecuentes](https://gesslerstudio.com/contact): precios, agencia vs. freelancer, Wix/WordPress vs. diseñador, tiempos, dominio y hosting, branding, medición de publicidad.
