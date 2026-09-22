@@ -39,7 +39,7 @@ export async function onRequestPost(context) {
         answerLines.join("");
 
     const payload = {
-        from: env.CONTACT_FROM || "Gessler Studio <onboarding@resend.dev>",
+        from: env.CONTACT_FROM || "Gessler Studio <formulario@gesslerstudio.com>",
         to: [env.CONTACT_TO_EMAIL || "felipe12.florez14@gmail.com"],
         subject: "Nueva solicitud de cotización - Gessler Studio",
         html: html
