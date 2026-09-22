@@ -26,6 +26,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="author" content="bslthemes" />
 
     <!-- grid css -->
+    <!-- Precarga la imagen del hero (LCP): el navegador la pide de inmediato en vez de esperar a encontrar el <img> -->
+    <link rel="preload" as="image" href="img/banners/hero-slide-1.jpg?v=2" imagesrcset="img/banners/hero-slide-1-mobile.jpg?v=2 900w, img/banners/hero-slide-1.jpg?v=2 1781w" imagesizes="100vw" fetchpriority="high">
     <!-- Google Fonts: preconnect + carga no bloqueante -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
