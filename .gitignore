@@ -1,4 +1,5 @@
 .wrangler/
+.dev.vars
 
 # Large media files that exceed GitHub/Cloudflare limits
 beyond/images/vid/PresentacionBeyond0_5.gif

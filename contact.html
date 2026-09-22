@@ -33,6 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <!-- Gessler Studio css -->
     <link rel="stylesheet" href="css/style.css?v=gs-nav-12">
+    <link rel="stylesheet" href="css/contact-quiz.css?v=3">
     <!-- page title -->
     <title>Contacto | Gessler Studio — Diseño y Desarrollo Web en Bogotá</title>
     <meta name="description" content="Cuéntanos sobre tu proyecto de diseño o desarrollo web en Bogotá. Escríbenos por WhatsApp o por formulario y recibe respuesta de Gessler Studio.">
@@ -341,33 +342,99 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="container">
                     <div class="row mil-jcc">
                         <div class="col-md-8 mil-tac">
-                            <span class="mil-suptitle mil-accent mil-mb30 mil-up">Contacto</span>
+                            <span class="mil-suptitle mil-accent gs-cta-accent mil-mb30 mil-up">Contacto</span>
                             <h1 class="mil-fs42 mil-up mil-mb90">Cuéntanos sobre tu proyecto.</h1>
-                            <form class="mil-form" id="gs-contact-form">
-                                <div class="row">
-                                    <div class="col-6 mil-mb30">
-                                        <input type="text" name="name" id="gs-contact-name" placeholder="Nombre" class="mil-up" required>
-                                    </div>
-                                    <div class="col-6 mil-mb30">
-                                        <input type="email" name="email" id="gs-contact-email" placeholder="Correo electrónico" class="mil-up" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea name="message" id="gs-contact-message" placeholder="Tu mensaje" class="mil-mb30 mil-up" required></textarea>
-                                        <div class="mil-up"><button type="submit" class="mil-btn mil-c-gone">Enviar mensaje</button></div>
-                                    </div>
+                            <div class="gs-qw" id="gs-qw">
+                                <!-- intro -->
+                                <div class="gs-qw-panel gs-qw-intro" data-qw-panel="intro">
+                                    <p class="mil-mb30 mil-up">Cuéntanos en menos de 1 minuto qué necesitas y te contactamos con una propuesta.</p>
+                                    <button type="button" class="mil-btn mil-c-gone mil-up" id="gs-qw-start">Quiero mi web <i class="fas fa-arrow-right"></i></button>
                                 </div>
-                            </form>
-                            <script>
-                                document.getElementById('gs-contact-form').addEventListener('submit', function (e) {
-                                    e.preventDefault();
-                                    var name = document.getElementById('gs-contact-name').value;
-                                    var email = document.getElementById('gs-contact-email').value;
-                                    var message = document.getElementById('gs-contact-message').value;
-                                    var subject = 'Nuevo mensaje de contacto - Gessler Studio';
-                                    var body = 'Nombre: ' + name + '\nCorreo electrónico: ' + email + '\n\nMensaje:\n' + message;
-                                    window.location.href = 'mailto:felipe12.florez14@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-                                });
-                            </script>
+
+                                <!-- quiz -->
+                                <div class="gs-qw-panel gs-qw-quiz" data-qw-panel="quiz" hidden>
+                                    <div class="gs-qw-progress">
+                                        <div class="gs-qw-progress-bar"><span id="gs-qw-progress-fill"></span></div>
+                                        <span class="gs-qw-progress-label"><span id="gs-qw-step-current">1</span>/<span id="gs-qw-step-total">6</span></span>
+                                    </div>
+
+                                    <div class="gs-qw-question" data-qw-question="1">
+                                        <h3 class="gs-qw-question-title">¿Qué tan grande es tu empresa?</h3>
+                                        <div class="gs-qw-options" data-qw-group="tamano">
+                                            <button type="button" class="gs-qw-option" data-qw-value="independiente"><span class="gs-qw-option-icon"><i class="fas fa-user"></i></span><span class="gs-qw-option-text">Soy independiente / emprendimiento</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="pyme-pequena"><span class="gs-qw-option-icon"><i class="fas fa-store"></i></span><span class="gs-qw-option-text">Pyme pequeña (1–10 personas)</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="mediana"><span class="gs-qw-option-icon"><i class="fas fa-building"></i></span><span class="gs-qw-option-text">Empresa mediana (11–50 personas)</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="grande"><span class="gs-qw-option-icon"><i class="fas fa-city"></i></span><span class="gs-qw-option-text">Empresa grande (50+ personas)</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="gs-qw-question" data-qw-question="2" hidden>
+                                        <h3 class="gs-qw-question-title">¿Qué necesitas principalmente?</h3>
+                                        <div class="gs-qw-options" data-qw-group="necesidad">
+                                            <button type="button" class="gs-qw-option" data-qw-value="web-nueva"><span class="gs-qw-option-icon"><i class="fas fa-globe"></i></span><span class="gs-qw-option-text">Página web nueva</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="rediseno"><span class="gs-qw-option-icon"><i class="fas fa-sync-alt"></i></span><span class="gs-qw-option-text">Rediseño de mi web actual</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="branding"><span class="gs-qw-option-icon"><i class="fas fa-palette"></i></span><span class="gs-qw-option-text">Branding / identidad de marca</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="contenido"><span class="gs-qw-option-icon"><i class="fas fa-share-alt"></i></span><span class="gs-qw-option-text">Contenido para redes sociales</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="gs-qw-question" data-qw-question="3" hidden>
+                                        <h3 class="gs-qw-question-title">¿Tienes un presupuesto definido?</h3>
+                                        <div class="gs-qw-options" data-qw-group="presupuesto">
+                                            <button type="button" class="gs-qw-option" data-qw-value="menos-1m"><span class="gs-qw-option-icon"><i class="fas fa-coins"></i></span><span class="gs-qw-option-text">Menos de $1.000.000</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="1-3m"><span class="gs-qw-option-icon"><i class="fas fa-money-bill-wave"></i></span><span class="gs-qw-option-text">$1.000.000 – $3.000.000</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="3-6m"><span class="gs-qw-option-icon"><i class="fas fa-wallet"></i></span><span class="gs-qw-option-text">$3.000.000 – $6.000.000</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="sin-definir"><span class="gs-qw-option-icon"><i class="fas fa-question-circle"></i></span><span class="gs-qw-option-text">Aún no sé, quiero que me asesoren</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="gs-qw-question" data-qw-question="4" hidden>
+                                        <h3 class="gs-qw-question-title">¿Para cuándo lo necesitas?</h3>
+                                        <div class="gs-qw-options" data-qw-group="tiempo">
+                                            <button type="button" class="gs-qw-option" data-qw-value="urgente"><span class="gs-qw-option-icon"><i class="fas fa-bolt"></i></span><span class="gs-qw-option-text">Lo antes posible</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="proximo-mes"><span class="gs-qw-option-icon"><i class="fas fa-calendar-alt"></i></span><span class="gs-qw-option-text">En el próximo mes</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="2-3-meses"><span class="gs-qw-option-icon"><i class="fas fa-calendar-week"></i></span><span class="gs-qw-option-text">En 2–3 meses</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="cotizando"><span class="gs-qw-option-icon"><i class="fas fa-search"></i></span><span class="gs-qw-option-text">Solo estoy cotizando</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="gs-qw-question" data-qw-question="5" hidden>
+                                        <h3 class="gs-qw-question-title">¿Cómo prefieres que te contactemos?</h3>
+                                        <div class="gs-qw-options" data-qw-group="canal">
+                                            <button type="button" class="gs-qw-option" data-qw-value="whatsapp"><span class="gs-qw-option-icon"><i class="fab fa-whatsapp"></i></span><span class="gs-qw-option-text">WhatsApp</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="correo"><span class="gs-qw-option-icon"><i class="fas fa-envelope"></i></span><span class="gs-qw-option-text">Correo electrónico</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                            <button type="button" class="gs-qw-option" data-qw-value="llamada"><span class="gs-qw-option-icon"><i class="fas fa-phone"></i></span><span class="gs-qw-option-text">Llamada telefónica</span><span class="gs-qw-option-check"><i class="fas fa-check"></i></span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="gs-qw-question" data-qw-question="6" hidden>
+                                        <h3 class="gs-qw-question-title">¡Ya casi! Cuéntanos cómo contactarte</h3>
+                                        <div class="gs-qw-fields">
+                                            <input type="text" id="gs-qw-name" class="gs-qw-input" placeholder="Tu nombre" autocomplete="name">
+                                            <input type="text" id="gs-qw-contact" class="gs-qw-input" placeholder="Tu correo electrónico o celular" autocomplete="email">
+                                        </div>
+                                        <button type="button" class="mil-btn mil-c-gone" id="gs-qw-submit">Enviar mis respuestas <i class="fas fa-paper-plane"></i></button>
+                                    </div>
+
+                                    <button type="button" class="gs-qw-back" id="gs-qw-back" hidden><i class="fas fa-arrow-left"></i> Atrás</button>
+                                </div>
+
+                                <!-- éxito -->
+                                <div class="gs-qw-panel gs-qw-success" data-qw-panel="success" hidden>
+                                    <div class="gs-qw-result-icon"><i class="fas fa-check"></i></div>
+                                    <h3 class="mil-mb15">¡Listo! Ya recibimos tus respuestas.</h3>
+                                    <p class="mil-soft mil-mb30">Te escribimos muy pronto. Si prefieres, también puedes escribirnos directo por WhatsApp.</p>
+                                    <a href="#" class="mil-btn mil-btn-border mil-c-gone" id="gs-qw-whatsapp-link" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp <i class="fab fa-whatsapp"></i></a>
+                                </div>
+
+                                <!-- respaldo si falla el envío -->
+                                <div class="gs-qw-panel gs-qw-error" data-qw-panel="error" hidden>
+                                    <div class="gs-qw-result-icon"><i class="fab fa-whatsapp"></i></div>
+                                    <h3 class="mil-mb15">No pudimos enviar el formulario</h3>
+                                    <p class="mil-soft mil-mb30">No te preocupes, escríbenos directo por WhatsApp con la misma información y te respondemos enseguida.</p>
+                                    <a href="#" class="mil-btn mil-c-gone" id="gs-qw-whatsapp-fallback" target="_blank" rel="noopener noreferrer">Enviar por WhatsApp <i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -696,6 +763,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="js/pillnav.js?v=gs-nav-8"></script><script src="js/site-translate.js?v=gs-i18n-2"></script>
     <!-- Gessler Studio js -->
     <script src="js/main.js?v=gs-i18n-5"></script>
+    <!-- contact quiz -->
+    <script src="js/contact-quiz.js?v=4"></script>
 
 </body>
 

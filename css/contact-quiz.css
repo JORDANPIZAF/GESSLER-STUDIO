@@ -1,0 +1,237 @@
+/* -------------------------------------------
+gs-qw: asistente de contacto de preguntas rápidas (reemplaza el formulario largo)
+CTA en naranja sólido, para que se note como llamado a la acción
+------------------------------------------- */
+.gs-cta-accent {
+    color: #F35A38;
+}
+
+.gs-qw {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 48px 46px;
+    border-radius: 28px;
+    background: linear-gradient(160deg, #F46A4A 0%, #F35A38 45%, #E04A2A 100%);
+    box-shadow: 0 30px 70px rgba(243, 90, 56, 0.35);
+}
+
+.gs-qw-panel[hidden] {
+    display: none !important;
+}
+
+.gs-qw-quiz {
+    text-align: left;
+}
+
+.gs-qw-intro p,
+.gs-qw-success p,
+.gs-qw-error p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* progreso */
+.gs-qw-progress {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+.gs-qw-progress-bar {
+    flex: 1;
+    height: 6px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+}
+.gs-qw-progress-bar span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 6px;
+    transform: scaleX(0.2);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-qw-progress-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+}
+
+/* pregunta */
+.gs-qw-question-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin: 0 0 28px;
+}
+
+.gs-qw-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 8px;
+}
+
+.gs-qw-option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 18px 22px;
+    border-radius: 14px;
+    background: rgba(10, 11, 15, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-qw-option:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(10, 11, 15, 0.3);
+    transform: translateY(-2px);
+}
+.gs-qw-option-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #FFFFFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.gs-qw-option.gs-qw-selected .gs-qw-option-icon {
+    background: #FFFFFF;
+    color: #F35A38;
+}
+.gs-qw-option-text {
+    flex: 1;
+}
+.gs-qw-option-check {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: transparent;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gs-qw-option.gs-qw-selected {
+    border-color: #FFFFFF;
+    background: rgba(10, 11, 15, 0.32);
+}
+.gs-qw-option.gs-qw-selected .gs-qw-option-check {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #F35A38;
+}
+
+/* paso final: datos de contacto */
+.gs-qw-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.gs-qw-input {
+    font-family: inherit;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 0 24px;
+    height: 58px;
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(10, 11, 15, 0.16);
+    transition: border-color 0.2s ease;
+}
+.gs-qw-input:focus {
+    outline: inherit;
+    border-color: #FFFFFF;
+}
+.gs-qw-input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+.gs-qw-input.gs-qw-invalid {
+    border-color: #2b0e07;
+    background: rgba(10, 11, 15, 0.35);
+}
+
+.gs-qw-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.gs-qw-back:hover {
+    color: #FFFFFF;
+}
+
+/* éxito / error */
+.gs-qw-result-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 24px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+}
+.gs-qw-error .gs-qw-result-icon {
+    background: rgba(10, 11, 15, 0.28);
+    color: #FFFFFF;
+}
+
+/* botones: en un fondo naranja sólido, los botones pasan a blanco para que se lean */
+.gs-qw .mil-btn:not(.mil-btn-border) {
+    background-color: #FFFFFF;
+    color: #F35A38;
+}
+.gs-qw .mil-btn:not(.mil-btn-border):hover {
+    background-color: #0A0B0F;
+    color: #FFFFFF;
+}
+.gs-qw .mil-btn.mil-btn-border {
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+.gs-qw .mil-btn.mil-btn-border:hover {
+    background-color: #FFFFFF;
+    color: #F35A38;
+}
+
+@media (max-width: 576px) {
+    .gs-qw {
+        padding: 34px 24px;
+        border-radius: 22px;
+    }
+    .gs-qw-question-title {
+        font-size: 20px;
+    }
+    .gs-qw-options {
+        grid-template-columns: 1fr;
+    }
+}
