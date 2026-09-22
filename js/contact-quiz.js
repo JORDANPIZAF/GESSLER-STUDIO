@@ -85,6 +85,9 @@
         startBtn.addEventListener("click", function () {
             showPanel("quiz");
             showStep(1);
+            if (typeof gtag === "function") {
+                gtag("event", "contact_quiz_start", { event_category: "contacto" });
+            }
         });
     }
 
@@ -137,6 +140,9 @@
         if (waLink) waLink.href = buildWhatsappLink();
         showPanel("success");
         resetSubmitBtn();
+        if (typeof gtag === "function") {
+            gtag("event", "contact_quiz_submit", { event_category: "contacto", event_label: "formulario_ia" });
+        }
     }
 
     function finishWithError() {

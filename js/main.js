@@ -1788,6 +1788,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    /* Analytics: registra cualquier clic en un enlace de WhatsApp del sitio */
+    document.body.addEventListener('click', (event) => {
+        const waLink = event.target.closest('a[href*="wa.me"]');
+        if (waLink && typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                event_category: 'contacto',
+                event_label: window.location.pathname
+            });
+        }
+    });
+
 });
 
 
