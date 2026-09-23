@@ -9,6 +9,10 @@
         var dots = [].slice.call(hero.querySelectorAll('.hv2-dot'));
         var count = hero.querySelector('.hv2-count');
         var IMG_MS = 10000, current = 0, timer = null;
+        /* Slide del hero "Arco" (js/hero-arc.js): maneja su propio video y animación */
+        var ARC_WAIT = 10000; // espera después de que terminó la animación
+        var arc = function (s) { return s.hasAttribute('data-arc') && window.GesslerArcHero; };
+        var ownVideo = function (s) { return s.hasAttribute('data-arc') ? null : s.querySelector('video'); };
 
         var clear = function () { clearTimeout(timer); };
         var next = function () { go(current + 1); };
@@ -17,17 +21,20 @@
             current = (n + slides.length) % slides.length;
             clear();
             slides.forEach(function (s, i) {
-                var on = i === current, v = s.querySelector('video');
+                var on = i === current, v = ownVideo(s);
                 s.classList.toggle('is-active', on);
                 s.setAttribute('aria-hidden', on ? 'false' : 'true');
-                if (v) {
+                if (arc(s)) {
+                    if (!on) window.GesslerArcHero.stop();
+                } else if (v) {
                     if (on) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
                     else { v.pause(); }
                 }
             });
-            var active = slides[current], video = active.querySelector('video');
+            var active = slides[current], video = ownVideo(active), isArc = arc(active);
             var ms = IMG_MS;
             if (video) ms = ((video.duration && isFinite(video.duration)) ? video.duration * 1000 : 20000) + 1500;
+            if (isArc) ms = window.GesslerArcHero.estimate() + ARC_WAIT;
             dots.forEach(function (d, i) {
                 d.classList.remove('is-active');
                 d.style.animationDuration = '';
@@ -35,12 +42,21 @@
                 d.setAttribute('aria-current', i === current ? 'true' : 'false');
             });
             if (count) count.textContent = '0' + (current + 1) + ' / 0' + slides.length;
-            /* Imagen: avanza por tiempo. Video: avanza cuando termina (el timer solo es un seguro). */
-            if (!reduce || video) timer = setTimeout(next, ms);
+            /* Imagen: avanza por tiempo. Video: avanza cuando termina (el timer solo es un seguro).
+               Arco: avanza 10 s después de que la animación quedó quieta (con un seguro por si algo falla). */
+            if (isArc) {
+                var slide = active;
+                if (!reduce) timer = setTimeout(next, ms + 6000);
+                window.GesslerArcHero.start(function () {
+                    if (slides[current] !== slide || reduce) return;
+                    clear();
+                    timer = setTimeout(next, ARC_WAIT);
+                });
+            } else if (!reduce || video) timer = setTimeout(next, ms);
         }
 
         slides.forEach(function (s) {
-            var v = s.querySelector('video');
+            var v = ownVideo(s);
             if (!v) return;
             v.addEventListener('ended', function () { if (slides[current] === s) next(); });
             v.addEventListener('loadedmetadata', function () { if (slides[current] === s) go(current); });

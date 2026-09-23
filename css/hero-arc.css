@@ -1,0 +1,135 @@
+/* ===== Hero "Arco" (slide 1 del carrusel del home) =====
+   Video de Jordan caminando → se congela en el PNG sin fondo → los cuadritos
+   entran por un carril circular alrededor de él y queda el texto.
+   Lógica en js/hero-arc.js; el carrusel (js/home-v2.js) avanza cuando termina + 10 s. */
+
+.hv2-slide.ha-slide{background:var(--bg)}
+.ha{position:absolute;inset:0;overflow:hidden;container-type:size;background:var(--bg)}
+/* rejilla sutil de fondo */
+.ha::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:80px 80px;opacity:.22;
+  mask-image:radial-gradient(ellipse at 50% 35%,#000 10%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 35%,#000 10%,transparent 70%);
+}
+
+/* Eyebrow con destello diagonal */
+.ha-eyebrow{
+  position:absolute;z-index:7;top:112px;left:50%;transform:translateX(-50%);
+  white-space:nowrap;
+  font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  background:linear-gradient(100deg,var(--o) 0%,var(--o) 38%,#F2B279 50%,var(--o) 62%,var(--o) 100%);
+  background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:haShine 3.5s ease-in-out infinite;
+}
+@keyframes haShine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* Escenario 16:9 ajustado al alto (el video nunca se recorta arriba/abajo), al 80% y anclado abajo.
+   Capas: .ha-glow (1) · cuadritos (2 detrás / 4 delante) · .ha-still PNG (3) · .ha-video (4) · .ha-shade (5) */
+.ha-stage{position:absolute;top:0;bottom:0;left:0;right:0;margin:0 auto;
+  width:min(100cqw,100cqh * 16 / 9);
+  transform:scale(.8);transform-origin:50% 100%}
+.ha-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block;pointer-events:none}
+.ha-video{z-index:4;
+  /* difuminado hacia las esquinas; la segunda capa devuelve la parte de abajo */
+  --vig:radial-gradient(ellipse 54% 66% at 50% 42%,#000 30%,rgba(0,0,0,.8) 48%,rgba(0,0,0,.28) 72%,transparent 92%),
+        radial-gradient(ellipse 78% 60% at 50% 100%,#000 50%,rgba(0,0,0,.6) 75%,transparent 100%);
+  mask-image:var(--vig);-webkit-mask-image:var(--vig);
+}
+.ha-still{z-index:3;opacity:0;
+  mask-image:linear-gradient(180deg,#000 72%,transparent 98%);
+  -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 98%);
+}
+.ha-shade{position:absolute;inset:auto 0 0 0;height:45%;z-index:5;pointer-events:none;
+  background:linear-gradient(0deg,rgba(5,6,8,.92) 0%,rgba(5,6,8,.55) 45%,transparent 100%)}
+.ha-glow{
+  position:absolute;z-index:1;inset:0;opacity:0;pointer-events:none;
+  background:
+    radial-gradient(28% 42% at var(--cx,51%) 38%,rgba(243,90,56,.34),transparent 70%),
+    radial-gradient(34% 50% at calc(var(--cx,51%) + 14%) 28%,rgba(20,151,224,.22),transparent 70%),
+    radial-gradient(34% 50% at calc(var(--cx,51%) - 16%) 46%,rgba(20,151,224,.10),transparent 70%);
+}
+/* sin z-index propio: cada cuadrito decide si va detrás (2) o delante (4) del PNG */
+.ha-fan{position:absolute;inset:0;pointer-events:none}
+
+/* Cuadritos (cuadrados, rectos):
+   .ha-slot → posición final + parallax · .ha-arm → recorrido por el carril · .ha-card → marco e imagen */
+.ha-slot{position:absolute;left:0;top:0;width:var(--cw,120px);height:var(--cw,120px);pointer-events:auto;z-index:2}
+.ha-arm{width:100%;height:100%;will-change:transform}
+.ha-card{
+  position:relative;width:100%;height:100%;
+  border-radius:12px;overflow:hidden;background:#14151A;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+}
+.ha-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9);transition:filter .4s}
+.ha-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(160deg,var(--tint),transparent 70%);
+  mix-blend-mode:overlay;opacity:.55;transition:opacity .4s;
+}
+.ha-slot[data-side="-1"]{--tint:var(--o)}
+.ha-slot[data-side="1"]{--tint:var(--b)}
+.ha-card::before{content:"";position:absolute;left:12px;bottom:0;width:28px;height:3px;background:var(--tint);z-index:1}
+.ha-slot:hover .ha-card img{filter:saturate(1.1)}
+.ha-slot:hover .ha-card::after{opacity:0}
+
+/* Texto */
+.ha-copy{
+  /* a la derecha deja libre la columna de los botones flotantes (WhatsApp y subir) */
+  position:absolute;z-index:7;bottom:clamp(32px,6vh,64px);
+  left:max(24px,calc((100% - 1320px) / 2));
+  right:max(130px,calc((100% - 1320px) / 2 + 80px));
+  display:flex;justify-content:space-between;align-items:flex-end;gap:40px;
+}
+.ha-copy h2{font-size:clamp(34px,5vw,68px);margin:0 0 26px}
+.ha-grad{background:linear-gradient(90deg,var(--o),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ha-actions{display:flex;gap:12px;flex-wrap:wrap}
+.ha-copy p{max-width:320px;margin:0;color:#d5d7db;font-size:15px;line-height:1.65;text-align:right}
+.ha-copy p b{color:#fff;font-weight:600}
+
+/* Estado inicial (antes de que arranque el JS): cuadritos y texto ocultos para no parpadear */
+.ha-js .ha-card,.ha-js .ha-copy{opacity:0}
+
+@media (max-width:900px){
+  /* en móvil los controles del carrusel quedan centrados abajo: el texto sube */
+  .ha-copy{flex-direction:column;align-items:flex-start;gap:20px;left:16px;right:88px;bottom:120px}
+  .ha-copy p{text-align:left}
+}
+/* Celular / tablet vertical: el video ocupa la parte baja, sin reducir, centrado en la persona
+   (js/hero-arc.js mueve el recorte). Los cuadritos van en columna a cada lado. */
+@media (max-width:900px) and (orientation:portrait){
+  .ha-stage{top:22%;width:100%;transform:none}
+  .ha-video{
+    --vig:radial-gradient(ellipse 75% 60% at 50% 45%,#000 45%,rgba(0,0,0,.7) 65%,transparent 95%),
+          linear-gradient(0deg,#000 35%,transparent 60%);
+  }
+  .ha-shade{height:55%}
+  .ha-copy{bottom:96px}
+  .ha-copy h2{margin-bottom:18px}
+}
+@media (max-width:560px){
+  /* a la derecha quedan los botones flotantes (WhatsApp y subir): el texto no llega hasta allá */
+  .ha-copy{right:84px;bottom:72px}
+  .ha-copy h2{font-size:clamp(30px,10vw,42px)}
+  .ha-copy p{display:none}                 /* en celular, solo título y botón: no tapan la cara */
+  .ha-actions .hv2-btn-ghost{display:none} /* "Ver proyectos" ya está en el menú */
+  .ha-actions .hv2-btn{padding:15px 20px;font-size:12px;white-space:nowrap}
+}
+@media (prefers-reduced-motion:reduce){
+  .ha-eyebrow{animation:none}
+}
+
+/* El banner "Ideas que funcionan" ya no es el primer slide: conserva su fondo naranja */
+.hv2-slide.hv2-slide-banner{background:radial-gradient(60% 80% at 80% 40%,rgba(243,90,56,.28),transparent 60%),var(--bg)}
+
+/* Hover tipo "dock": el cuadrito bajo el mouse crece, sus vecinos del mismo lado se encogen
+   un poco y el resto apenas; las clases las pone js/hero-arc.js */
+.ha-card{transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s}
+.ha-fan.is-hovering .ha-card{transform:scale(.95)}
+.ha-fan.is-hovering .ha-slot.is-near .ha-card{transform:scale(.9)}
+.ha-fan.is-hovering .ha-slot.is-hover .ha-card{transform:scale(1.14);box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 1px var(--tint)}
+.ha-slot.is-hover{z-index:3!important}
+@media (hover:none),(prefers-reduced-motion:reduce){.ha-fan.is-hovering .ha-card{transform:none!important}}

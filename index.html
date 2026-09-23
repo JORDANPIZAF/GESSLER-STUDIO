@@ -41,6 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Gessler Studio css -->
     <link rel="stylesheet" href="css/style.css?v=gs-nav-15">
     <link rel="stylesheet" href="css/home-v2.css?v=20">
+    <link rel="stylesheet" href="css/hero-arc.css?v=5">
     <!-- page title -->
     <title>Gessler Studio | Agencia de Diseño y Desarrollo Web en Bogotá</title>
     <meta name="description" content="Gessler Studio es una agencia de diseño y desarrollo web en Bogotá. Creamos sitios corporativos, landing pages y catálogos online con identidad visual propia. Cuéntanos sobre tu proyecto.">
@@ -377,8 +378,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <section class="hv2-hero" data-hv2-hero aria-roledescription="carrusel" aria-label="Destacados de Gessler Studio">
                 <h1 class="hv2-sr">Gessler Studio: diseñamos marcas y páginas web que hacen crecer tu negocio</h1>
                 <div class="hv2-slides">
-                    <!-- Slide 1: banner (img/banners/hero-slide-1.jpg). Mientras no exista, se ve el respaldo en texto. -->
-                    <div class="hv2-slide is-active" aria-roledescription="diapositiva" aria-label="1 de 2">
+                    <!-- Slide 1: hero "Arco" — video de Jordan → PNG sin fondo + cuadritos en carril circular (css/hero-arc.css, js/hero-arc.js) -->
+                    <div class="hv2-slide ha-slide is-active" data-arc aria-roledescription="diapositiva" aria-label="1 de 3">
+                        <script>document.documentElement.classList.add('ha-js')</script>
+                        <div class="ha" data-arc-hero>
+                            <div class="ha-stage">
+                                <div class="ha-glow"></div>
+                                <div class="ha-fan">
+                                    <div class="ha-slot" data-side="-1" data-k="2"><div class="ha-arm"><div class="ha-card"><img src="img/hero-arc/fotografia-camara.jpg" alt="Jordan Piza con cámara: fotografía y video"></div></div></div>
+                                    <div class="ha-slot" data-side="-1" data-k="1"><div class="ha-arm"><div class="ha-card"><img src="img/hero-arc/volante-cristo-rey.jpg" alt="Volante de matrículas para el Colegio Cristo Rey del Sur"></div></div></div>
+                                    <div class="ha-slot" data-side="-1" data-k="0"><div class="ha-arm"><div class="ha-card"><img src="img/portfolio/wac-sas-cover-web.jpg" alt="WAC SAS, sitio web"></div></div></div>
+                                    <div class="ha-slot" data-side="1" data-k="0"><div class="ha-arm"><div class="ha-card"><img src="img/portfolio/beyond-cover-web.jpg" alt="Beyond SAS, sitio web"></div></div></div>
+                                    <div class="ha-slot" data-side="1" data-k="1"><div class="ha-arm"><div class="ha-card"><img src="img/blog/gabo-birrete-vertical.jpg" alt="Sesión de fotos de grado"></div></div></div>
+                                    <div class="ha-slot" data-side="1" data-k="2"><div class="ha-arm"><div class="ha-card"><img src="img/hero-arc/desarrollo-web-codigo.jpg" alt="Desarrollo web: código en pantalla"></div></div></div>
+                                </div>
+                                <img class="ha-media ha-still" src="img/hero-arc/jordan-pose-final.png" alt="Jordan Piza, director creativo de Gessler Studio">
+                                <video class="ha-media ha-video" src="video/hero-caminando.mp4" poster="img/hero-arc/hero-caminando-poster.jpg" muted playsinline preload="auto" aria-label="Jordan Piza entra caminando al estudio"></video>
+                                <div class="ha-shade"></div>
+                            </div>
+                            <div class="ha-copy">
+                                <div>
+                                    <h2>Diseño &amp;<br><span class="ha-grad">dirección creativa</span></h2>
+                                    <div class="ha-actions">
+                                        <a class="hv2-btn mil-c-gone" href="contact.html">Iniciar proyecto <i class="fas fa-arrow-right"></i></a>
+                                        <a class="hv2-btn hv2-btn-ghost mil-c-gone" href="portfolio-2.html">Ver proyectos</a>
+                                    </div>
+                                </div>
+                                <p><b>Agencia pequeña, visión clara.</b> Diseñamos marcas y páginas web que hacen crecer tu negocio — branding, diseño web y contenido.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2: banner (img/banners/hero-slide-1.jpg). Mientras no exista, se ve el respaldo en texto. -->
+                    <div class="hv2-slide hv2-slide-banner" aria-hidden="true" aria-roledescription="diapositiva" aria-label="2 de 3">
                         <div class="hv2-fallback">
                             <div class="container">
                                 <span class="hv2-eyebrow hv2-rv">Estrategia × Diseño × Contenido</span>
@@ -387,10 +418,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <a href="contact.html" class="hv2-btn mil-c-gone">Hablemos de tu proyecto <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
-                        <img src="img/banners/hero-slide-1.jpg?v=2" srcset="img/banners/hero-slide-1-mobile.jpg?v=2 900w, img/banners/hero-slide-1.jpg?v=2 1781w" sizes="100vw" fetchpriority="high" alt="Gessler Studio — ideas que funcionan" onerror="this.remove()">
+                        <img src="img/banners/hero-slide-1.jpg?v=2" srcset="img/banners/hero-slide-1-mobile.jpg?v=2 900w, img/banners/hero-slide-1.jpg?v=2 1781w" sizes="100vw" alt="Gessler Studio — ideas que funcionan" onerror="this.remove()">
                     </div>
-                    <!-- Slide 2: video -->
-                    <div class="hv2-slide hv2-slide-video" aria-roledescription="diapositiva" aria-label="2 de 2" aria-hidden="true">
+                    <!-- Slide 3: video -->
+                    <div class="hv2-slide hv2-slide-video" aria-roledescription="diapositiva" aria-label="3 de 3" aria-hidden="true">
                         <video muted playsinline preload="auto" poster="video/home-intro-poster.jpg" aria-label="Video de introducción de Gessler Studio">
                             <source src="video/home-intro.webm" type="video/webm">
                             <source src="video/home-intro.mp4" type="video/mp4">
@@ -402,7 +433,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="hv2-dots" role="tablist" aria-label="Seleccionar diapositiva">
                             <button type="button" class="hv2-dot" aria-label="Ir a la diapositiva 1"><i></i></button>
                             <button type="button" class="hv2-dot" aria-label="Ir a la diapositiva 2"><i></i></button>
-                            <span class="hv2-count" style="margin-left:16px;">01 / 02</span>
+                            <button type="button" class="hv2-dot" aria-label="Ir a la diapositiva 3"><i></i></button>
+                            <span class="hv2-count" style="margin-left:16px;">01 / 03</span>
                         </div>
                         <div class="hv2-arrows">
                             <button type="button" class="hv2-arrow mil-c-gone" data-hv2-prev aria-label="Anterior"><i class="fas fa-arrow-left"></i></button>
@@ -823,9 +855,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- swiper js -->
     <script src="js/plugins/swiper.min.js"></script>
     <!-- site translation -->
-    <script src="js/pillnav.js?v=gs-nav-8"></script><script src="js/site-translate.js?v=gs-i18n-2"></script>
+    <script src="js/pillnav.js?v=gs-nav-9"></script><script src="js/site-translate.js?v=gs-i18n-2"></script>
     <!-- Gessler Studio js -->
-    <script src="js/home-v2.js?v=3"></script>
+    <script src="js/hero-arc.js?v=3"></script>
+    <script src="js/home-v2.js?v=4"></script>
     <script src="js/main.js?v=gs-i18n-6"></script>
 
     <script>

@@ -603,7 +603,7 @@
             '</button>' +
             '<div class="gs-wa-panel" role="dialog" aria-label="WhatsApp">' +
                 '<div class="gs-wa-panel-header">' +
-                    '<img src="img/about/team/jordan-piza.png" alt="" class="gs-wa-avatar">' +
+                    '<img src="img/about/team/jordan-piza.jpg" alt="" class="gs-wa-avatar">' +
                     '<div class="gs-wa-panel-info">' +
                         '<span class="gs-wa-panel-name">Gessler Studio</span>' +
                         '<span class="gs-wa-panel-status"><span class="gs-wa-dot"></span><span class="gs-wa-status-text"></span></span>' +
