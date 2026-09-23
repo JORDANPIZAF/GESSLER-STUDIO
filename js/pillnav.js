@@ -678,7 +678,9 @@
         var GS_WA_AUTOOPEN_KEY = 'gs_wa_auto_opened';
         var alreadyAutoOpened = true;
         try { alreadyAutoOpened = !!sessionStorage.getItem(GS_WA_AUTOOPEN_KEY); } catch (err) {}
-        if (!alreadyAutoOpened) {
+        // En celular no se abre solo: tapa casi toda la pantalla (y el hero del home)
+        var isMobile = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+        if (!alreadyAutoOpened && !isMobile) {
             setTimeout(function () {
                 if (!wrap.classList.contains('gs-wa-active')) open();
                 try { sessionStorage.setItem(GS_WA_AUTOOPEN_KEY, '1'); } catch (err) {}
