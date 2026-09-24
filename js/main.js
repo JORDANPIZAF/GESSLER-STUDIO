@@ -116,6 +116,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createFloatingBackToTop();
 
+    const FOOTER_LEGAL_LINKS = [
+        { href: 'politica-de-privacidad.html', icon: 'fa-user-lock', es: 'Política de Privacidad', en: 'Privacy Policy' },
+        { href: 'terminos-y-condiciones.html', icon: 'fa-file-alt', es: 'Términos y Condiciones', en: 'Terms & Conditions' }
+    ];
+
     const createFooterLegal = () => {
         document.querySelectorAll('.mil-footer-bottom').forEach((footerBottom) => {
             if (footerBottom.querySelector('.gs-terms-link')) return;
@@ -123,37 +128,101 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!copyright) return;
 
             const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
-            const label = lang === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions';
+            const wrap = document.createElement('div');
+            wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:8px;';
 
-            const link = document.createElement('a');
-            link.href = 'terminos-y-condiciones.html';
-            link.className = 'gs-terms-link mil-fs14 mil-c-gone';
-            link.setAttribute('aria-label', label);
-            link.setAttribute('data-terms-link', '');
-            link.textContent = label;
-            link.style.cssText = 'display:inline-flex;align-items:center;gap:6px;color:rgba(115,118,123,0.7);text-decoration:none;border-bottom:1px solid rgba(115,118,123,0.25);padding-bottom:1px;transition:color .2s,border-color .2s;margin-top:8px;';
-            link.onmouseover = () => { link.style.color = '#F35A38'; link.style.borderColor = 'rgba(243,90,56,0.5)'; };
-            link.onmouseout = () => { link.style.color = 'rgba(115,118,123,0.7)'; link.style.borderColor = 'rgba(115,118,123,0.25)'; };
+            FOOTER_LEGAL_LINKS.forEach((item) => {
+                const label = item[lang];
+                const link = document.createElement('a');
+                link.href = item.href;
+                link.className = 'gs-terms-link mil-fs14 mil-c-gone';
+                link.setAttribute('aria-label', label);
+                link.setAttribute('data-terms-link', item.href);
+                link.textContent = label;
+                link.style.cssText = 'display:inline-flex;align-items:center;gap:6px;color:rgba(115,118,123,0.7);text-decoration:none;border-bottom:1px solid rgba(115,118,123,0.25);padding-bottom:1px;transition:color .2s,border-color .2s;';
+                link.onmouseover = () => { link.style.color = '#F35A38'; link.style.borderColor = 'rgba(243,90,56,0.5)'; };
+                link.onmouseout = () => { link.style.color = 'rgba(115,118,123,0.7)'; link.style.borderColor = 'rgba(115,118,123,0.25)'; };
 
-            const icon = document.createElement('i');
-            icon.className = 'fas fa-file-alt';
-            icon.style.fontSize = '11px';
-            link.prepend(icon);
+                const icon = document.createElement('i');
+                icon.className = 'fas ' + item.icon;
+                icon.style.fontSize = '11px';
+                link.prepend(icon);
 
-            copyright.parentElement.appendChild(link);
+                wrap.appendChild(link);
+            });
+
+            copyright.parentElement.appendChild(wrap);
         });
     };
 
     window.refreshFooterLegalLabel = () => {
         const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
         document.querySelectorAll('[data-terms-link]').forEach((link) => {
-            const label = lang === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions';
-            link.lastChild.textContent = label;
-            link.setAttribute('aria-label', label);
+            const item = FOOTER_LEGAL_LINKS.find((entry) => entry.href === link.getAttribute('data-terms-link'));
+            if (!item) return;
+            link.lastChild.textContent = item[lang];
+            link.setAttribute('aria-label', item[lang]);
         });
     };
 
     createFooterLegal();
+
+    // aviso de cookies (informativo: Analytics no se bloquea)
+    const createCookieNotice = () => {
+        const STORAGE_KEY = 'gs-cookie-notice';
+        try {
+            if (localStorage.getItem(STORAGE_KEY)) return;
+        } catch (e) { /* sin almacenamiento: se muestra igual */ }
+        if (document.getElementById('gs-cookie-notice')) return;
+
+        const lang = document.documentElement.lang === 'en' ? 'en' : 'es';
+        const texts = {
+            text: { es: 'Usamos cookies de Google Analytics para entender cómo se usa el sitio y mejorarlo.', en: 'We use Google Analytics cookies to understand how the site is used and improve it.' },
+            link: { es: 'Más información', en: 'Learn more' },
+            button: { es: 'Entendido', en: 'Got it' }
+        };
+        const withLang = (el, key) => {
+            el.dataset.es = texts[key].es;
+            el.dataset.en = texts[key].en;
+            el.textContent = texts[key][lang];
+            return el;
+        };
+
+        const notice = document.createElement('div');
+        notice.id = 'gs-cookie-notice';
+        notice.setAttribute('role', 'region');
+        notice.setAttribute('aria-label', 'Cookies');
+        notice.style.cssText = 'position:fixed;left:18px;bottom:18px;z-index:99990;max-width:380px;display:flex;flex-direction:column;gap:14px;padding:18px 20px;border-radius:14px;background:rgba(20,21,26,0.96);border:1px solid rgba(115,118,123,0.25);box-shadow:0 12px 40px rgba(0,0,0,0.45);font-family:Poppins,sans-serif;';
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            notice.style.left = '12px';
+            notice.style.right = '84px';
+            notice.style.bottom = '12px';
+            notice.style.maxWidth = 'none';
+        }
+
+        const text = document.createElement('p');
+        text.style.cssText = 'margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,0.78);';
+        const textSpan = withLang(document.createElement('span'), 'text');
+        const link = withLang(document.createElement('a'), 'link');
+        link.href = 'politica-de-privacidad.html#cookies';
+        link.className = 'mil-c-gone';
+        link.style.cssText = 'color:#F35A38;text-decoration:none;border-bottom:1px solid rgba(243,90,56,0.4);';
+        text.append(textSpan, ' ', link);
+
+        const button = withLang(document.createElement('button'), 'button');
+        button.type = 'button';
+        button.className = 'mil-c-gone';
+        button.style.cssText = 'align-self:flex-start;font-family:inherit;font-size:13px;font-weight:500;color:#FFFFFF;background:#F35A38;border:none;border-radius:999px;padding:8px 20px;cursor:pointer;';
+        button.addEventListener('click', () => {
+            try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* ignorar */ }
+            notice.remove();
+        });
+
+        notice.append(text, button);
+        document.body.appendChild(notice);
+    };
+
+    createCookieNotice();
 
     const createThemeSwitcher = () => {
         document.querySelectorAll('.mil-buttons-frame').forEach((frame) => {

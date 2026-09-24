@@ -39,6 +39,7 @@
     var submitBtn = document.getElementById("gs-qw-submit");
     var nameInput = document.getElementById("gs-qw-name");
     var contactInput = document.getElementById("gs-qw-contact");
+    var consentInput = document.getElementById("gs-qw-consent");
 
     if (stepTotalEl) stepTotalEl.textContent = String(TOTAL_STEPS);
 
@@ -126,6 +127,16 @@
         var contact = contactInput ? contactInput.value.trim() : "";
         if (!name) { markInvalid(nameInput); return false; }
         if (contact.length < 5) { markInvalid(contactInput); return false; }
+        if (consentInput && !consentInput.checked) {
+            var consentLabel = consentInput.closest(".gs-qw-consent");
+            consentLabel.classList.add("gs-qw-invalid");
+            consentInput.focus();
+            consentInput.addEventListener("change", function clearConsent() {
+                consentLabel.classList.remove("gs-qw-invalid");
+                consentInput.removeEventListener("change", clearConsent);
+            });
+            return false;
+        }
         return true;
     }
 
@@ -167,7 +178,7 @@
             answers[QUESTION_LABELS[group]] = a ? a.label : "";
         });
 
-        var payload = { name: name, contact: contact, answers: answers };
+        var payload = { name: name, contact: contact, answers: answers, consent: true, consentAt: new Date().toISOString() };
 
         fetch(CONTACT_ENDPOINT, {
             method: "POST",

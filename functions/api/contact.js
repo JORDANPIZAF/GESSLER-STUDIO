@@ -23,6 +23,12 @@ export async function onRequestPost(context) {
         return jsonResponse({ success: false, error: "invalid_fields" }, 400);
     }
 
+    // Ley 1581: sin autorización expresa no se reciben datos
+    if (data.consent !== true) {
+        return jsonResponse({ success: false, error: "consent_required" }, 400);
+    }
+    const consentAt = String(data.consentAt || new Date().toISOString());
+
     if (!env.RESEND_API_KEY) {
         return jsonResponse({ success: false, error: "not_configured" }, 500);
     }
@@ -36,7 +42,8 @@ export async function onRequestPost(context) {
         "<h2>Nueva solicitud de cotización — Gessler Studio</h2>" +
         "<p><strong>Nombre:</strong> " + escapeHtml(name) + "</p>" +
         "<p><strong>Contacto:</strong> " + escapeHtml(contact) + "</p>" +
-        answerLines.join("");
+        answerLines.join("") +
+        "<p><strong>Autorización de datos:</strong> Sí, aceptó la Política de Privacidad (" + escapeHtml(consentAt) + ")</p>";
 
     const payload = {
         from: env.CONTACT_FROM || "Gessler Studio <formulario@gesslerstudio.com>",
