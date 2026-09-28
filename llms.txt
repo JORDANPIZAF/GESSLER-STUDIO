@@ -33,6 +33,7 @@
 - [Cómo trabajamos](https://gesslerstudio.com/proceso): Entendemos, Diseñamos, Construimos, Lanzamos. Un sitio de pocas páginas suele tomar entre 2 y 4 semanas desde que se tiene el contenido.
 
 ## Artículos
+- [Océano azul y microsegmentación con IA: cómo encontrar al cliente exacto](https://gesslerstudio.com/blog-oceano-azul-microsegmentacion-ia)
 - [Sesión de fotos profesional de grado: por qué enmarcar los momentos especiales](https://gesslerstudio.com/blog-sesion-fotos-de-grado-momentos-especiales)
 - [Una página web con un solo prompt: por qué es un mito](https://gesslerstudio.com/blog-pagina-web-con-ia-un-prompt)
 - [De carpintería a marca de muebles de autor: el caso Co-Creator](https://gesslerstudio.com/blog-de-carpinteria-a-muebles-de-autor)
